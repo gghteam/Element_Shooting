@@ -311,7 +311,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -849244789
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -7157563340543931752, guid: 0a390f5928eed1745919018fd0d7d988, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -446,6 +446,8 @@ GameObject:
   - component: {fileID: 5440914384577652919}
   - component: {fileID: 6033950926759363816}
   - component: {fileID: 8604748529617755607}
+  - component: {fileID: 5963745112665781460}
+  - component: {fileID: 8396694317367562015}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -535,3 +537,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSO: {fileID: 11400000, guid: 0e7abd19928894b4f97211b40b3e7c18, type: 2}
   _currentVelocity: 3
+--- !u!114 &5963745112665781460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7920379759339927589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5498f44f89b88584591b7a47e4747736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyData: {fileID: 11400000, guid: 199e163c02222334dbd3b6929637af3b, type: 2}
+  <Health>k__BackingField: 0
+  <enemyAttack>k__BackingField: {fileID: 0}
+  <OnGetHit>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <OnDie>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <OnReset>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8396694317367562015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7920379759339927589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da971b3206ac7e49b9830900e6ebaf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <attackDelay>k__BackingField: 1
