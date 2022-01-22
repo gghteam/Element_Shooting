@@ -1,0 +1,624 @@
+fileFormatVersion: 2
+guid: b0217e50f1fa3a84db1fc0277b2463a7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9188452475898253677
+    second: TheShadow_0
+  - first:
+      213: 730030815952065362
+    second: TheShadow_1
+  - first:
+      213: -2521037071348204503
+    second: TheShadow_2
+  - first:
+      213: -2695467331910385798
+    second: TheShadow_3
+  - first:
+      213: 1030259574431634562
+    second: TheShadow_4
+  - first:
+      213: 3315120981032118925
+    second: TheShadow_5
+  - first:
+      213: 7030749397557514531
+    second: TheShadow_6
+  - first:
+      213: 5686095874938324139
+    second: TheShadow_7
+  - first:
+      213: 4836938107915191696
+    second: TheShadow_8
+  - first:
+      213: 254328600008958596
+    second: TheShadow_9
+  - first:
+      213: -4847170171159617939
+    second: TheShadow_10
+  - first:
+      213: -3239610311088804347
+    second: TheShadow_11
+  - first:
+      213: 1127711602099361389
+    second: TheShadow_12
+  - first:
+      213: -3643044090248020659
+    second: TheShadow_13
+  - first:
+      213: 670166665514718252
+    second: TheShadow_14
+  - first:
+      213: 7086489119949919252
+    second: TheShadow_15
+  - first:
+      213: 4240678840314783542
+    second: TheShadow_16
+  - first:
+      213: 5116800945869138653
+    second: TheShadow_17
+  - first:
+      213: -7363908122940173878
+    second: TheShadow_18
+  - first:
+      213: 3309847774459287282
+    second: TheShadow_19
+  - first:
+      213: -331040993162508865
+    second: TheShadow_20
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 50
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TheShadow_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 214.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39ea68ad72f0c7080800000000000000
+      internalID: -9188452475898253677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_1
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 214.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25359e3c827912a00800000000000000
+      internalID: 730030815952065362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_2
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 214.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92cf2b0042a730dd0800000000000000
+      internalID: -2521037071348204503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_3
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 214.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7fbfc92eb6c79ad0800000000000000
+      internalID: -2695467331910385798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 143.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2845178df973c4e00800000000000000
+      internalID: 1030259574431634562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_5
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 143.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8a2dddc7fca10e20800000000000000
+      internalID: 3315120981032118925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_6
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 143.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 321153a935d329160800000000000000
+      internalID: 7030749397557514531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_7
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 143.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba44380721219ee40800000000000000
+      internalID: 5686095874938324139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 72.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 095c5daf491402340800000000000000
+      internalID: 4836938107915191696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_9
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 72.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 482a1c3a38e878300800000000000000
+      internalID: 254328600008958596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_10
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 72.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6e592629646bbcb0800000000000000
+      internalID: -4847170171159617939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_11
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 72.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50eebd416979a03d0800000000000000
+      internalID: -3239610311088804347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_12
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 72.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d66183c2abf66af00800000000000000
+      internalID: 1127711602099361389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_13
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 72.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4d3eab93be417dc0800000000000000
+      internalID: -3643044090248020659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2410561809ec4900800000000000000
+      internalID: 670166665514718252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_15
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 1.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 414194b0f44485260800000000000000
+      internalID: 7086489119949919252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_16
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 1.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6376a7befeae9da30800000000000000
+      internalID: 4240678840314783542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_17
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 1.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddaa9eca957820740800000000000000
+      internalID: 5116800945869138653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_18
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 1.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac1998de3942ec990800000000000000
+      internalID: -7363908122940173878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_19
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 1.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f65349b301feed20800000000000000
+      internalID: 3309847774459287282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TheShadow_20
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 1.5
+        width: 71.42857
+        height: 71.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb5c47c78f7e76bf0800000000000000
+      internalID: -331040993162508865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
