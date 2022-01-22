@@ -8,6 +8,7 @@ public class BulletMove : MonoBehaviour
     private float bulletSpeed = 0.5f;
     private Vector2 targetPosition;
     public Vector3 targetPostion = Vector2.zero;
+    private bool _isDead;
     private void Update() {
         CheckLimit();
         Move();
@@ -26,6 +27,13 @@ public class BulletMove : MonoBehaviour
         {
             Despaw();
         }
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(_isDead)return;
+        IHittable hittable = other.GetComponent<IHittable>();
+        hittable?.GetHit(GameManager.Instance.PlayerInfo.atk, gameObject);
+        _isDead = true;
+        Despaw();
     }
     private void Despaw()
     {

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5190554263118170075}
   - component: {fileID: 1050173394722304809}
   - component: {fileID: 2634536368510226210}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -150,6 +150,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 0}
+  <Health>k__BackingField: 0
+  <OnGetHit>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <OnDie>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
   projectileSpread: 0
   condition: 1
 --- !u!95 &2634536368510226210
@@ -181,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8779181482343512012}
   - component: {fileID: 5458727537783437668}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
