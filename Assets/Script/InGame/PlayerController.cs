@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
-public class PlayerController : MonoBehaviour                          
+public class PlayerController : MonoBehaviour,IHittable,IAgent         
 {
     [SerializeField]
     private Transform playerPosition = null;
+    [field:SerializeField]
+    public int Health {get; private set;}
+    [field:SerializeField]
+    public UnityEvent OnGetHit { get; set; }
+    [field:SerializeField]
+    public UnityEvent OnDie { get; set; }
     private Camera Camera = null;
     private Vector2 mousePosition = Vector2.zero;
     private SpriteRenderer spriteRenderer = null;
@@ -17,39 +24,31 @@ public class PlayerController : MonoBehaviour
     private float projectileSpread;
     private int currentHp;
     private bool isDamaged = false;
+    private bool _isDead;
     [SerializeField]
     private Conditions condition;
-
+    public Vector3 _hitPoint {get; private set;}
     public Conditions GetCondition { get { return condition; } }
     private void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        currentHp = GameManager.Instance.PlayerInfo.maxHp;
+        Health = GameManager.Instance.PlayerInfo.maxHp;
         Camera = GameObject.Find("Camera").GetComponent<Camera>();
         healthBar = FindObjectOfType<HealthBar>();
         StartCoroutine(Fire());
     }
-    private void OnTriggerEnter2D(Collider2D collider) {
-        if(isDamaged)return;
-        if(collider.CompareTag("Enemy"))
-        {
-            enemy = collider.gameObject.GetComponent<EnemyContoller>();
-            Damaged();
-        }
-    }
-    private void Damaged(){
-        isDamaged = true;
+    public void GetHit(int damage, GameObject damageDealer)
+    {
+        if (_isDead) return;
         StartCoroutine(GameManager.Instance.camera.Shake(0.2f, 0.3f));
-        if(enemy != null)
+        GameManager.Instance.ChangeHealthValue(-damage);
+        Health -= damage;
+        healthBar.SetHealth(Health);
+        Debug.Log(GameManager.Instance.PlayerInfo.hp);
+        OnGetHit?.Invoke();
+        if(Health <= 0)
         {
-            GameManager.Instance.ChangeHealthValue(-enemy.Atk);
-            currentHp = GameManager.Instance.PlayerInfo.hp;
-            healthBar.SetHealth(currentHp);
-            Debug.Log(GameManager.Instance.PlayerInfo.hp);
-            if(currentHp <= 0)
-            {
-                OnDead();
-                return;
-            }
+            OnDie?.Invoke();
+            _isDead = true;
         }
         StartCoroutine(OnDamagedAnimation());
     }
