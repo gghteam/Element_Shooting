@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class EnemyContoller : MonoBehaviour
@@ -61,6 +62,14 @@ public class EnemyContoller : MonoBehaviour
         if(col.CompareTag("PlayerBullet"))
         {
             if(isDamaged)return;
+            if(!transform.GetChild(1).gameObject.activeSelf)
+            {
+                GameObject target = transform.GetChild(1).gameObject;
+                target.GetComponent<Canvas>().worldCamera = GameManager.Instance.camera.gameObject.GetComponent<Camera>();
+                target.transform.GetChild(0).gameObject.GetComponent<Slider>().maxValue = currentHp;
+                target.transform.GetChild(0).gameObject.GetComponent<Slider>().value = currentHp;
+                target.SetActive(true);
+            }
             Damaged();
             PoolManager.Instance.Despawn(col.gameObject);
         }
@@ -92,7 +101,9 @@ public class EnemyContoller : MonoBehaviour
 
     public void ChangeHp(float decrease)
     {
+        GameObject target = transform.GetChild(1).gameObject;
         currentHp -= (int)decrease;
+        target.transform.GetChild(0).gameObject.GetComponent<Slider>().value = currentHp;
     }
 
     private IEnumerator OnDamagedAnimation()
@@ -124,6 +135,7 @@ public class EnemyContoller : MonoBehaviour
         PoolManager.Instance.Despawn(spark);
         spriteRenderer.color = new Color(1, 1, 1, 1);
         collider.enabled = true;
+        transform.GetChild(1).gameObject.SetActive(false);
         PoolManager.Instance.Despawn(gameObject);
         
     }
