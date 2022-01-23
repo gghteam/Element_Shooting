@@ -13,7 +13,7 @@ public class Enemy : PoolableMono,IAgent,IHittable
 
     [field: SerializeField]
     public EnemyAttack enemyAttack { get; set; }
-    private bool _isDead = false;
+    public bool _isDead = false;
 
     [SerializeField]
     private Conditions condition;
@@ -25,7 +25,7 @@ public class Enemy : PoolableMono,IAgent,IHittable
             return condition;
         }
     }
- public bool isElement = false;
+    public bool isElement = false;
 
     private AgentMovement _agentMovement;
 

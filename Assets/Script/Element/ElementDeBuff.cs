@@ -24,18 +24,22 @@ public class ElementDeBuff : MonoBehaviour
 
     public void FireDeBuff()
     {
+        if(gameObject.activeSelf==false)return;
         StartCoroutine(FireDeBuffCoroutine());
     }
     public void WaterDeBuff()
     {
+        if(gameObject.activeSelf==false)return;
         StartCoroutine(WaterDeBuffCoroutine());
     }
     public void WindDeBuff()
     {
+        if(gameObject.activeSelf==false)return;
         StartCoroutine(WindDeBuffCoroutine());
     }
     public void StoneDeBuff()
     {
+        if(gameObject.activeSelf==false)return;
         StartCoroutine(StoneDeBuffCoroutine());
     }
 

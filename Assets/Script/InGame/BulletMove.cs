@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletMove : MonoBehaviour
+public class BulletMove : PoolableMono
 {
     [SerializeField]
     private float bulletSpeed = 0.5f;
     private Element enemyElement;
     private Vector2 targetPosition;
     public Vector3 targetPostion = Vector2.zero;
+    private int _enemyLayer;
+    private int _wallLayer;
     private bool _isDead;
+    private void Awake() {
+        _enemyLayer = LayerMask.NameToLayer("Enemy");
+        _wallLayer = LayerMask.NameToLayer("Wall");
+    }
     private void Update() {
         CheckLimit();
         Move();
@@ -31,17 +37,22 @@ public class BulletMove : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(_isDead)return;
-        Debug.Log("HH");
-        IHittable hittable = other.GetComponent<IHittable>();
-        Element element = other.GetComponent<Element>();
-        element.BulletSkill(GameManager.Instance.playerController.GetCondition,gameObject);
+        if(other.gameObject.layer == _enemyLayer)
+        {
+            Element element = other.GetComponent<Element>();
+            element?.BulletSkill(GameManager.Instance.playerController.GetCondition,gameObject);
+        }
+        if(other.gameObject.layer == _wallLayer)
+        {
+
+        }
         _isDead = true;
         Spark();
         Despaw();
     }
     private void Despaw()
     {
-        gameObject.SetActive(false);
+        PoolManager.Instance.Despawn(gameObject);
     }
 
     private void Spark()
@@ -54,5 +65,9 @@ public class BulletMove : MonoBehaviour
         main.startColor = randomColors;
         spark.transform.position = gameObject.transform.position;
         spark.SetActive(true);
+    }
+    public override void Reset()
+    {
+        _isDead=false;
     }
 }

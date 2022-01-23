@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2547924525176302232}
   - component: {fileID: 1494281353648447584}
   - component: {fileID: 4422810134491226824}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TransitionAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 7832885053699764124}
   - component: {fileID: 1295451634125705068}
   - component: {fileID: 7723279544093769624}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ChaseState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,6 +121,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 614cbb2c511a1a04f8dff33e8c122715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2372297539267482041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5041062458823790709}
+  - component: {fileID: 2014524170006997308}
+  - component: {fileID: 2446806221163130912}
+  m_Layer: 7
+  m_Name: EffectDeath
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5041062458823790709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372297539267482041}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7556447614797290915}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2014524170006997308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372297539267482041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c76e9cd896de0204f89bf1716a15218b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <DeathCallback>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5963745112665781460}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2446806221163130912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372297539267482041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95271763c919a9544a26ee0475e15b57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _EffectToPlay:
+  - {fileID: 2014524170006997308}
 --- !u!1 &3119664763644381771
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +205,7 @@ GameObject:
   - component: {fileID: 6597335530085425360}
   - component: {fileID: 2790083944238226741}
   - component: {fileID: 6552666061641479401}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +266,7 @@ GameObject:
   - component: {fileID: 6376083629848995317}
   - component: {fileID: 7628665930491700379}
   - component: {fileID: 2904921119499724771}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TransitionChase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6171308463354676883}
   - component: {fileID: 2556604972560414553}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: VisualSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +408,7 @@ GameObject:
   - component: {fileID: 5522491355363348861}
   - component: {fileID: 4566654275451968343}
   - component: {fileID: 320047533715153069}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3392845899056158457}
   - component: {fileID: 1341221970179753514}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +523,7 @@ GameObject:
   - component: {fileID: 8396694317367562015}
   - component: {fileID: 347755832299278709}
   - component: {fileID: 7526919321158480477}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -471,6 +544,7 @@ Transform:
   - {fileID: 6171308463354676883}
   - {fileID: 3392845899056158457}
   - {fileID: 5522491355363348861}
+  - {fileID: 5041062458823790709}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -566,6 +640,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2446806221163130912}
+        m_TargetAssemblyTypeName: EffectPlayer, Assembly-CSharp
+        m_MethodName: PlayEffect
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

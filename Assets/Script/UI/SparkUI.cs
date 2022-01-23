@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SparkUI : MonoBehaviour
+public class SparkUI : PoolableMono
 {
     void Start()
     {
@@ -12,5 +12,9 @@ public class SparkUI : MonoBehaviour
     void DeSpark()
     {
         PoolManager.Instance.Despawn(gameObject);
+    }
+    public override void Reset()
+    {
+        //nothing
     }
 }

@@ -188,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8779181482343512012}
   - component: {fileID: 5458727537783437668}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
