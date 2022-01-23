@@ -20,9 +20,12 @@ public class GameManager : MonoSingleton<GameManager>
 
     public CameraMove camera { get; private set; }
 
+    public DialogueManager dialogueManager { get; private set; }
+
     private void Awake() {
         maxPosition = new Vector2(r,r);
         minPosition = new Vector2(-r,-r);
+        dialogueManager = FindObjectOfType<DialogueManager>();
     }
 
     private void Start()
