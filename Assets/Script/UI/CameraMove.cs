@@ -13,6 +13,13 @@ public class CameraMove : MonoBehaviour
     private Func<Vector3> GetCameraFollowPositionFunc;
     private Func<float> GetCameraZoomFunc;
 
+    [SerializeField]
+    Vector2 center;
+    [SerializeField]
+    Vector2 size;
+    private float height;
+    private float width;
+
     private void Awake()
     {
         myCamera = transform.GetComponent<Camera>();
@@ -22,8 +29,16 @@ public class CameraMove : MonoBehaviour
     {
         originPos = transform.localPosition;
         Setup(GetCameraPosition, () => 5f, true, true);
+        height = Camera.main.orthographicSize;
+        //월드 가로 = 월드 세로 * 스크린 가로 / 스크린 세로
+        width = height * Screen.width / Screen.height;
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(center, size);
+    }
     private void Update()
     {
 
@@ -87,6 +102,13 @@ public class CameraMove : MonoBehaviour
             }
 
             transform.position = newCameraPosition;
+            float lx = size.x * 0.5f - width;
+            float clampX = Mathf.Clamp(transform.position.x, -lx + center.x, lx + center.x);
+
+            float ly = size.y * 0.5f - height;
+            float clampY = Mathf.Clamp(transform.position.y, -ly + center.y, ly + center.y);
+
+            transform.position = new Vector3(clampX, clampY, -10f);
         }
     }
 

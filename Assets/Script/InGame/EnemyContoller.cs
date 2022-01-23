@@ -68,24 +68,11 @@ public class EnemyContoller : MonoBehaviour
                 target.GetComponent<Canvas>().worldCamera = GameManager.Instance.camera.gameObject.GetComponent<Camera>();
                 target.transform.GetChild(0).gameObject.GetComponent<Slider>().maxValue = currentHp;
                 target.transform.GetChild(0).gameObject.GetComponent<Slider>().value = currentHp;
+                target.transform.GetChild(0).transform.GetChild(3).GetComponent<Image>().sprite = GameManager.Instance.uiManager.elementMark[(int)condition - 1];
                 target.SetActive(true);
             }
             Damaged();
             PoolManager.Instance.Despawn(col.gameObject);
-        }
-        if (col.gameObject.CompareTag("Range"))
-        {
-            if (GameManager.Instance.elementManager.isCheck[0] == true)
-            {
-                isElement = false;
-                StartCoroutine(GameManager.Instance.elementManager.FireBullet(enemyContoller));
-                GameManager.Instance.elementManager.WindBullet(enemyContoller);
-            }
-            else if (GameManager.Instance.elementManager.isCheck[1] == true)
-            {
-                StartCoroutine(GameManager.Instance.elementManager.WaterBullet(enemyContoller));
-                GameManager.Instance.elementManager.WindBullet(enemyContoller);
-            }
         }
     }
     private void Damaged(){
@@ -94,7 +81,6 @@ public class EnemyContoller : MonoBehaviour
         int k = CheckHp();
         if (k == 0) return;
         GameManager.Instance.elementManager.BulletSkill(gameObject);
-        StartCoroutine(Spark());
         StartCoroutine(OnDamagedAnimation());
 
     }
@@ -126,36 +112,14 @@ public class EnemyContoller : MonoBehaviour
         collider.enabled = false;
         gameObject.SetActive(false);
 
-        GameObject spark = PoolManager.Instance.GetPooledObject(2);
-        spark.transform.position = gameObject.transform.position;
-        spark.SetActive(true);
-
         yield return new WaitForSeconds(2f);
 
-        PoolManager.Instance.Despawn(spark);
         spriteRenderer.color = new Color(1, 1, 1, 1);
         collider.enabled = true;
         transform.GetChild(1).gameObject.SetActive(false);
         PoolManager.Instance.Despawn(gameObject);
         
     }
-
-    private IEnumerator Spark()
-    {
-        GameObject spark = PoolManager.Instance.GetPooledObject(2);
-        ParticleSystem ps = spark.GetComponent<ParticleSystem>();
-        var main = ps.main;
-        var randomColors = new ParticleSystem.MinMaxGradient (GameManager.Instance.elementManager.particleG[(int)GameManager.Instance.playerController.GetCondition - 1]);
-        randomColors.mode = ParticleSystemGradientMode.RandomColor;
-        main.startColor = randomColors;
-        spark.transform.position = gameObject.transform.position;
-        spark.SetActive(true);
-
-        yield return new WaitForSeconds(2f);
-
-        PoolManager.Instance.Despawn(spark);
-    }
-
     public int CheckHp()
     {
         if (currentHp <= 0)

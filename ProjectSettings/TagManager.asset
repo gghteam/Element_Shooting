@@ -7,6 +7,7 @@ TagManager:
   - PlayerBullet
   - Enemy
   - Range
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Bullet
   - PlayerMovement
   - EnemyMovement
-  - 
+  - Wall
   - 
   - 
   - 

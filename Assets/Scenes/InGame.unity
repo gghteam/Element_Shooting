@@ -216,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6726246613456755580, guid: 7cc788eec93168c4683a797868192962, type: 3}
       propertyPath: condition
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6726246613456755580, guid: 7cc788eec93168c4683a797868192962, type: 3}
       propertyPath: enemyInfo.hp
@@ -1225,6 +1225,8 @@ MonoBehaviour:
   followTransform: {fileID: 956710804}
   cameraPositionWithMouse: 1
   cameraMoveSpeed: 3
+  center: {x: 0, y: 0}
+  size: {x: 50, y: 50}
 --- !u!114 &498936122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1483,6 +1485,10 @@ PrefabInstance:
     - target: {fileID: 7920379759339927589, guid: f35117b7307fb704cb05aa063094000a, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920379759339927589, guid: f35117b7307fb704cb05aa063094000a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f35117b7307fb704cb05aa063094000a, type: 3}
@@ -33532,7 +33538,7 @@ MonoBehaviour:
   <bulletSprite>k__BackingField:
   - {fileID: 21300000, guid: c21e31ab06ae41f4a8899cc20d490d48, type: 3}
   - {fileID: -1019191728324640619, guid: 039d9849344710447a69fcdb5dca7129, type: 3}
-  - {fileID: -1019191728324640619, guid: 039d9849344710447a69fcdb5dca7129, type: 3}
+  - {fileID: -2914242472581470852, guid: 187d8ef3530f1d748b1f65c0e3fb4db8, type: 3}
   - {fileID: 1194837600591790692, guid: 10f8c0437e10cc349b410f1505aa3b0b, type: 3}
   <particleG>k__BackingField:
   - serializedVersion: 2
@@ -33592,23 +33598,23 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   - serializedVersion: 2
-    key0: {r: 0, g: 0, b: 0, a: 0}
-    key1: {r: 0, g: 0, b: 0, a: 0}
-    key2: {r: 0, g: 0, b: 0, a: 0}
+    key0: {r: 0.06272149, g: 1, b: 0, a: 1}
+    key1: {r: 0.8066459, g: 1, b: 0, a: 1}
+    key2: {r: 0, g: 1, b: 0.03996539, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 65535
-    ctime2: 0
+    ctime1: 29491
+    ctime2: 65535
     ctime3: 0
     ctime4: 0
     ctime5: 0
     ctime6: 0
     ctime7: 0
-    atime0: 0
+    atime0: 771
     atime1: 65535
     atime2: 0
     atime3: 0
@@ -33617,7 +33623,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_NumColorKeys: 2
+    m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   - serializedVersion: 2
     key0: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -33674,6 +33680,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 312357001}
+  <elementMark>k__BackingField:
+  - {fileID: 6946624455473256154, guid: 6c7f829001d43464181579e72535b0ef, type: 3}
+  - {fileID: -899668724605157154, guid: 6c7f829001d43464181579e72535b0ef, type: 3}
+  - {fileID: 3491958791418432117, guid: 6c7f829001d43464181579e72535b0ef, type: 3}
+  - {fileID: 5710015024260994739, guid: 6c7f829001d43464181579e72535b0ef, type: 3}
+  - {fileID: -5283348781531346127, guid: 6c7f829001d43464181579e72535b0ef, type: 3}
 --- !u!1 &1595949961
 GameObject:
   m_ObjectHideFlags: 0
@@ -33761,9 +33773,9 @@ GameObject:
   - component: {fileID: 1672448726}
   - component: {fileID: 1672448725}
   - component: {fileID: 1672448724}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

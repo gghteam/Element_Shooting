@@ -30,13 +30,27 @@ public class BulletMove : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(_isDead)return;
+        Debug.Log("HH");
         IHittable hittable = other.GetComponent<IHittable>();
         hittable?.GetHit(GameManager.Instance.PlayerInfo.atk, gameObject);
         _isDead = true;
+        Spark();
         Despaw();
     }
     private void Despaw()
     {
         gameObject.SetActive(false);
+    }
+
+    private void Spark()
+    {
+        GameObject spark = PoolManager.Instance.GetPooledObject(2);
+        ParticleSystem ps = spark.GetComponent<ParticleSystem>();
+        var main = ps.main;
+        var randomColors = new ParticleSystem.MinMaxGradient(GameManager.Instance.elementManager.particleG[(int)GameManager.Instance.playerController.GetCondition - 1]);
+        randomColors.mode = ParticleSystemGradientMode.RandomColor;
+        main.startColor = randomColors;
+        spark.transform.position = gameObject.transform.position;
+        spark.SetActive(true);
     }
 }

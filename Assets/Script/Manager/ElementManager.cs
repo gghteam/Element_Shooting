@@ -58,7 +58,7 @@ public class ElementManager : MonoBehaviour
     [field: SerializeField]
     public Sprite[] bulletSprite { get; private set; }
 
-    public string[] animationString { get; private set; } = { "Fire_Animation", "Water_Drop", "Temp", "Stone" };
+    public string[] animationString { get; private set; } = { "Fire_Animation", "Water_Drop", "Grass", "Stone" };
 
     [field: SerializeField]
     public Gradient[] particleG { get; private set; } 
@@ -104,7 +104,7 @@ public class ElementManager : MonoBehaviour
             case Conditions.Wind:
                 if(enemyContoller.getCondition == Conditions.Fire)
                 {
-                    enemyContoller.getcircle.SetActive(true);
+                    //enemyContoller.getcircle.SetActive(true);
                     isCheck[0] = true;
 
                     Invoke("OffCheck", 0.05f);

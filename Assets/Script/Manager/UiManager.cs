@@ -9,7 +9,8 @@ public class UiManager : MonoBehaviour
 {
     [SerializeField]
     private Image panel;
-
+    [field : SerializeField]
+    public Sprite[] elementMark { get; private set; }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Q))

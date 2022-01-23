@@ -16,6 +16,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     public ElementManager elementManager { get; private set; }
 
+    public UiManager uiManager { get; private set; }
+
     public CameraMove camera { get; private set; }
 
     private void Awake() {
@@ -29,6 +31,7 @@ public class GameManager : MonoSingleton<GameManager>
         playerController = FindObjectOfType<PlayerController>();
         elementManager = FindObjectOfType<ElementManager>();
         camera = FindObjectOfType<CameraMove>();
+        uiManager = FindObjectOfType<UiManager>();
     }
     public Character PlayerInfo{
         get{ return player;}
