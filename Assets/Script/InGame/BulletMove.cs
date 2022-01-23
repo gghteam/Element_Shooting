@@ -32,7 +32,7 @@ public class BulletMove : MonoBehaviour
         if(_isDead)return;
         Debug.Log("HH");
         IHittable hittable = other.GetComponent<IHittable>();
-        hittable?.GetHit(GameManager.Instance.PlayerInfo.atk, gameObject);
+        GameManager.Instance.elementManager.BulletSkill(other.gameObject,gameObject);
         _isDead = true;
         Spark();
         Despaw();

@@ -74,13 +74,34 @@ public class EnemyContoller : MonoBehaviour
             Damaged();
             PoolManager.Instance.Despawn(col.gameObject);
         }
+<<<<<<< HEAD
+=======
+        if (col.gameObject.CompareTag("Range"))
+        {
+            if (GameManager.Instance.elementManager.isCheck[0] == true)
+            {
+                isElement = false;
+                //StartCoroutine(GameManager.Instance.elementManager.FireBullet(enemyContoller));
+                //GameManager.Instance.elementManager.WindBullet(enemyContoller);
+            }
+            else if (GameManager.Instance.elementManager.isCheck[1] == true)
+            {
+               // StartCoroutine(GameManager.Instance.elementManager.WaterBullet(enemyContoller));
+               // GameManager.Instance.elementManager.WindBullet(enemyContoller);
+            }
+        }
+>>>>>>> AI
     }
     private void Damaged(){
         isDamaged = true;
         ChangeHp(GameManager.Instance.PlayerInfo.atk);
         int k = CheckHp();
         if (k == 0) return;
+<<<<<<< HEAD
         GameManager.Instance.elementManager.BulletSkill(gameObject);
+=======
+        StartCoroutine(Spark());
+>>>>>>> AI
         StartCoroutine(OnDamagedAnimation());
 
     }

@@ -7,13 +7,25 @@ public class Enemy : PoolableMono,IAgent,IHittable
 {
     [SerializeField]
     private EnemyDataSO _enemyData;
-
+    
     [field: SerializeField]
     public int Health { get; private set; }
 
     [field: SerializeField]
     public EnemyAttack enemyAttack { get; set; }
     private bool _isDead = false;
+
+    [SerializeField]
+    private Conditions condition;
+
+    public Conditions getCondition
+    {
+        get
+        {
+            return condition;
+        }
+    }
+ public bool isElement = false;
 
     private AgentMovement _agentMovement;
 
@@ -51,8 +63,9 @@ public class Enemy : PoolableMono,IAgent,IHittable
 
         Health -= damage;
         _hitPoint = damageDealer.transform.position;
-        OnGetHit?.Invoke();
 
+        OnGetHit?.Invoke();
+        Debug.Log("Damaged +"+gameObject+" : "+Health);
         if (Health <= 0)
         {
             _isDead = true;
@@ -62,7 +75,7 @@ public class Enemy : PoolableMono,IAgent,IHittable
 
     public void Die()
     {
-        
+        PoolManager.Instance.Despawn(gameObject);
     }
 
     public void PerformAttack()

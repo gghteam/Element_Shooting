@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75109ec7f73f65449903fc6d38bf4d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <distance>k__BackingField: 1
+  <distance>k__BackingField: 0.8
 --- !u!1 &5101311098943117039
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,15 +552,40 @@ MonoBehaviour:
   _enemyData: {fileID: 11400000, guid: 199e163c02222334dbd3b6929637af3b, type: 2}
   <Health>k__BackingField: 0
   <enemyAttack>k__BackingField: {fileID: 0}
+  condition: 0
   <OnGetHit>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
   <OnDie>k__BackingField:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5440914384577652919}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <OnReset>k__BackingField:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5440914384577652919}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &8396694317367562015
 MonoBehaviour:
   m_ObjectHideFlags: 0
