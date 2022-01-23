@@ -78,13 +78,13 @@ public class EnemyContoller : MonoBehaviour
             if (GameManager.Instance.elementManager.isCheck[0] == true)
             {
                 isElement = false;
-                StartCoroutine(GameManager.Instance.elementManager.FireBullet(enemyContoller));
-                GameManager.Instance.elementManager.WindBullet(enemyContoller);
+                //StartCoroutine(GameManager.Instance.elementManager.FireBullet(enemyContoller));
+                //GameManager.Instance.elementManager.WindBullet(enemyContoller);
             }
             else if (GameManager.Instance.elementManager.isCheck[1] == true)
             {
-                StartCoroutine(GameManager.Instance.elementManager.WaterBullet(enemyContoller));
-                GameManager.Instance.elementManager.WindBullet(enemyContoller);
+               // StartCoroutine(GameManager.Instance.elementManager.WaterBullet(enemyContoller));
+               // GameManager.Instance.elementManager.WindBullet(enemyContoller);
             }
         }
     }
@@ -93,7 +93,6 @@ public class EnemyContoller : MonoBehaviour
         ChangeHp(GameManager.Instance.PlayerInfo.atk);
         int k = CheckHp();
         if (k == 0) return;
-        GameManager.Instance.elementManager.BulletSkill(gameObject);
         StartCoroutine(Spark());
         StartCoroutine(OnDamagedAnimation());
 

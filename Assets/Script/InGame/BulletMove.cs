@@ -31,7 +31,7 @@ public class BulletMove : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(_isDead)return;
         IHittable hittable = other.GetComponent<IHittable>();
-        hittable?.GetHit(GameManager.Instance.PlayerInfo.atk, gameObject);
+        GameManager.Instance.elementManager.BulletSkill(other.gameObject,gameObject);
         _isDead = true;
         Despaw();
     }

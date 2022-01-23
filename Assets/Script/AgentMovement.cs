@@ -11,6 +11,7 @@ public class AgentMovement : MonoBehaviour
     [SerializeField]
     protected float _currentVelocity = 3;
     protected Vector2 _movementDiraction;
+    private float previousSpeed;
     private void Awake() {
         rigid = GetComponent<Rigidbody2D>();
         IAgentInput input = GetComponent<IAgentInput>();
@@ -30,6 +31,20 @@ public class AgentMovement : MonoBehaviour
             _movementDiraction = movementInput.normalized;
         }
         _currentVelocity = CalculateSpeed(movementInput);
+    }
+    public void ChagedMoveAgent(float speed)
+    {
+        previousSpeed = movementSO.maxSpeed;
+        if(speed == 0)
+        {
+            movementSO.maxSpeed = 0;
+            return;
+        }
+        movementSO.maxSpeed = movementSO.maxSpeed - speed > 0 ?  movementSO.maxSpeed - speed : 1; 
+    }
+    public void ReturnToPreviousMoveAgent()
+    {
+        movementSO.maxSpeed = previousSpeed;
     }
     private float CalculateSpeed(Vector2 movementInput)
     {
