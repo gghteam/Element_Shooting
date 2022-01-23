@@ -42,9 +42,6 @@ public class StoneParme
 
 public class ElementManager : MonoBehaviour
 {
-    public Enemy Enemy { get; private set; }
-    private AgentMovement movement;
-    private SpriteRenderer spriteRenderer;
     [SerializeField]
     private FireParme fireParme = new FireParme();
     [SerializeField]
@@ -70,143 +67,10 @@ public class ElementManager : MonoBehaviour
         isCheck[0] = false;
         isCheck[1] = false;
     }
-
-    public void BulletSkill(GameObject target,GameObject dealer)
-    {
-        IHittable hittable = target.GetComponent<IHittable>();
-        Enemy = target.GetComponent<Enemy>();
-        movement = target.GetComponent<AgentMovement>();
-        spriteRenderer = target.GetComponentInChildren<SpriteRenderer>();
-        switch(GameManager.Instance.playerController.GetCondition)
-        {
-            case Conditions.Fire:
-                if (Enemy.getCondition == Conditions.Fire)
-                {
-                    hittable?.GetHit(-GameManager.Instance.PlayerInfo.atk,dealer);
-                    return;
-                }
-                else if (Enemy.getCondition == Conditions.Water) return;
-                else if (Enemy.getCondition == Conditions.Grass)
-                {
-                    hittable?.GetHit(GameManager.Instance.PlayerInfo.atk*2,dealer);
-                }else{
-                    hittable?.GetHit(GameManager.Instance.PlayerInfo.atk,dealer);
-                }
-                //StartCoroutine(FireBullet(Enemy));
-                break;
-            case Conditions.Water:
-                if(Enemy.getCondition == Conditions.Fire) 
-                    hittable?.GetHit(GameManager.Instance.PlayerInfo.atk*2,dealer);
-                else if(Enemy.getCondition == Conditions.Water)
-                {
-                    hittable?.GetHit(-GameManager.Instance.PlayerInfo.atk,dealer);
-                    return;
-                }
-                else if(Enemy.getCondition == Conditions.Grass) {
-                    hittable?.GetHit(-GameManager.Instance.PlayerInfo.atk,dealer);
-                    return;
-                }
-                else
-                {
-                    hittable?.GetHit(GameManager.Instance.PlayerInfo.atk,dealer);
-                }
-                //StartCoroutine(WaterBullet(Enemy,movement));
-                break;
-            case Conditions.Wind:
-                if(Enemy.getCondition == Conditions.Fire)
-                {
-
-
-
-                    //Enemy.getcircle.SetActive(true);
-
-                    isCheck[0] = true;
-
-                    Invoke("OffCheck", 0.05f);
-                }
-                else if(Enemy.getCondition == Conditions.Water)
-                {
-                    //Enemy.getcircle.SetActive(true);
-                    isCheck[1] = true;
-
-                    //Invoke("OffCheck", 0.01f);
-                }
-                else if(Enemy.getCondition == Conditions.Wind)
-                {
-                    hittable?.GetHit(-GameManager.Instance.PlayerInfo.atk,dealer);
-                    return;
-                }
-                else if(Enemy.getCondition == Conditions.Stone)
-                {
-                    return;
-                }
-                else{
-                    hittable?.GetHit(GameManager.Instance.PlayerInfo.atk,dealer);
-                }
-                WindBullet(Enemy);
-                break;
-            case Conditions.Stone:
-                if(Enemy.getCondition == Conditions.Stone)
-                {
-                    return;
-                }
-                else
-                {
-                    hittable?.GetHit(GameManager.Instance.PlayerInfo.atk,dealer);
-                }
-                //StartCoroutine(StoneBullet(Enemy));
-                break;
-        }
-    }
-
     private void OffCheck()
     {
         //Enemy.getcircle.SetActive(false);
         isCheck[0] = false;
-    }
-    public IEnumerator FireBullet(Enemy target,SpriteRenderer spriteRenderer)
-    {
-        IHittable hittable = target.GetComponent<IHittable>();
-        if (target.isElement) yield break;
-        target.isElement = true;
-        float time = fireParme.Maxduration;
-        while(time > 0)
-        {
-            yield return new WaitForSeconds(fireParme.duration);
-            if (target.gameObject.activeSelf==false)
-            {
-                target.isElement = false;
-                yield break;
-            }
-            hittable?.GetHit(fireParme.damage,null);
-            StartCoroutine(OnElementDamagedAnimation(spriteRenderer, new Color(1, 0, 0, 1), fireParme.duration));
-            time--;
-        }
-        target.isElement = false;
-    }
-
-    private IEnumerator OnElementDamagedAnimation(SpriteRenderer target, Color color, float duration)
-    {
-        yield return new WaitForSeconds(duration/ 4);
-        target.color = color;
-        yield return new WaitForSeconds(duration / 4);
-        target.color = new Color(1f, 1f, 1f, 1f);
-        yield return new WaitForSeconds(fireParme.duration / 4);
-        target.color = color;
-        yield return new WaitForSeconds(duration / 4);
-        target.color = new Color(1f, 1f, 1f, 1f);
-    }
-
-    public IEnumerator WaterBullet(Enemy target,AgentMovement movement,SpriteRenderer spriteRenderer)
-    {
-        if (target.isElement) yield break;
-        target.isElement = true;
-        //float normal = target.;
-        movement.ChagedMoveAgent(waterParme.decrease);
-        StartCoroutine(OnElementDamagedAnimation(spriteRenderer, new Color(0, 0, 1, 1), waterParme.duration));
-        yield return new WaitForSeconds(waterParme.duration);
-        target.isElement = false;
-        movement.ReturnToPreviousMoveAgent();
     }
 
     public void WindBullet(Enemy target)
@@ -230,16 +94,4 @@ public class ElementManager : MonoBehaviour
     //         //enemy.isKinematic = true;
     //     }
     // }
-
-    private IEnumerator StoneBullet(Enemy target,AgentMovement movement,SpriteRenderer spriteRenderer)
-    {
-        if (target.isElement) yield break;
-        target.isElement = true;
-        movement.ChagedMoveAgent(0);
-        spriteRenderer.color = new Color(94 / 255, 94 / 255, 94 / 255, 1);
-        yield return new WaitForSeconds(stoneParme.duration);
-        movement.ReturnToPreviousMoveAgent();
-        spriteRenderer.color = new Color(1, 1, 1, 1);
-        target.isElement = false;
-    }
 }

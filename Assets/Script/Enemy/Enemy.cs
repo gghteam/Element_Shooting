@@ -62,6 +62,8 @@ public class Enemy : PoolableMono,IAgent,IHittable
         if (_isDead) return;
 
         Health -= damage;
+        if(Health>_enemyData.maxHealth)
+        Health = _enemyData.maxHealth;
         _hitPoint = damageDealer.transform.position;
 
         OnGetHit?.Invoke();

@@ -448,6 +448,8 @@ GameObject:
   - component: {fileID: 8604748529617755607}
   - component: {fileID: 5963745112665781460}
   - component: {fileID: 8396694317367562015}
+  - component: {fileID: 347755832299278709}
+  - component: {fileID: 7526919321158480477}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -553,6 +555,7 @@ MonoBehaviour:
   <Health>k__BackingField: 0
   <enemyAttack>k__BackingField: {fileID: 0}
   condition: 0
+  isElement: 0
   <OnGetHit>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
@@ -599,3 +602,69 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <attackDelay>k__BackingField: 1
+--- !u!114 &347755832299278709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7920379759339927589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c840b77a31b585b43a4988d47a137e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireParme:
+    Maxduration: 3
+    duration: 1
+    damage: 1
+  waterParme:
+    duration: 5
+    decrease: 2
+  windParme:
+    thrust: 5
+    KnockTime: 0.3
+  stoneParme:
+    duration: 5
+--- !u!114 &7526919321158480477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7920379759339927589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d828545412f3d054182403a362734671, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <OnWater>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 347755832299278709}
+        m_TargetAssemblyTypeName: ElementDeBuff, Assembly-CSharp
+        m_MethodName: WaterDeBuff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <OnWind>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 347755832299278709}
+        m_TargetAssemblyTypeName: ElementDeBuff, Assembly-CSharp
+        m_MethodName: WindDeBuff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

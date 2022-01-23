@@ -6,6 +6,7 @@ public class BulletMove : MonoBehaviour
 {
     [SerializeField]
     private float bulletSpeed = 0.5f;
+    private Element enemyElement;
     private Vector2 targetPosition;
     public Vector3 targetPostion = Vector2.zero;
     private bool _isDead;
@@ -32,7 +33,8 @@ public class BulletMove : MonoBehaviour
         if(_isDead)return;
         Debug.Log("HH");
         IHittable hittable = other.GetComponent<IHittable>();
-        GameManager.Instance.elementManager.BulletSkill(other.gameObject,gameObject);
+        Element element = other.GetComponent<Element>();
+        element.BulletSkill(GameManager.Instance.playerController.GetCondition,gameObject);
         _isDead = true;
         Spark();
         Despaw();
