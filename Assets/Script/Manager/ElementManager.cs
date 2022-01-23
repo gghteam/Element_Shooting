@@ -115,11 +115,11 @@ public class ElementManager : MonoBehaviour
             case Conditions.Wind:
                 if(Enemy.getCondition == Conditions.Fire)
                 {
-<<<<<<< HEAD
-                    //enemyContoller.getcircle.SetActive(true);
-=======
+
+
+
                     //Enemy.getcircle.SetActive(true);
->>>>>>> AI
+
                     isCheck[0] = true;
 
                     Invoke("OffCheck", 0.05f);
