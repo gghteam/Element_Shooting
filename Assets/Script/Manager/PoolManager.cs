@@ -90,6 +90,7 @@ public class PoolManager : MonoBehaviour
     {
         target.SetActive(false);
         target.transform.SetParent(this.transform);
+        target.GetComponent<PoolableMono>().Reset();
     }
 }
 
