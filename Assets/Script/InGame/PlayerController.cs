@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
             yield return null;
             if(_isElement) continue;
             if(_isSelectElement) continue;
-<<<<<<< HEAD
             if(!Input.GetMouseButton(0)) continue;
             // GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
             Invoke("SpawnBullet", bulletDelay);
@@ -81,24 +80,12 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
         float angle = Mathf.Atan2(v2.y, v2.x) * Mathf.Rad2Deg;
         float startRotation = angle + projectileSpread / 2f;
         float angleIncrease = projectileSpread / ((float)GameManager.Instance.PlayerInfo.mul - 1f);
+        float randomAngle = 0;
         for (int i = 0; i < GameManager.Instance.PlayerInfo.mul; i++)
         {
             GameObject bullet = PoolManager.Instance.GetPooledObject(0);
             if (bullet != null)
-=======
-            if(!Input.GetMouseButton(0)) 
-            {
-                continue;
-            }
-            //playerMove.Attack();
-            Vector2 v2 = Camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            float angle = Mathf.Atan2(v2.y,v2.x) * Mathf.Rad2Deg;
-            float startRotation = angle + projectileSpread / 2f;
-            float angleIncrease = projectileSpread / ((float)GameManager.Instance.PlayerInfo.mul - 1f);
-            for (int i = 0; i < GameManager.Instance.PlayerInfo.mul; i++)
->>>>>>> AI
-            {
-                float randomAngle;
+                
                 if (GameManager.Instance.PlayerInfo.rpm >= 6)
                 {
                     randomAngle = Random.Range(-5f, 5f);
@@ -114,7 +101,7 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
                 GameManager.Instance.rebound.StartBandong(rX, rY);
                 StartCoroutine(GameManager.Instance.camera.Shake(0.02f, 0.1f));
                 ChangeBulletSprite(bullet);
-            }
+            
         }
     }
     private void ChangeBulletSprite(GameObject bullet)

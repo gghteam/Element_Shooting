@@ -23,6 +23,9 @@ public class BulletMove : PoolableMono
         Move();
         AddScale();
     }
+    private void FixedUpdate() {
+
+    }
     private void Move()
     {
         transform.position = transform.position + (targetPostion.normalized * bulletSpeed * Time.deltaTime); 
@@ -77,9 +80,9 @@ public class BulletMove : PoolableMono
 
     private void AddScale()
     {
-        if(transform.localScale.x < 3)
+        if(transform.localScale.x < 8)
         {
-            transform.localScale += new Vector3(transform.localScale.x + Time.deltaTime * speed ,transform.localScale.y + Time.deltaTime * speed, transform.localScale.z + Time.deltaTime * speed);
+            transform.localScale = new Vector3(transform.localScale.x + (Time.deltaTime * speed) ,transform.localScale.y + (Time.deltaTime * speed), 0f);
         }
     }
 }
