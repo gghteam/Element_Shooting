@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
     private bool _isDead;
     [SerializeField]
     private Conditions condition;
+    public bool _isElement {get;set;} = false;
     public Vector3 _hitPoint {get; private set;}
     public Conditions GetCondition { get { return condition; } }
     private void Start() {
@@ -70,7 +71,9 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
     {
         while(true)
         {
+
             yield return null;
+            if(_isElement) continue;
             if(!Input.GetMouseButton(0)) continue;
            // GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
             Vector2 v2 = Camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;

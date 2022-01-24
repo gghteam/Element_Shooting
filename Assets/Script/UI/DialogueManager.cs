@@ -57,7 +57,7 @@ public class DialogueManager : MonoBehaviour, IPointerDownHandler
 
     private void Update()
     {
-        // dialogue == currentSentence ´ë»ç ÇÑÁÙ ³¡.
+        // dialogue == currentSentence ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
         if (dialogueText.text.Equals(currentSentence))
         {
             Debug.Log("K11");

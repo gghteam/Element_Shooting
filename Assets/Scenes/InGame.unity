@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 132814767}
   - component: {fileID: 132814766}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -674,6 +674,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1563568952}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: SelectElement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2138745657}
+        m_TargetAssemblyTypeName: ElementAnimation, Assembly-CSharp
+        m_MethodName: ChangedElements
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1131,6 +1143,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2138745657}
+        m_TargetAssemblyTypeName: ElementAnimation, Assembly-CSharp
+        m_MethodName: ChangedElements
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &450959727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1395,7 +1419,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -36119,6 +36143,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2138745657}
+        m_TargetAssemblyTypeName: ElementAnimation, Assembly-CSharp
+        m_MethodName: ChangedElements
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1746381186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36497,6 +36533,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1563568952}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: SelectElement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2138745657}
+        m_TargetAssemblyTypeName: ElementAnimation, Assembly-CSharp
+        m_MethodName: ChangedElements
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -44782,3 +44830,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116025160}
   m_CullTransparentMesh: 1
+--- !u!1 &2138745653 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 422510960723611540, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
+  m_PrefabInstance: {fileID: 1512302573}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2138745657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138745653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5c2b1ef7ecae4842b5a90ec01a09681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
