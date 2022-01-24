@@ -72,6 +72,7 @@ public class EnemyContoller : MonoBehaviour
                 target.SetActive(true);
             }
             Damaged();
+            DamagePopup.Create(transform.position, GameManager.Instance.PlayerInfo.atk, false);
             PoolManager.Instance.Despawn(col.gameObject);
         }
     }

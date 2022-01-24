@@ -263,6 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 866634898}
   gameObject: {fileID: 1316334836}
+  camera: {fileID: 498936119}
 --- !u!4 &23558869
 Transform:
   m_ObjectHideFlags: 0
@@ -1953,6 +1954,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5963745112665781460, guid: f35117b7307fb704cb05aa063094000a, type: 3}
+      propertyPath: condition
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7556447614797290915, guid: f35117b7307fb704cb05aa063094000a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3366,6 +3371,9 @@ MonoBehaviour:
     amountToPool: 100
     shouldExpand: 0
   - objectToPool: {fileID: 1213710058851854885, guid: f7627986435d5a14d924e6f451f915c1, type: 3}
+    amountToPool: 100
+    shouldExpand: 0
+  - objectToPool: {fileID: 6860964798194136663, guid: 193eb2986a58b3949a46d2971ccd360d, type: 3}
     amountToPool: 100
     shouldExpand: 0
   pooledObjects: []
