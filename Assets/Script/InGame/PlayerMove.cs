@@ -9,7 +9,8 @@ public class PlayerMove : MonoBehaviour
     {
         NONE = 0,
         RUN = 1 << 0,
-        DAMAGED = 2 << 1
+        DAMAGED = 2 << 1,
+        Attack = 3 << 2
     }
   
     private PlayerState state = PlayerState.NONE;
@@ -30,6 +31,11 @@ public class PlayerMove : MonoBehaviour
         SetCharacterDirection();
         Move();
         Dash();
+        Damaged();
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            animator.Play("Damaged_Player_Animation");
+        }
     }
     private void Idle()
     {
@@ -62,7 +68,14 @@ public class PlayerMove : MonoBehaviour
             Idle();
         }
     }
-        private void SetCharacterDirection()
+    private void Damaged()
+    {
+        if(state.HasFlag(PlayerState.DAMAGED))
+        {
+            animator.Play("Damaged_Player_Animation");
+        }
+    }
+    private void SetCharacterDirection()
     {
         if (velocityX > 0f)
         {
