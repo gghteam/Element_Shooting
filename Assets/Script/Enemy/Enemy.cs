@@ -67,6 +67,7 @@ public class Enemy : PoolableMono,IAgent,IHittable
         _hitPoint = damageDealer.transform.position;
 
         OnGetHit?.Invoke();
+        DamagePopup.Create(transform.position, GameManager.Instance.PlayerInfo.atk, false);
         Debug.Log("Damaged +"+gameObject+" : "+Health);
         if (Health <= 0)
         {

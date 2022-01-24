@@ -13,7 +13,8 @@ public class ObjectPoolItem
 /*
  0:bullet
  1:enemy
- 
+ 2:Particle
+ 3:PopUp
  */
 public class PoolManager : MonoBehaviour
 {
