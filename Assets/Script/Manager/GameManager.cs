@@ -22,6 +22,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     public DialogueManager dialogueManager { get; private set; }
 
+    public Rebound rebound { get; private set; }
+
     private void Awake() {
         maxPosition = new Vector2(r,r);
         minPosition = new Vector2(-r,-r);
@@ -35,6 +37,7 @@ public class GameManager : MonoSingleton<GameManager>
         elementManager = FindObjectOfType<ElementManager>();
         camera = FindObjectOfType<CameraMove>();
         uiManager = FindObjectOfType<UiManager>();
+        rebound = FindObjectOfType<Rebound>();
     }
     public Character PlayerInfo{
         get{ return player;}

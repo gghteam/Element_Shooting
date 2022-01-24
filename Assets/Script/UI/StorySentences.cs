@@ -6,17 +6,18 @@ public class StorySentences : MonoBehaviour
 {
     [SerializeField]
     private string[] sentences;
+    [SerializeField]
+    private string[] naming;
 
     private void Start()
     {
-        Debug.Log("GGGG");
-        //Read();
+        Read();
     }
     private void Read()
     {
-        if(GameManager.Instance.dialogueManager.dialogueGroup.alpha == 0)
+        if (GameManager.Instance.dialogueManager.dialogueGroup.alpha == 0)
         {
-            GameManager.Instance.dialogueManager.Ondialogue(sentences);
+            GameManager.Instance.dialogueManager.Ondialogue(sentences, naming);
         }
     }
 }

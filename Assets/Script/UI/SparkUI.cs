@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class SparkUI : PoolableMono
 {
-    void Start()
+    private void OnEnable()
     {
         Invoke("DeSpark", 2f);
+        
     }
 
     void DeSpark()

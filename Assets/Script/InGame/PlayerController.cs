@@ -96,6 +96,10 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
                     bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, tempRot));
                     bullet.GetComponent<BulletMove>().targetPostion = new Vector2(Mathf.Cos(tempRot * Mathf.Deg2Rad), Mathf.Sin(tempRot * Mathf.Deg2Rad));
                     bullet.SetActive(true);
+                    int rX = Random.Range(-20, 20);
+                    int rY = Random.Range(-20, 20);
+                    GameManager.Instance.rebound.StartBandong(rX, rY);
+                    StartCoroutine(GameManager.Instance.camera.Shake(0.02f,0.1f));
                     ChangeBulletSprite(bullet);
                 }
             }

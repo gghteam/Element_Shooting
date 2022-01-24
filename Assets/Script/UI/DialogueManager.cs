@@ -2,36 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using DG.Tweening;
 
-public class DialogueManager : MonoBehaviour, IPointerDownHandler
+public class DialogueManager : MonoBehaviour
 {
     [SerializeField]
     private Text dialogueText;
+    [SerializeField]
+    private Text nameText;
     [SerializeField]
     private GameObject nextText;
     [field: SerializeField]
     public CanvasGroup dialogueGroup { get; private set; }
     [SerializeField]
     private Queue<string> sentences;
+    [SerializeField]
+    private Queue<string> nameSentences;
 
     private string currentSentence;
 
     private bool isTyping = false;
 
+    [SerializeField]
+    private float typingSpeed = 0.1f;
+
     private void Awake()
     {
 
         sentences = new Queue<string>();
+        nameSentences = new Queue<string>();
     }
 
-    public void Ondialogue(string[] lines)
+    public void Ondialogue(string[] lines, string[] names)
     {
         sentences.Clear();
         foreach (string line in lines)
         {
             sentences.Enqueue(line);
+        }
+        foreach (string namet in names)
+        {
+            nameSentences.Enqueue(namet);
         }
         dialogueGroup.alpha = 1;
         dialogueGroup.blocksRaycasts = true;
@@ -44,9 +55,12 @@ public class DialogueManager : MonoBehaviour, IPointerDownHandler
         if (sentences.Count != 0)
         {
             currentSentence = sentences.Dequeue();
+            nameText.text = nameSentences.Dequeue();
             isTyping = true;
             nextText.SetActive(false);
-            dialogueText.DOText(currentSentence, 3f);
+            StartCoroutine(Typing(currentSentence));
+            //dialogueText.text = "";
+            //dialogueText.DOText(currentSentence, 3f);
         }
         else
         {
@@ -55,10 +69,21 @@ public class DialogueManager : MonoBehaviour, IPointerDownHandler
         }
     }
 
+    private IEnumerator Typing(string line)
+    {
+        dialogueText.text = "";
+        //TocharArray:문자열을 char형 배열로 변환
+        foreach (char letter in line.ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+    }
+
     private void Update()
     {
         // dialogue == currentSentence ��� ���� ��.
-        if (dialogueText.text.Equals(currentSentence))
+        if (dialogueText.text.Equals(currentSentence) && isTyping)
         {
             Debug.Log("K11");
             nextText.SetActive(true);
@@ -66,7 +91,7 @@ public class DialogueManager : MonoBehaviour, IPointerDownHandler
         }
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void ClickDialogue()
     {
         if (!isTyping)
             NextSentence();
