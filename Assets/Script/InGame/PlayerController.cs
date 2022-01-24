@@ -14,15 +14,14 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
     public UnityEvent OnGetHit { get; set; }
     [field:SerializeField]
     public UnityEvent OnDie { get; set; }
+    private PlayerMove playerMove;
     private Camera Camera = null;
     private Vector2 mousePosition = Vector2.zero;
     private SpriteRenderer spriteRenderer = null;
     private HealthBar healthBar;
-    private EnemyContoller enemy;
     private const float coefficient = 1;
     [SerializeField]
     private float projectileSpread;
-    private int currentHp;
     private bool isDamaged = false;
     private bool _isDead;
     [SerializeField]
@@ -32,6 +31,7 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
     public Vector3 _hitPoint {get; private set;}
     public Conditions GetCondition { get { return condition; } }
     private void Start() {
+        playerMove = GetComponent<PlayerMove>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         Health = GameManager.Instance.PlayerInfo.maxHp;
         Camera = GameObject.Find("Camera").GetComponent<Camera>();
@@ -52,17 +52,7 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
             OnDie?.Invoke();
             _isDead = true;
         }
-        StartCoroutine(OnDamagedAnimation());
-    }
-    private IEnumerator OnDamagedAnimation(){
-        spriteRenderer.color = new Color(0f,0f,0f,0f);
-        yield return new WaitForSeconds(1f);
-        spriteRenderer.color = new Color(1f,1f,1f,1f);
-        yield return new WaitForSeconds(1f);
-        spriteRenderer.color = new Color(0f,0f,0f,0f);
-        yield return new WaitForSeconds(1f);
-        spriteRenderer.color = new Color(1f,1f,1f,1f);
-        isDamaged = false;
+        playerMove.Damaged();
     }
     private void OnDead()
     {
@@ -76,8 +66,11 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
             yield return null;
             if(_isElement) continue;
             if(_isSelectElement) continue;
-            if(!Input.GetMouseButton(0)) continue;
-           // GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
+            if(!Input.GetMouseButton(0)) 
+            {
+                continue;
+            }
+            //playerMove.Attack();
             Vector2 v2 = Camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             float angle = Mathf.Atan2(v2.y,v2.x) * Mathf.Rad2Deg;
             float startRotation = angle + projectileSpread / 2f;
@@ -112,7 +105,6 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
 
     private void ChangeBulletSprite(GameObject bullet)
     {
-
         bullet.GetComponent<SpriteRenderer>().sprite = GameManager.Instance.elementManager.bulletSprite[(int)condition - 1];
         bullet.GetComponent<Animator>().Play(GameManager.Instance.elementManager.animationString[(int)condition - 1]);
     }

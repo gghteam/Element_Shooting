@@ -81,7 +81,6 @@ public class EnemyContoller : MonoBehaviour
         ChangeHp(GameManager.Instance.PlayerInfo.atk);
         int k = CheckHp();
         if (k == 0) return;
-        StartCoroutine(OnDamagedAnimation());
     }
 
     public void ChangeHp(float decrease)
