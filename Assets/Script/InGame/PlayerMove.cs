@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviour
     }
   
     private PlayerState state = PlayerState.NONE;
+    private PlayerState previousState = PlayerState.NONE;
 
     private float moveSpeed = 0;
     private float velocityX = 0;
@@ -31,11 +32,20 @@ public class PlayerMove : MonoBehaviour
         SetCharacterDirection();
         Move();
         Dash();
-        Damaged();
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            animator.Play("Damaged_Player_Animation");
-        }
+        DamagedAnimation();
+        AttackAnimation();
+    }
+    public void Damaged()
+    {
+        state = PlayerState.DAMAGED;
+    }
+    public void Attack()
+    {
+        state = PlayerState.Attack;
+    }
+    public void ReturnToPreviousState()
+    {
+        state = PlayerState.NONE;
     }
     private void Idle()
     {
@@ -58,6 +68,7 @@ public class PlayerMove : MonoBehaviour
     }
     private void Dash()
     {
+        
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             state = PlayerState.RUN;
@@ -68,11 +79,20 @@ public class PlayerMove : MonoBehaviour
             Idle();
         }
     }
-    private void Damaged()
+    private void DamagedAnimation()
     {
         if(state.HasFlag(PlayerState.DAMAGED))
         {
             animator.Play("Damaged_Player_Animation");
+            state = PlayerState.NONE;
+        }
+    }
+    private void AttackAnimation()
+    {
+        if(state.HasFlag(PlayerState.Attack))
+        {
+            animator.Play("Attack_Player_Animation");
+            state = PlayerState.NONE;
         }
     }
     private void SetCharacterDirection()
