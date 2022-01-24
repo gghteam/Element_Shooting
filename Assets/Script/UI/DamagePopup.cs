@@ -13,7 +13,10 @@ public class DamagePopup : PoolableMono
         damagePopupObject.transform.position = new Vector3(damagePopupObject.transform.position.x, damagePopupObject.transform.position.y, 0);
         damagePopupObject.transform.rotation = Quaternion.identity;
         DamagePopup damagePopup = damagePopupObject.transform.GetComponent<DamagePopup>();
-        damagePopup.Setup(damageAmount, isCriticlaHit);
+        if(damageAmount > 0) 
+        damagePopup.Setup("+" + damageAmount.ToString(), isCriticlaHit,false);
+        else
+        damagePopup.Setup(damageAmount.ToString(), isCriticlaHit,true);
         damagePopupObject.SetActive(true);
 
         return damagePopup;
@@ -33,14 +36,17 @@ public class DamagePopup : PoolableMono
         textMesh = transform.GetComponent<TextMeshPro>();
     }
 
-    public void Setup(int damageAmount, bool isCriticlaHit)
+    public void Setup(string damageAmount, bool isCriticlaHit, bool isNegative)
     {
-        textMesh.SetText(damageAmount.ToString());
+        textMesh.SetText(damageAmount);
         if(!isCriticlaHit)
         {
             //Normal hit
             textMesh.fontSize = 5;
-            ColorUtility.TryParseHtmlString("#FFC500", out textColor);
+            if (!isNegative)
+                ColorUtility.TryParseHtmlString("#73FF00", out textColor);
+            else
+                ColorUtility.TryParseHtmlString("#FFC500", out textColor);
         }
         else
         {

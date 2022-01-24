@@ -5,11 +5,11 @@ using UnityEngine;
 public enum Conditions
 {
     Not,
-    Fire,
-    Water,
-    Wind,
-    Stone,
-    Grass
+    Fire, //1 Fire -> Water  
+    Water, //2
+    Wind, //3
+    Stone, //4
+    Grass //5
 }
 
 [System.Serializable]

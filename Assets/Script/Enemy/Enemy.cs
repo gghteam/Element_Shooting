@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.Events;
-
+using static DefineCS;
 public class Enemy : PoolableMono,IAgent,IHittable
 {
     [SerializeField]
@@ -67,7 +68,7 @@ public class Enemy : PoolableMono,IAgent,IHittable
         _hitPoint = damageDealer.transform.position;
 
         OnGetHit?.Invoke();
-        DamagePopup.Create(transform.position, GameManager.Instance.PlayerInfo.atk, false);
+        DamagePopup.Create(transform.position, -damage, false);
         Debug.Log("Damaged +"+gameObject+" : "+Health);
         if (Health <= 0)
         {
