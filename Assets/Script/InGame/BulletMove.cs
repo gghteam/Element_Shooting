@@ -12,6 +12,8 @@ public class BulletMove : PoolableMono
     private int _enemyLayer;
     private int _wallLayer;
     private bool _isDead;
+    [SerializeField]
+    private float speed = 0.1f;
     private void Awake() {
         _enemyLayer = LayerMask.NameToLayer("Enemy");
         _wallLayer = LayerMask.NameToLayer("Wall");
@@ -19,6 +21,7 @@ public class BulletMove : PoolableMono
     private void Update() {
         CheckLimit();
         Move();
+        AddScale();
     }
     private void Move()
     {
@@ -69,5 +72,14 @@ public class BulletMove : PoolableMono
     public override void Reset()
     {
         _isDead=false;
+        transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+    }
+
+    private void AddScale()
+    {
+        if(transform.localScale.x < 3)
+        {
+            transform.localScale += new Vector3(transform.localScale.x + Time.deltaTime * speed ,transform.localScale.y + Time.deltaTime * speed, transform.localScale.z + Time.deltaTime * speed);
+        }
     }
 }

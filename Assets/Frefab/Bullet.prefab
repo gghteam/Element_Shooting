@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 30
   targetPostion: {x: 0, y: 0, z: 0}
+  speed: 0.1
 --- !u!212 &8251586952555038647
 SpriteRenderer:
   m_ObjectHideFlags: 0

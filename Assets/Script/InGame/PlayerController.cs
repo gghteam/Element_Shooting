@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
     public bool _isSelectElement {get;set;} = false;
     public Vector3 _hitPoint {get; private set;}
     public Conditions GetCondition { get { return condition; } }
+    [SerializeField]
+    private float bulletDelay;
     private void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
         Health = GameManager.Instance.PlayerInfo.maxHp;
@@ -72,44 +74,46 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
     {
         while(true)
         {
-
             yield return null;
             if(_isElement) continue;
             if(_isSelectElement) continue;
             if(!Input.GetMouseButton(0)) continue;
-           // GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
-            Vector2 v2 = Camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            float angle = Mathf.Atan2(v2.y,v2.x) * Mathf.Rad2Deg;
-            float startRotation = angle + projectileSpread / 2f;
-            float angleIncrease = projectileSpread / ((float)GameManager.Instance.PlayerInfo.mul - 1f);
-            for (int i = 0; i < GameManager.Instance.PlayerInfo.mul; i++)
-            {
-                GameObject bullet = PoolManager.Instance.GetPooledObject(0);
-                if (bullet != null)
-                {
-                    float randomAngle;
-                    if (GameManager.Instance.PlayerInfo.rpm >= 6)
-                    {
-                        randomAngle = Random.Range(-5f, 5f);
-                    }
-                    else randomAngle = 0;
-                    float tempRot = i == 0 ? randomAngle + angle  : (startRotation - angleIncrease * i) + randomAngle;
-                    bullet.transform.position = playerPosition.transform.position;
-                    bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, tempRot));
-                    bullet.GetComponent<BulletMove>().targetPostion = new Vector2(Mathf.Cos(tempRot * Mathf.Deg2Rad), Mathf.Sin(tempRot * Mathf.Deg2Rad));
-                    bullet.SetActive(true);
-                    int rX = Random.Range(-20, 20);
-                    int rY = Random.Range(-20, 20);
-                    GameManager.Instance.rebound.StartBandong(rX, rY);
-                    StartCoroutine(GameManager.Instance.camera.Shake(0.02f,0.1f));
-                    ChangeBulletSprite(bullet);
-                }
-            }
+            // GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
+            Invoke("SpawnBullet", bulletDelay);
             yield return new WaitForSeconds(coefficient/(float)GameManager.Instance.PlayerInfo.rpm);
         }
         
     }
 
+    private void SpawnBullet() {
+        Vector2 v2 = Camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        float angle = Mathf.Atan2(v2.y, v2.x) * Mathf.Rad2Deg;
+        float startRotation = angle + projectileSpread / 2f;
+        float angleIncrease = projectileSpread / ((float)GameManager.Instance.PlayerInfo.mul - 1f);
+        for (int i = 0; i < GameManager.Instance.PlayerInfo.mul; i++)
+        {
+            GameObject bullet = PoolManager.Instance.GetPooledObject(0);
+            if (bullet != null)
+            {
+                float randomAngle;
+                if (GameManager.Instance.PlayerInfo.rpm >= 6)
+                {
+                    randomAngle = Random.Range(-5f, 5f);
+                }
+                else randomAngle = 0;
+                float tempRot = i == 0 ? randomAngle + angle : (startRotation - angleIncrease * i) + randomAngle;
+                bullet.transform.position = playerPosition.transform.position;
+                bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, tempRot));
+                bullet.GetComponent<BulletMove>().targetPostion = new Vector2(Mathf.Cos(tempRot * Mathf.Deg2Rad), Mathf.Sin(tempRot * Mathf.Deg2Rad));
+                bullet.SetActive(true);
+                int rX = Random.Range(-20, 20);
+                int rY = Random.Range(-20, 20);
+                GameManager.Instance.rebound.StartBandong(rX, rY);
+                StartCoroutine(GameManager.Instance.camera.Shake(0.02f, 0.1f));
+                ChangeBulletSprite(bullet);
+            }
+        }
+    }
     private void ChangeBulletSprite(GameObject bullet)
     {
 
