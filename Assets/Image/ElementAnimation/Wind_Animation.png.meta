@@ -59,9 +59,6 @@ TextureImporter:
   - first:
       213: -2309315743736205270
     second: Wind_Animation_18
-  - first:
-      213: 7858895832668860894
-    second: Wind_Animation_19
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -557,27 +554,6 @@ TextureImporter:
       bones: []
       spriteID: a20f26cf099a3ffd0800000000000000
       internalID: -2309315743736205270
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wind_Animation_19
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ed176012f18601d60800000000000000
-      internalID: 7858895832668860894
       vertices: []
       indices: 
       edges: []

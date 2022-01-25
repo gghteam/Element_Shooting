@@ -14,11 +14,10 @@ public class Enemy : PoolableMono,IAgent,IHittable
 
     [field: SerializeField]
     public EnemyAttack enemyAttack { get; set; }
-    public bool _isDead = false;
-
+    [SerializeField]
+    private EnemyHpbar _stateBar;
     [SerializeField]
     private Conditions condition;
-
     public Conditions getCondition
     {
         get
@@ -26,9 +25,10 @@ public class Enemy : PoolableMono,IAgent,IHittable
             return condition;
         }
     }
+    public bool _isDead = false;
     public bool isElement = false;
-
     private AgentMovement _agentMovement;
+
 
     [field: SerializeField]
     public UnityEvent OnGetHit { get; set; }
@@ -37,7 +37,6 @@ public class Enemy : PoolableMono,IAgent,IHittable
 
     [field: SerializeField]
     public UnityEvent OnReset { get; set; }
-
     public Vector3 _hitPoint { get; private set; }
 
     private EnemyAiBrain _enemyBrain;
@@ -61,6 +60,8 @@ public class Enemy : PoolableMono,IAgent,IHittable
     public void GetHit(int damage, GameObject damageDealer)
     {
         if (_isDead) return;
+
+        _stateBar.SetBar(damage);
 
         Health -= damage;
         if(Health>_enemyData.maxHealth)

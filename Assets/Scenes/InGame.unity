@@ -2207,7 +2207,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.396
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2223,7 +2223,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c9c551c7799ac438955871750f70ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 774014634}
+  canvas: {fileID: 1805049626}
+  fill: {fileID: 1905000601}
+  mark: {fileID: 250407294}
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 0.03141363, b: 0, a: 1}
@@ -2253,7 +2255,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
-  fill: {fileID: 1905000601}
 --- !u!1 &778559925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2775,8 +2776,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player:
-    hp: 10
-    maxHp: 10
+    hp: 5
+    maxHp: 5
     speed: 4
     mana: 0
     rpm: 6
@@ -34113,6 +34114,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1050173394722304809, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 774014635}
     - target: {fileID: 1050173394722304809, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: bulletDelay
       value: 0.1
