@@ -56,7 +56,7 @@ public class Enemy : PoolableMono,IAgent,IHittable
     {
         Health = _enemyData.maxHealth;
     }
-
+    
     public void GetHit(int damage, GameObject damageDealer)
     {
         if (_isDead) return;
