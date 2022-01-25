@@ -11,14 +11,13 @@ public class GameManager : MonoSingleton<GameManager>
     public Vector2 maxPosition {get;private set;}
     public Vector2 minPosition {get;private set;}
 
-    public TestScript testScript { get; private set; }
     public PlayerController playerController { get; private set; }
 
     public ElementManager elementManager { get; private set; }
 
     public UiManager uiManager { get; private set; }
 
-    public CameraMove camera { get; private set; }
+    public new CameraMove camera { get; private set; }
 
     public DialogueManager dialogueManager { get; private set; }
 
@@ -34,7 +33,6 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
-        testScript = FindObjectOfType<TestScript>();
         playerController = FindObjectOfType<PlayerController>();
         elementManager = FindObjectOfType<ElementManager>();
         camera = FindObjectOfType<CameraMove>();

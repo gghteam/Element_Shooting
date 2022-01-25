@@ -16,6 +16,7 @@ public class Enemy : PoolableMono,IAgent,IHittable
     public EnemyAttack enemyAttack { get; set; }
     [SerializeField]
     private EnemyHpbar _stateBar;
+    public Action OnDieAnimaiton;
     [SerializeField]
     private Conditions condition;
     public Conditions getCondition
@@ -38,6 +39,8 @@ public class Enemy : PoolableMono,IAgent,IHittable
     [field: SerializeField]
     public UnityEvent OnReset { get; set; }
     public Vector3 _hitPoint { get; private set; }
+
+    public Action OnAttackAnimation;
 
     private EnemyAiBrain _enemyBrain;
 
@@ -66,11 +69,11 @@ public class Enemy : PoolableMono,IAgent,IHittable
         Health -= damage;
         if(Health>_enemyData.maxHealth)
         Health = _enemyData.maxHealth;
-        _hitPoint = damageDealer.transform.position;
+        //_hitPoint = damageDealer.transform.position;
 
         OnGetHit?.Invoke();
         DamagePopup.Create(transform.position, -damage, false);
-        Debug.Log("Damaged +"+gameObject+" : "+Health);
+        //Debug.Log("Damaged +"+gameObject+" : "+Health);
         if (Health <= 0)
         {
             _isDead = true;
@@ -80,6 +83,12 @@ public class Enemy : PoolableMono,IAgent,IHittable
 
     public void Die()
     {
+        OnDieAnimaiton?.Invoke();
+        StartCoroutine(DieAimation());
+    }
+    public IEnumerator DieAimation()
+    {
+        yield return new WaitForSeconds(0.5f);
         PoolManager.Instance.Despawn(gameObject);
     }
 
@@ -87,6 +96,7 @@ public class Enemy : PoolableMono,IAgent,IHittable
     {
         if(!_isDead)
         {
+            OnAttackAnimation?.Invoke();
             enemyAttack.Attack(_enemyData.damage);
         }
     }

@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
     private const float coefficient = 1;
     [SerializeField]
     private float projectileSpread;
-    private bool isDamaged = false;
     private bool _isDead;
     [SerializeField]
     private Conditions condition;

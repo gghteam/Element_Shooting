@@ -14,7 +14,6 @@ public class PlayerMove : MonoBehaviour
     }
   
     private PlayerState state = PlayerState.NONE;
-    private PlayerState previousState = PlayerState.NONE;
 
     private float moveSpeed = 0;
     private float velocityX = 0;

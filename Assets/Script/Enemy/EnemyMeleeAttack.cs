@@ -9,7 +9,7 @@ public class EnemyMeleeAttack : EnemyAttack
         if(_waitBeforeNextAttack == false)
         {
             IHittable hittable = GetTarget().GetComponent<IHittable>();
-
+            
             hittable?.GetHit(damage, gameObject);
             StartCoroutine(WaitBeforeAttackCoroutine());
         }

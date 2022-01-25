@@ -39,6 +39,7 @@ public class ElementAnimation : MonoBehaviour
             ani.Play("Wind_Element_Off_Animation");
             break;
             case Conditions.Stone:
+            ani.Play("Stone_Element_Off_Animation");
             break;
         }
         yield return new WaitForSeconds(1f);
@@ -65,7 +66,9 @@ public class ElementAnimation : MonoBehaviour
                 ani.Play("Wind_Element_Idle_Animation");
             break;
             case Conditions.Stone:
-                yield return new WaitForSeconds(1f);   
+                ani.Play("Stone_Element_On_Animation");
+                yield return new WaitForSeconds(1f);
+                ani.Play("Stone_Element_Idle_Animation");
             break;
         }
         playerController._isElement = false;

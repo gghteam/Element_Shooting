@@ -11,6 +11,7 @@ public class AgentMovement : MonoBehaviour
     [SerializeField]
     protected float _currentVelocity = 3;
     protected Vector2 _movementDiraction;
+    public Action<float> OnVelocityChange;
     private float previousSpeed;
     private void Awake() {
         rigid = GetComponent<Rigidbody2D>();
@@ -59,6 +60,8 @@ public class AgentMovement : MonoBehaviour
         return Mathf.Clamp(_currentVelocity, 0, movementSO.maxSpeed);
     }
     private void FixedUpdate() {
+        OnVelocityChange?.Invoke(_currentVelocity);
+        
         rigid.velocity = _movementDiraction * _currentVelocity;    
     }
 }
