@@ -67,8 +67,10 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
             yield return null;
             if(_isElement) continue;
             if(_isSelectElement) continue;
-            if(!Input.GetMouseButton(0)) continue;
-            // GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
+            if(!Input.GetMouseButton(0)) {
+                continue;
+            }
+            playerMove.Attack();
             Invoke("SpawnBullet", bulletDelay);
             yield return new WaitForSeconds(coefficient/(float)GameManager.Instance.PlayerInfo.rpm);
         }

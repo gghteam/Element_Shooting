@@ -1705,6 +1705,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4581425153081907590, guid: f35117b7307fb704cb05aa063094000a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581425153081907590, guid: f35117b7307fb704cb05aa063094000a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623385404387253333, guid: f35117b7307fb704cb05aa063094000a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998897276787484624, guid: f35117b7307fb704cb05aa063094000a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7556447614797290915, guid: f35117b7307fb704cb05aa063094000a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2761,7 +2777,7 @@ MonoBehaviour:
   player:
     hp: 10
     maxHp: 10
-    speed: 2
+    speed: 4
     mana: 0
     rpm: 6
     mul: 1

@@ -23,7 +23,9 @@ public class PlayerMove : MonoBehaviour
     private Collider2D col = null;
     private Rigidbody2D playerRigid = null;
     private Animator animator = null;
+    private Camera Camera = null;
     private void Start() {
+        Camera = GameObject.Find("Camera").GetComponent<Camera>();
         col = GetComponent<Collider2D>();
         playerRigid = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
@@ -32,16 +34,17 @@ public class PlayerMove : MonoBehaviour
         SetCharacterDirection();
         Move();
         Dash();
-        DamagedAnimation();
-        AttackAnimation();
+        
     }
     public void Damaged()
     {
         state = PlayerState.DAMAGED;
+        DamagedAnimation();
     }
     public void Attack()
     {
         state = PlayerState.Attack;
+        AttackAnimation();
     }
     public void ReturnToPreviousState()
     {
@@ -68,8 +71,11 @@ public class PlayerMove : MonoBehaviour
     }
     private void Dash()
     {
-        
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetKeyDown(KeyCode.LeftShift)&&state.HasFlag(PlayerState.Attack))
+        {
+            state = PlayerState.RUN;
+            animator.Play("Attack_Player_Animation");
+        }else if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             state = PlayerState.RUN;
             animator.Play("Run");
@@ -84,7 +90,10 @@ public class PlayerMove : MonoBehaviour
         if(state.HasFlag(PlayerState.DAMAGED))
         {
             animator.Play("Damaged_Player_Animation");
-            state = PlayerState.NONE;
+            if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Damaged_Player_Animation"))
+            {
+                state &= ~PlayerState.DAMAGED;
+            }
         }
     }
     private void AttackAnimation()
@@ -92,11 +101,24 @@ public class PlayerMove : MonoBehaviour
         if(state.HasFlag(PlayerState.Attack))
         {
             animator.Play("Attack_Player_Animation");
-            state = PlayerState.NONE;
+            state &= ~PlayerState.Attack;
         }
     }
     private void SetCharacterDirection()
     {
+        if(Input.GetMouseButton(0))
+        {
+            Vector2 vec = Camera.ScreenToWorldPoint(Input.mousePosition);
+            if (vec.x > 0f)
+            {
+                animator.transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
+            else if (vec.x < 0f)
+            {
+                animator.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+            return;
+        }
         if (velocityX > 0f)
         {
             animator.transform.localScale = new Vector3(1f, 1f, 1f);
