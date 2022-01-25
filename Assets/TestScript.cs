@@ -11,10 +11,6 @@ public class TestScript : MonoBehaviour
     private GameObject gameObject;
     [SerializeField]
     private Camera camera;
-
-private void Start() {
-    Debug.Log("Gemegemgmemgemgmemgemgme");
-}
     private void Update()
     {
         if(gameObject != null)

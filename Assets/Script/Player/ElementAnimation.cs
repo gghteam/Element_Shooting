@@ -36,6 +36,7 @@ public class ElementAnimation : MonoBehaviour
             ani.Play("Water_Element_Off_Animation");
             break;
             case Conditions.Wind:
+            ani.Play("Wind_Element_Off_Animation");
             break;
             case Conditions.Stone:
             break;
@@ -59,7 +60,9 @@ public class ElementAnimation : MonoBehaviour
                 ani.Play("Water_Element_Idle_Animation");
             break;
             case Conditions.Wind:
-                yield return new WaitForSeconds(1f);   
+                ani.Play("Wind_Element_On_Animation");
+                yield return new WaitForSeconds(1f);
+                ani.Play("Wind_Element_Idle_Animation");
             break;
             case Conditions.Stone:
                 yield return new WaitForSeconds(1f);   

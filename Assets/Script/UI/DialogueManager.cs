@@ -85,7 +85,6 @@ public class DialogueManager : MonoBehaviour
         // dialogue == currentSentence ��� ���� ��.
         if (dialogueText.text.Equals(currentSentence) && isTyping)
         {
-            Debug.Log("K11");
             nextText.SetActive(true);
             isTyping = false;
         }

@@ -40,7 +40,7 @@ public class PoolManager : MonoBehaviour
             {
                 GameObject obj = (GameObject)Instantiate(item.objectToPool);
                 obj.SetActive(false);
-                obj.transform.parent = this.transform;
+                obj.transform.SetParent(this.transform);
                 pooledObjects.Add(obj);
             }
             pooledObjectsList.Add(pooledObjects);
