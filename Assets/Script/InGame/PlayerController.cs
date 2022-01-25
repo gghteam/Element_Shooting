@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
     public Conditions GetCondition { get { return condition; } }
     [SerializeField]
     private float bulletDelay;
+    [SerializeField]
+    private float sphereSize;
     private void Start() {
         playerMove = GetComponent<PlayerMove>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -116,4 +118,5 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
     {
         condition = change;
     }
+
 }
