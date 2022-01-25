@@ -39562,15 +39562,9 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1050173394722304809, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
-<<<<<<< HEAD
       propertyPath: sphereSize
       value: 2
       objectReference: {fileID: 0}
-=======
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 774014635}
->>>>>>> AI
     - target: {fileID: 1050173394722304809, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: bulletDelay
       value: 0.1
