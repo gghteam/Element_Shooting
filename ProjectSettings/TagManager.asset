@@ -58,6 +58,9 @@ TagManager:
   - name: Character
     uniqueID: 3445722507
     locked: 0
+  - name: FrontTileMap
+    uniqueID: 1244543751
+    locked: 0
   - name: Particle
     uniqueID: 174791467
     locked: 0

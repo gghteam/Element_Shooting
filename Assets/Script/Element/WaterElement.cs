@@ -15,7 +15,7 @@ public class WaterElement : Element
                 hittable?.GetHit(0,dealer);
                 break;
             case Conditions.Water:
-                hittable?.GetHit(-GameManager.Instance.PlayerInfo.atk*2,dealer);
+                hittable?.GetHit(-GameManager.Instance.PlayerInfo.atk,dealer);
                 break;
             case Conditions.Wind:
                 hittable?.GetHit(GameManager.Instance.PlayerInfo.atk,dealer);

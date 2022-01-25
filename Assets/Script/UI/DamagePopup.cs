@@ -8,8 +8,9 @@ public class DamagePopup : PoolableMono
     //Create a Damage Popup
     public static DamagePopup Create(Vector3 position, int damageAmount, bool isCriticlaHit)
     {
+        float x = Random.Range(-0.5f,0.5f),y= Random.Range(-0.5f,0.5f);
         GameObject damagePopupObject = PoolManager.Instance.GetPooledObject(3);
-        damagePopupObject.transform.position = position;
+        damagePopupObject.transform.position = new Vector3(position.x+x,position.y+y,position.z);
         damagePopupObject.transform.position = new Vector3(damagePopupObject.transform.position.x, damagePopupObject.transform.position.y, 0);
         damagePopupObject.transform.rotation = Quaternion.identity;
         DamagePopup damagePopup = damagePopupObject.transform.GetComponent<DamagePopup>();
