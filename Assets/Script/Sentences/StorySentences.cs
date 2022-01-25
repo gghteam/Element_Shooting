@@ -9,11 +9,7 @@ public class StorySentences : MonoBehaviour
     [SerializeField]
     private string[] naming;
 
-    private void Start()
-    {
-        Read();
-    }
-    private void Read()
+    public void Read()
     {
         if (GameManager.Instance.dialogueManager.dialogueGroup.alpha == 0)
         {
