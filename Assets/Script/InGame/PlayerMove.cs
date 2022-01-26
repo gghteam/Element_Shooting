@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
         RUN = 1 << 0,
         DAMAGED = 2 << 1,
         Attack = 3 << 2
+
     }
   
     private PlayerState state = PlayerState.NONE;
@@ -18,6 +19,11 @@ public class PlayerMove : MonoBehaviour
     private float moveSpeed = 0;
     private float velocityX = 0;
     private float velocityY = 0;
+
+    private readonly int _walkHashStr = Animator.StringToHash("Walk");
+    private readonly int _deathHashStr = Animator.StringToHash("Death");
+    private readonly int _attackHashStr = Animator.StringToHash("Attack");
+    private readonly int _damagedHashStr = Animator.StringToHash("Damaged");
 
     private Collider2D col = null;
     private Rigidbody2D playerRigid = null;
@@ -35,6 +41,10 @@ public class PlayerMove : MonoBehaviour
         Dash();
         
     }
+    public void Death()
+    {
+        animator.SetTrigger(_deathHashStr);
+    }
     public void Damaged()
     {
         state = PlayerState.DAMAGED;
@@ -43,16 +53,15 @@ public class PlayerMove : MonoBehaviour
     public void Attack()
     {
         state = PlayerState.Attack;
-        AttackAnimation();
+        AttackAnimation(true);
     }
-    public void ReturnToPreviousState()
+    public void UnAttack()
     {
-        state = PlayerState.NONE;
+        AttackAnimation(false);
     }
     private void Idle()
     {
         state = PlayerState.NONE;
-        animator.Play("Idle");
     }
     private void Move()
     {
@@ -71,38 +80,24 @@ public class PlayerMove : MonoBehaviour
     }
     private void Dash()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift)&&state.HasFlag(PlayerState.Attack))
+        if(Input.GetKeyDown(KeyCode.LeftShift))
         {
+            animator.SetBool(_walkHashStr,true);
             state = PlayerState.RUN;
-            animator.Play("Attack_Player_Animation");
-        }else if(Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            state = PlayerState.RUN;
-            animator.Play("Run");
         }
         if(Input.GetKeyUp(KeyCode.LeftShift))
         {
+            animator.SetBool(_walkHashStr,false);
             Idle();
         }
     }
     private void DamagedAnimation()
     {
-        if(state.HasFlag(PlayerState.DAMAGED))
-        {
-            animator.Play("Damaged_Player_Animation");
-            if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Damaged_Player_Animation"))
-            {
-                state &= ~PlayerState.DAMAGED;
-            }
-        }
+        animator.SetTrigger(_damagedHashStr);
     }
-    private void AttackAnimation()
+    private void AttackAnimation(bool _isSet)
     {
-        if(state.HasFlag(PlayerState.Attack))
-        {
-            animator.Play("Attack_Player_Animation");
-            state &= ~PlayerState.Attack;
-        }
+        animator.SetBool(_attackHashStr,_isSet);
     }
     private void SetCharacterDirection()
     {
