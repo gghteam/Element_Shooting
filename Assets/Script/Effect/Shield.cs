@@ -18,10 +18,12 @@ public class Shield : MonoBehaviour
     private bool isend = false;
     private bool isEye = false;
     private bool isS = false;
+    private bool isQ = false;
     private Vector3 temp;
     public bool isAni { get; set; } = false;
 
     private int count = 0;
+    private int check = 0;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isend) return;
@@ -36,18 +38,6 @@ public class Shield : MonoBehaviour
         isExit = true;
         isEnter = false;
         box.enabled = false;
-    }
-    private void Start()
-    {
-        temp = camera.transform.position;
-        isend = true;
-        isAni = true;
-        isEnter = false;
-        isExit = false;
-        effect.color = new Vector4(effect.color.r, effect.color.g, effect.color.b, 250);
-        Debug.Log(effect.color.a);
-        StartCoroutine(LightEye());
-        
     }
 
     private void Update()
@@ -76,7 +66,7 @@ public class Shield : MonoBehaviour
             if (effect.color.a > 0)
             {
                 Color color = new Color(0, 0, 0, Time.deltaTime);
-                effect.color -= color * 2;
+                effect.color -= color;
             }
             else isS = false;
         }
@@ -86,18 +76,26 @@ public class Shield : MonoBehaviour
         }
         if(camera.transform.position == new Vector3(0, 10.75f, -10f))
         {
+            if (isEye) return;
             isEye = true;
-            /*
+            if(check == 0)
             StartCoroutine(LightEye());
-            */
 
+        }
+
+        if(isQ)
+        {
+            Debug.Log("1234");
+            camera.transform.position = Vector3.Lerp(camera.transform.position, temp, 0.05f);
         }
         if(camera.transform.position == temp)
         {
-            if(isAni && isEye)
+            if(isAni && isEye && isQ)
             {
                 isAni = false;
                 isEye = false;
+                isQ = false;
+
             }
         }
     }
@@ -113,32 +111,31 @@ public class Shield : MonoBehaviour
             isAni = true;
             isEnter = false;
             isExit = false;
-            effect.color = new Vector4(effect.color.r, effect.color.g, effect.color.b, 255);
-    }
+            effect.color = new Color(effect.color.r, effect.color.g, effect.color.b, 1);
+        }
 }
 
     private IEnumerator LightEye()
     {
+        check++;
         Debug.Log("Q");
-        /*
         yield return new WaitForSeconds(2f);
         while(red.transform.GetChild(0).GetComponent<SpriteRenderer>().color.a < 255)
         {
             red.transform.GetChild(0).GetComponent<SpriteRenderer>().color += new Color(0, 0, 0, 1);
             red.transform.GetChild(1).GetComponent<SpriteRenderer>().color += new Color(0, 0, 0, 1);
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.005f);
         }
-        yield return new WaitForSeconds(0.5f);
         while (blue.transform.GetChild(0).GetComponent<SpriteRenderer>().color.a < 255)
         {
             blue.transform.GetChild(0).GetComponent<SpriteRenderer>().color += new Color(0, 0, 0, 1);
             blue.transform.GetChild(1).GetComponent<SpriteRenderer>().color += new Color(0, 0, 0, 1);
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.005f);
         }
-        */
         isS = true;
-        yield return new WaitForSeconds(15f);
-        //effect.gameObject.SetActive(false);
+        yield return new WaitForSeconds(4f);
+        effect.gameObject.SetActive(false);
+        isQ = true;
         camera.transform.position = Vector3.Lerp(camera.transform.position, temp, 0.05f);
     }
 }

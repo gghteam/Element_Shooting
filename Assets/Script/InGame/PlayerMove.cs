@@ -31,7 +31,8 @@ public class PlayerMove : MonoBehaviour
     }
     private void Update() {
         SetCharacterDirection();
-        Move();
+        if (GameManager.Instance.shield.isAni) return;
+        else Move();
         Dash();
         
     }
@@ -71,7 +72,7 @@ public class PlayerMove : MonoBehaviour
     }
     private void Dash()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift)&&state.HasFlag(PlayerState.Attack))
+        if (Input.GetKeyDown(KeyCode.LeftShift)&&state.HasFlag(PlayerState.Attack))
         {
             state = PlayerState.RUN;
             animator.Play("Attack_Player_Animation");
