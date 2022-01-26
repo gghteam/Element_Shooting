@@ -50,10 +50,6 @@ public class UiManager : MonoBehaviour
     {
         magic.gameObject.transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, magicSpeed * Time.deltaTime));
     }
-    public void ToInGame(){
-
-        SceneManager.LoadScene("InGame");
-    }
     
     public void SelectElement()
     {

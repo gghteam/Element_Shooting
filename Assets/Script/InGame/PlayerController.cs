@@ -66,10 +66,6 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
         yield return new WaitForSeconds(0.5f);
         _isDamaged = false;
     }
-    private void OnDead()
-    {
-        SceneManager.LoadScene("Menu");
-    }
     private IEnumerator Fire()
     {
         while(true)

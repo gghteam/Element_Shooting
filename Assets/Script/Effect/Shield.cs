@@ -8,6 +8,8 @@ public class Shield : MonoBehaviour
     private SpriteRenderer effect;
     [SerializeField]
     private BoxCollider2D box;
+    public GameObject red;
+    public GameObject blue;
 
     private bool isEnter = false;
     private bool isExit = false;
