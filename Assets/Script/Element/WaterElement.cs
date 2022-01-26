@@ -12,7 +12,7 @@ public class WaterElement : Element
         switch(conditions)
         {
             case Conditions.Fire:
-                hittable?.GetHit(0,dealer);
+                hittable?.GetHit(GameManager.Instance.PlayerInfo.atk*2,dealer);
                 break;
             case Conditions.Water:
                 hittable?.GetHit(-GameManager.Instance.PlayerInfo.atk,dealer);

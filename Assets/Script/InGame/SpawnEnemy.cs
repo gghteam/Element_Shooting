@@ -1,27 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static DefineCS;
 
 public class SpawnEnemy : MonoBehaviour
 {
     [SerializeField]
     private int count;
-    [SerializeField]
-    private Vector2 pos;
 
-    private void Start()
+    public void SpawnGreenSlime(Transform pos)
     {
-        StartCoroutine(Spawn(count,pos,5));
+        StartCoroutine(Spawn(10,pos.position,30,(int)EnemyIndex.GreenSlime));
     }
-    IEnumerator Spawn(int c, Vector2 p, int duration)
+    public void SpawnRedSlime(Transform pos)
+    {
+        StartCoroutine(Spawn(20,pos.position,50,(int)EnemyIndex.RedSlime));
+    }
+    public void SpawnBlueSlime(Transform pos)
+    {
+        StartCoroutine(Spawn(20,pos.position,50,(int)EnemyIndex.BlueSlime));
+    }
+    private IEnumerator Spawn(int c, Vector2 p, int duration,int index)
     {
         int temp = c;
 
         while(temp > 0)
         {
-            float x = Random.Range(-5, 5) + p.x;
-            float y = Random.Range(-5, 5) + p.y;
-            GameObject enemy = PoolManager.Instance.GetPooledObject(1);
+            float x = Random.Range(-3, 3) + p.x;
+            float y = Random.Range(-3, 3) + p.y;
+            GameObject enemy = PoolManager.Instance.GetPooledObject(index);
             enemy.transform.position = new Vector2(x, y);
             enemy.SetActive(true);
             temp--;

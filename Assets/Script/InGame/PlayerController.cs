@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
     private Conditions condition;
     public bool _isElement {get;set;} = false;
     public bool _isSelectElement {get;set;} = false;
+    private bool _isDamaged = false;
     public Vector3 _hitPoint {get; private set;}
     public Conditions GetCondition { get { return condition; } }
     [SerializeField]
@@ -44,6 +45,8 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
     public void GetHit(int damage, GameObject damageDealer)
     {
         if (_isDead) return;
+        if(_isDamaged)return;
+        _isDamaged = true;
         StartCoroutine(GameManager.Instance.camera.Shake(0.2f, 0.3f));
         GameManager.Instance.ChangeHealthValue(-damage);
         Health -= damage;
@@ -56,6 +59,12 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
             _isDead = true;
         }
         playerMove.Damaged();
+        StartCoroutine(DamagedCool());
+    }
+    private IEnumerator DamagedCool()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _isDamaged = false;
     }
     private void OnDead()
     {

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8735232d7bc2b2f49a342ae303a54b4e, type: 3}
+  m_Name: BlueSlimeData
+  m_EditorClassIdentifier: 
+  enemyName: BlueSlime
+  prefab: {fileID: 8334144702343241978, guid: 38c3b541b30a04341a8345a914c21325, type: 3}
+  poolPrefab: {fileID: 6067937611920139120, guid: 38c3b541b30a04341a8345a914c21325, type: 3}
+  <maxHealth>k__BackingField: 5
+  <damage>k__BackingField: 1

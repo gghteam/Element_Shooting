@@ -13,4 +13,12 @@ public static class DefineCS
         Stone, //4
         Grass 
     }
+    public enum EnemyIndex
+    {
+        Not = 0,
+        GreenSlime = 1,
+        BlueSlime = 4,
+        RedSlime = 5
+
+    }
 }

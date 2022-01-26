@@ -7,6 +7,8 @@ public abstract class StateBar : MonoBehaviour
 {
     [SerializeField]
     protected Canvas canvas;
+    [SerializeField]
+    protected CanvasGroup canvasGroup;
     protected Slider slider = null;
     [SerializeField]
     protected Image fill;

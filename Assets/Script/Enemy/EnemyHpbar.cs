@@ -10,15 +10,16 @@ public class EnemyHpbar : StateBar
     public override void AwakeChild()
     {
         maxGaugeValue = 0;
-        SetMaxBar();
+        slider.value = 1f;
+        canvasGroup.alpha = 0;
     }
     public override void SetMaxBar()
     {
-        slider.value = 1f;
-        maxGaugeValue = (float)enemy.Health;
+        
     }
     public override void SetBar(float gauge)
     {   
+        canvasGroup.alpha = 1f;
         maxGaugeValue = maxGaugeValue != 0 ? maxGaugeValue : enemy.Health;
         gauge = gauge/maxGaugeValue;
         slider.value -= gauge;

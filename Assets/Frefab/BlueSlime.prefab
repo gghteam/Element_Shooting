@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 7388478937432648180}
   - component: {fileID: 8948709265739524906}
   - component: {fileID: 1852001143307867313}
+  - component: {fileID: 7543253893210064568}
   m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
@@ -282,6 +283,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &7543253893210064568
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3230805650590950507}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3305512764612060356
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 7388478937432648180}
+  canvasGroup: {fileID: 7543253893210064568}
   fill: {fileID: 6672962794543460471}
   mark: {fileID: 810382609667813681}
   gradient:
@@ -969,7 +983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb406684186fab4a9eed465ee2873f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSO: {fileID: 11400000, guid: afb33df67dec6024cbb94740b04b0892, type: 2}
+  movementSO: {fileID: 11400000, guid: dd124bd9d50c1974996fc1aa18fb8fce, type: 2}
   _currentVelocity: 3
 --- !u!114 &6067937611920139120
 MonoBehaviour:
@@ -983,7 +997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5498f44f89b88584591b7a47e4747736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyData: {fileID: 11400000, guid: 4e1249f69915d88479d4e21ef1a7dd42, type: 2}
+  _enemyData: {fileID: 11400000, guid: 4d969a05c42cf3b4c8e7f7749fe46209, type: 2}
   <Health>k__BackingField: 0
   <enemyAttack>k__BackingField: {fileID: 0}
   _stateBar: {fileID: 5610394096994015397}
@@ -1058,7 +1072,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.75}
