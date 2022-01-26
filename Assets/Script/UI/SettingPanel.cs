@@ -17,6 +17,7 @@ public class SettingPanel : MonoBehaviour
     public void OnExitBtn()
     {
         Application.Quit();
+        Debug.Log("Game Quit");
     }
     public void OnContinueBtn()
     {
@@ -45,10 +46,9 @@ public class SettingPanel : MonoBehaviour
     }
     private IEnumerator OpenBookAnimation()
     {
-        Debug.Log("asd");
         float upDownY = 1000;
         bookRectPosition.DOAnchorPosY(bookRectPosition.anchoredPosition.y+upDownY,1f);
-        animator.Play("on");
+        animator.Play("Open");
         yield return new WaitForSeconds(1.2f);
         SetSetting(true);
         _isOpen = false;
