@@ -28,6 +28,9 @@ public class SpawnEnemy : MonoBehaviour
         {
             float x = Random.Range(-3, 3) + p.x;
             float y = Random.Range(-3, 3) + p.y;
+            GameObject particle = PoolManager.Instance.GetPooledObject(6);
+            particle.transform.position = new Vector2(x, y);
+            particle.SetActive(true);
             GameObject enemy = PoolManager.Instance.GetPooledObject(index);
             enemy.transform.position = new Vector2(x, y);
             enemy.SetActive(true);

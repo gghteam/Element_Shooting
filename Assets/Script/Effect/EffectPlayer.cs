@@ -16,6 +16,10 @@ public class EffectPlayer : MonoBehaviour
         }
     }
 
+    public void Shield()
+    {
+        GameManager.Instance.shield.Check();
+    }
     private void FinishEffect()
     {
         foreach(Effect effect in _EffectToPlay)

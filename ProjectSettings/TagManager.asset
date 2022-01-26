@@ -55,6 +55,9 @@ TagManager:
   - name: Bullet
     uniqueID: 4015082507
     locked: 0
+  - name: BackParticle
+    uniqueID: 376153397
+    locked: 0
   - name: Character
     uniqueID: 3445722507
     locked: 0
