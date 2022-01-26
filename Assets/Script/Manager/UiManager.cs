@@ -9,14 +9,16 @@ public class UiManager : MonoBehaviour
 {
     [SerializeField]
     private Image panel;
+        [SerializeField]
+    private Image mark;
+    [SerializeField]
+    private Image magicColor;
+    [SerializeField]
+    private GameObject setttingPanel;
     [SerializeField]
     private GameObject magic;
     [SerializeField]
     private float magicSpeed;
-    [SerializeField]
-    private Image mark;
-    [SerializeField]
-    private Image magicColor;
     [SerializeField]
     private Sprite[] selectMark;
     [SerializeField]
@@ -37,6 +39,10 @@ public class UiManager : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Q)) {
             panel.gameObject.SetActive(false);
             GameManager.Instance.playerController._isSelectElement = false;
+        }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+
         }
         Rotate();
     }    
