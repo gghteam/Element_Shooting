@@ -102,7 +102,7 @@ public class Shield : MonoBehaviour
 
     public void Check()
 {
-    Debug.Log("È®ÀÎ");
+    Debug.Log("È®ï¿½ï¿½");
     count++;
     if (count >= 2)
     {

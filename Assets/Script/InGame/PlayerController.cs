@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
         OnGetHit?.Invoke();
         if(Health <= 0)
         {
+            playerMove.Death();
             OnDie?.Invoke();
             _isDead = true;
         }
@@ -75,6 +76,7 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
             if(_isElement) continue;
             if(_isSelectElement) continue;
             if(!Input.GetMouseButton(0)) {
+                playerMove.UnAttack();
                 continue;
             }
             playerMove.Attack();
