@@ -26,6 +26,8 @@ public class SpawnEnemy : MonoBehaviour
 
         while(temp > 0)
         {
+            yield return null;
+            if (GameManager.Instance.shield.isAni) continue;
             float x = Random.Range(-3, 3) + p.x;
             float y = Random.Range(-3, 3) + p.y;
             GameObject particle = PoolManager.Instance.GetPooledObject(6);

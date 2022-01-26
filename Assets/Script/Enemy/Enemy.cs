@@ -94,7 +94,8 @@ public class Enemy : PoolableMono,IAgent,IHittable
 
     public void PerformAttack()
     {
-        if(!_isDead)
+        if (GameManager.Instance.shield.isAni) return;
+        if (!_isDead)
         {
             OnAttackAnimation?.Invoke();
             enemyAttack.Attack(_enemyData.damage);

@@ -61,7 +61,12 @@ public class AgentMovement : MonoBehaviour
     }
     private void FixedUpdate() {
         OnVelocityChange?.Invoke(_currentVelocity);
-        
+
+        if (GameManager.Instance.shield.isAni)
+        {
+            rigid.velocity = new Vector2(0,0);
+        }
+        else
         rigid.velocity = _movementDiraction * _currentVelocity;    
     }
 }

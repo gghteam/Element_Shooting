@@ -67,6 +67,7 @@ public class CameraMove : MonoBehaviour
 
     public IEnumerator Shake(float _amount, float _duration)
     {
+        if (GameManager.Instance.shield.isAni) yield break;
         float timer = 0;
         while (timer <= _duration)
         {
@@ -81,6 +82,7 @@ public class CameraMove : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (GameManager.Instance.shield.isAni) return;
         if (GetCameraFollowPositionFunc == null) return;
         Vector3 cameraFollowPosition = GetCameraFollowPositionFunc();
         cameraFollowPosition.z = transform.position.z;

@@ -56,6 +56,7 @@ public class PlayerMove : MonoBehaviour
     }
     private void Move()
     {
+        if (GameManager.Instance.shield.isAni) return;
         velocityX = Input.GetAxisRaw("Horizontal");
         velocityY = Input.GetAxisRaw("Vertical");
         if(state.HasFlag(PlayerState.RUN))
