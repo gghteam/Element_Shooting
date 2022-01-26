@@ -19,6 +19,12 @@ public class EffectPlayer : MonoBehaviour
     public void Shield()
     {
         GameManager.Instance.shield.Check();
+        /*
+        if (transform.parent.name == "Water_Crital")
+            GameManager.Instance.shield.blue.SetActive(true);
+        else
+            GameManager.Instance.shield.red.SetActive(true);
+        */
     }
     private void FinishEffect()
     {
