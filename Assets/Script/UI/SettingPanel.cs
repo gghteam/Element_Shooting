@@ -23,6 +23,7 @@ public class SettingPanel : MonoBehaviour
     }
     public void OnContinueBtn()
     {
+        Time.timeScale = 1;
         StartCoroutine(OffBookAnimation());
     }
     public void OnRePlay()
@@ -82,6 +83,7 @@ public class SettingPanel : MonoBehaviour
         yield return new WaitForSeconds(1f);
         settingPanel.SetActive(false);
         _isOpen = false;
+        
     }
     private void SetSetting(bool _isSet,int index)
     {
