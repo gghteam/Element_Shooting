@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class SettingPanel : MonoBehaviour
@@ -14,6 +15,7 @@ public class SettingPanel : MonoBehaviour
     [SerializeField]
     private Animator animator;
     private bool _isOpen = false;
+    private bool _isDead = false;
     public void OnExitBtn()
     {
         Application.Quit();
@@ -21,16 +23,22 @@ public class SettingPanel : MonoBehaviour
     }
     public void OnContinueBtn()
     {
-        _isOpen = true;
-        Time.timeScale = 1;
         StartCoroutine(OffBookAnimation());
+    }
+    public void OnRePlay()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("InGame");
     }
     public void OnRePlayPanel()
     {
-        
+        _isDead = true;
+        StartCoroutine(OnRePlayPanelCorutine());
     }
+    
     private void Update() {
         if(_isOpen)return;
+        if(_isDead)return;
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(!settingPanel.activeSelf)
@@ -38,7 +46,7 @@ public class SettingPanel : MonoBehaviour
                 
                 _isOpen = true;
                 settingPanel.SetActive(true);
-                StartCoroutine(OpenBookAnimation());
+                StartCoroutine(OpenBookAnimation(0));
                 
             }else
             {
@@ -48,13 +56,20 @@ public class SettingPanel : MonoBehaviour
             }
         }
     }
-    private IEnumerator OpenBookAnimation()
+    private IEnumerator OnRePlayPanelCorutine()
+    {
+        yield return new WaitForSeconds(2f);
+        settingPanel.SetActive(true);
+        StartCoroutine(OpenBookAnimation(1));
+
+    }
+    private IEnumerator OpenBookAnimation(int index)
     {
         float upDownY = 1000;
         bookRectPosition.DOAnchorPosY(bookRectPosition.anchoredPosition.y+upDownY,1f);
         animator.Play("Open");
         yield return new WaitForSeconds(1.2f);
-        SetSetting(true,0);
+        SetSetting(true,index);
         _isOpen = false;
         Time.timeScale = 0;
     }

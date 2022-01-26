@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoSingleton<GameManager>
+public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     [SerializeField]
     private Character player;
     [SerializeField]
@@ -28,6 +29,11 @@ public class GameManager : MonoSingleton<GameManager>
     public Shield shield { get; private set; }
 
     private void Awake() {
+        if(Instance != null)
+        {
+            Debug.LogError("Multiple Gamemanager is running");
+        }
+        Instance = this;
         maxPosition = new Vector2(r,r);
         minPosition = new Vector2(-r,-r);
         dialogueManager = FindObjectOfType<DialogueManager>();

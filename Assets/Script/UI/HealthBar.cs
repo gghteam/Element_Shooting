@@ -7,7 +7,7 @@ public class HealthBar : StateBar
 {
     public override void AwakeChild()
     {
-        maxGaugeValue = GameManager.Instance.PlayerInfo.maxHp;
+        maxGaugeValue = 0;
         SetMaxBar();
     }
     public override void SetMaxBar()
@@ -18,6 +18,7 @@ public class HealthBar : StateBar
     }
     public override void SetBar(float gauge)
     {
+        maxGaugeValue = maxGaugeValue != 0 ? maxGaugeValue : GameManager.Instance.PlayerInfo.maxHp;
         gauge = gauge/maxGaugeValue;
         slider.value = gauge;
 
