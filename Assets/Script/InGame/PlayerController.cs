@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
                 playerMove.UnAttack();
                 continue;
             }
+            SoundManager.Instance.AttackSound();
             playerMove.Attack();
             Invoke("SpawnBullet", bulletDelay);
             yield return new WaitForSeconds(coefficient/(float)GameManager.Instance.PlayerInfo.rpm);

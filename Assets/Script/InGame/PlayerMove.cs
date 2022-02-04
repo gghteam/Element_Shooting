@@ -10,7 +10,8 @@ public class PlayerMove : MonoBehaviour
         NONE = 0,
         RUN = 1 << 0,
         DAMAGED = 2 << 1,
-        Attack = 3 << 2
+        Attack = 3 << 2,
+        Death = 4 << 3
 
     }
   
@@ -29,6 +30,8 @@ public class PlayerMove : MonoBehaviour
     private Rigidbody2D playerRigid = null;
     private Animator animator = null;
     private Camera Camera = null;
+
+    private bool _isDead = false;
     private void Start() {
         Camera = GameObject.Find("Camera").GetComponent<Camera>();
         col = GetComponent<Collider2D>();
@@ -44,6 +47,7 @@ public class PlayerMove : MonoBehaviour
     }
     public void Death()
     {
+        _isDead =true;
         animator.SetTrigger(_deathHashStr);
     }
     public void Damaged()
@@ -66,6 +70,7 @@ public class PlayerMove : MonoBehaviour
     }
     private void Move()
     {
+        if(_isDead)return;
         if (GameManager.Instance.shield.isAni) return;
         velocityX = Input.GetAxisRaw("Horizontal");
         velocityY = Input.GetAxisRaw("Vertical");

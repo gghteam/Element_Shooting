@@ -5,10 +5,27 @@ using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
+    public static SoundManager Instance;
     [SerializeField]
     private AudioSource bgAudio;
+    [SerializeField]
+    private AudioSource attckAudio;
+    [SerializeField]
+    private AudioClip attackclip;
     public AudioMixer mixer;
 
+    private void Awake() {
+        if(Instance != null)
+        {
+            Debug.LogError("Multiple SoundManager is running");
+        }
+        Instance = this;
+    }
+    public void AttackSound()
+    {
+        attckAudio.clip = attackclip;
+        attckAudio.Play();
+    }
     public void ChangeBg(AudioClip clip)
     {
         bgAudio.Stop();
