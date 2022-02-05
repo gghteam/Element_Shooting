@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 using static DefineCS;
-public class Enemy : PoolableMono,IAgent,IHittable
+public class Enemy : PoolableMono,IAgent,IHittable,IKnockBack,IStun
 {
     [SerializeField]
     private EnemyDataSO _enemyData;
@@ -90,6 +90,16 @@ public class Enemy : PoolableMono,IAgent,IHittable
     {
         yield return new WaitForSeconds(0.5f);
         PoolManager.Instance.Despawn(gameObject);
+    }
+
+    public void KnockBack(Vector2 dir,float power,float duration)
+    {
+        _agentMovement.KnockBack(dir,power,duration);
+    }
+
+    public void Stun(float duration)
+    {
+
     }
 
     public void PerformAttack()

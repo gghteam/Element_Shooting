@@ -9,7 +9,7 @@ public class Shield : MonoBehaviour
     [SerializeField]
     private BoxCollider2D box;
     [SerializeField]
-    private Camera camera;
+    private new Camera camera;
     public GameObject red;
     public GameObject blue;
 
@@ -100,19 +100,19 @@ public class Shield : MonoBehaviour
         }
     }
 
-    public void Check()
+public void Check()
 {
     Debug.Log("Ȯ��");
     count++;
     if (count >= 2)
     {
-            temp = camera.transform.position;
-            isend = true;
-            isAni = true;
-            isEnter = false;
-            isExit = false;
-            effect.color = new Color(effect.color.r, effect.color.g, effect.color.b, 1);
-        }
+        temp = camera.transform.position;
+        isend = true;
+        isAni = true;
+        isEnter = false;
+        isExit = false;
+        effect.color = new Color(effect.color.r, effect.color.g, effect.color.b, 1);
+    }
 }
 
     private IEnumerator LightEye()

@@ -8,7 +8,10 @@ public class WindElement : Element
     [field: SerializeField]
     private UnityEvent OnFire{get;set;}
     [field: SerializeField]
-    private UnityEvent OnWater{get;set;}    
+    private UnityEvent OnWater{get;set;}
+    [field:SerializeField]
+    private UnityEvent OnStone{get;set;}
+
     public override void BulletSkill(Conditions conditions,GameObject dealer)
     {
         switch(conditions)
@@ -23,6 +26,10 @@ public class WindElement : Element
                 break;
             case Conditions.Wind:
                 hittable?.GetHit(-GameManager.Instance.PlayerInfo.atk,dealer);
+                break;
+            case Conditions.Stone:
+                hittable?.GetHit(GameManager.Instance.PlayerInfo.atk,dealer);
+                OnStone?.Invoke();
                 break;
             default:
                 hittable?.GetHit(GameManager.Instance.PlayerInfo.atk,dealer);

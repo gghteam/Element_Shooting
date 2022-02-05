@@ -7,6 +7,8 @@ public class GrassElement : Element
 {
     [field: SerializeField]
     private UnityEvent OnFire{get;set;}
+    [field:SerializeField]
+    private UnityEvent OnStone{get;set;}
     public override void BulletSkill(Conditions conditions,GameObject dealer)
     {
         switch(conditions)
@@ -17,6 +19,10 @@ public class GrassElement : Element
                 break;
             case Conditions.Water:
                 hittable?.GetHit(-GameManager.Instance.PlayerInfo.atk,dealer);
+                break;
+            case Conditions.Stone:
+                hittable?.GetHit(GameManager.Instance.PlayerInfo.atk,dealer);
+                OnStone?.Invoke();
                 break;
             default:
                 hittable?.GetHit(GameManager.Instance.PlayerInfo.atk,dealer);

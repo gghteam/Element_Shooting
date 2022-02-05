@@ -10,10 +10,15 @@ public class AgentMovement : MonoBehaviour
     private MovementDataSO movementSO;
     [SerializeField]
     protected float _currentVelocity = 3;
+    private float movementSpeed;
+    private float previousSpeed;
     protected Vector2 _movementDiraction;
     public Action<float> OnVelocityChange;
-    private float previousSpeed;
+    protected Coroutine _KnockBackCoroution;
+    private bool _isKnockBack = false;
+
     private void Awake() {
+        movementSpeed = movementSO.maxSpeed;
         rigid = GetComponent<Rigidbody2D>();
         IAgentInput input = GetComponent<IAgentInput>();
         if(input != null)
@@ -33,20 +38,6 @@ public class AgentMovement : MonoBehaviour
         }
         _currentVelocity = CalculateSpeed(movementInput);
     }
-    public void ChagedMoveAgent(float speed)
-    {
-        previousSpeed = movementSO.maxSpeed;
-        if(speed == 0)
-        {
-            movementSO.maxSpeed = 0;
-            return;
-        }
-        movementSO.maxSpeed = movementSO.maxSpeed - speed > 0 ?  movementSO.maxSpeed - speed : 1; 
-    }
-    public void ReturnToPreviousMoveAgent()
-    {
-        movementSO.maxSpeed = previousSpeed;
-    }
     private float CalculateSpeed(Vector2 movementInput)
     {
         if(movementInput.sqrMagnitude > 0)
@@ -57,8 +48,23 @@ public class AgentMovement : MonoBehaviour
             _currentVelocity -= movementSO.deAceleration * Time.deltaTime;
         }
         
-        return Mathf.Clamp(_currentVelocity, 0, movementSO.maxSpeed);
+        return Mathf.Clamp(_currentVelocity, 0, movementSpeed);
     }
+    public void ChagedMoveAgent(float speed)
+    {
+        previousSpeed = movementSpeed;
+        if(speed == 0)
+        {
+            movementSpeed = 0;
+            return;
+        }
+        movementSpeed = movementSpeed - speed > 0 ?  movementSpeed - speed : 1; 
+    }
+    public void ReturnToPreviousMoveAgent()
+    {
+        movementSpeed = previousSpeed;
+    }
+
     private void FixedUpdate() {
         OnVelocityChange?.Invoke(_currentVelocity);
 
@@ -68,5 +74,34 @@ public class AgentMovement : MonoBehaviour
         }
         else
         rigid.velocity = _movementDiraction * _currentVelocity;    
+    }
+
+    public void KnockBack(Vector2 dir,float power,float duration)
+    {
+        if(!_isKnockBack)
+        {
+            _isKnockBack = true;
+            _KnockBackCoroution = StartCoroutine(KnockBackCoroution(dir,power,duration));
+        }
+    }
+    public void ResetKnockBack()
+    {
+        if(_KnockBackCoroution != null)
+        {
+            StopCoroutine(_KnockBackCoroution);
+        }
+        ResetKnockBackParam();
+    }
+    private IEnumerator KnockBackCoroution(Vector2 dir,float power,float duration)
+    {
+        rigid.AddForce(dir.normalized * power,ForceMode2D.Impulse);
+        yield return new WaitForSeconds(duration);
+        ResetKnockBackParam();
+    }
+    private void ResetKnockBackParam()
+    {
+        _currentVelocity = 0;
+        rigid.velocity = Vector2.zero;
+        _isKnockBack = false;
     }
 }

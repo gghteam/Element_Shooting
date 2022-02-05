@@ -1151,6 +1151,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <OnStone>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8792138435996128574}
+        m_TargetAssemblyTypeName: ElementDeBuff, Assembly-CSharp
+        m_MethodName: StoneDeBuff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8739238317606682784
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,7 +1298,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -849244789
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -624471107288967361, guid: 542eaf069ff83274cb8b78f49b7833a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

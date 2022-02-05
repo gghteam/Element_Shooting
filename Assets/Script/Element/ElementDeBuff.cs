@@ -76,6 +76,7 @@ public class ElementDeBuff : MonoBehaviour
     }
     private IEnumerator WindDeBuffCoroutine()
     {
+        
         yield return new WaitForSeconds(0f);
     }
     private IEnumerator StoneDeBuffCoroutine()

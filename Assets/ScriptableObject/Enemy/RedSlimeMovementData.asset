@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae88fa847fd75c146a5b6302312808f6, type: 3}
   m_Name: RedSlimeMovementData
   m_EditorClassIdentifier: 
-  maxSpeed: 1
+  maxSpeed: 3
   aceleration: 50
   deAceleration: 50

@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -849244789
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -2973451537762976303, guid: 0d3935bc32cd2304c9a887bcd92a280e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -922,8 +922,8 @@ GameObject:
   - component: {fileID: 3922966575639335500}
   - component: {fileID: 4784271326806639679}
   - component: {fileID: 4790941575671075239}
-  - component: {fileID: 4322732914740628307}
   - component: {fileID: 1921151249023392324}
+  - component: {fileID: 4322732914740628307}
   m_Layer: 7
   m_Name: GreenSlime
   m_TagString: Untagged
@@ -1092,6 +1092,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1921151249023392324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7266360689857745350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c840b77a31b585b43a4988d47a137e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireParme:
+    Maxduration: 3
+    duration: 1
+    damage: 1
+  waterParme:
+    duration: 5
+    decrease: 2
+  windParme:
+    thrust: 5
+    KnockTime: 0.3
+  stoneParme:
+    duration: 5
 --- !u!114 &4322732914740628307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1120,30 +1144,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1921151249023392324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7266360689857745350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c840b77a31b585b43a4988d47a137e05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireParme:
-    Maxduration: 3
-    duration: 1
-    damage: 1
-  waterParme:
-    duration: 5
-    decrease: 2
-  windParme:
-    thrust: 5
-    KnockTime: 0.3
-  stoneParme:
-    duration: 5
+  <OnStone>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1921151249023392324}
+        m_TargetAssemblyTypeName: ElementDeBuff, Assembly-CSharp
+        m_MethodName: StoneDeBuff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8246695580598490125
 GameObject:
   m_ObjectHideFlags: 0
