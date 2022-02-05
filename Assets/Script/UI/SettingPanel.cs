@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 
@@ -10,6 +11,8 @@ public class SettingPanel : MonoBehaviour
     private GameObject settingPanel;
     [SerializeField]
     private GameObject book;
+    [SerializeField]
+    private Toggle checkCamera;
     [SerializeField]
     private RectTransform bookRectPosition;
     [SerializeField]
@@ -55,6 +58,10 @@ public class SettingPanel : MonoBehaviour
                 Time.timeScale = 1;
                 StartCoroutine(OffBookAnimation());
             }
+        }
+        if(checkCamera.isOn != GameManager.Instance.camera.cameraPositionWithMouse) 
+        {
+            GameManager.Instance.camera.ChangeMouse(checkCamera.isOn);
         }
     }
     private IEnumerator OnRePlayPanelCorutine()

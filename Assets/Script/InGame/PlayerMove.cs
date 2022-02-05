@@ -40,7 +40,10 @@ public class PlayerMove : MonoBehaviour
     }
     private void Update() {
         SetCharacterDirection();
-        if (GameManager.Instance.shield.isAni) return;
+        if (GameManager.Instance.shield.isAni)
+        {
+            playerRigid.velocity = Vector2.zero;
+        }
         else Move();
         Dash();
         

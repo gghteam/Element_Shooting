@@ -6,7 +6,8 @@ using System;
 public class CameraMove : MonoBehaviour
 {
     [SerializeField] private Transform followTransform;
-    [SerializeField] private bool cameraPositionWithMouse;
+    [field: SerializeField]
+    public bool cameraPositionWithMouse { get; set; } = true;
     [SerializeField] private float cameraMoveSpeed = 6f;
     Vector3 originPos;
     private Camera myCamera;
@@ -45,6 +46,11 @@ public class CameraMove : MonoBehaviour
     }
     private void FixedUpdate() {
         HandleMovement();
+    }
+
+    public void ChangeMouse(bool isChange)
+    {
+        cameraPositionWithMouse = isChange;
     }
 
     public void Setup(Func<Vector3> GetCameraFollowPositionFunc, Func<float> GetCameraZoomFunc, bool teleportToFollowPosition, bool instantZoom)
