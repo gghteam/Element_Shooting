@@ -47,6 +47,12 @@ public class BulletMove : PoolableMono
         {
             Element element = other.GetComponent<Element>();
             element?.BulletSkill(GameManager.Instance.playerController.GetCondition,gameObject);
+            if(GameManager.Instance.playerController.GetCondition == Conditions.Wind)
+            {
+                Debug.Log("wind");
+                IKnockBack knockBack = other.GetComponent<IKnockBack>();
+                knockBack?.KnockBack(transform.right,10,0.1f);
+            }
         }
         if(other.gameObject.layer == _wallLayer)
         {

@@ -72,7 +72,7 @@ public class AgentMovement : MonoBehaviour
         {
             rigid.velocity = new Vector2(0,0);
         }
-        else
+        else if(!_isKnockBack)
         rigid.velocity = _movementDiraction * _currentVelocity;    
     }
 

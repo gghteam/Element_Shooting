@@ -28,6 +28,7 @@ public class Enemy : PoolableMono,IAgent,IHittable,IKnockBack,IStun
     }
     public bool _isDead = false;
     public bool isElement = false;
+    private bool _isStun = false;
     private AgentMovement _agentMovement;
 
 
@@ -99,12 +100,19 @@ public class Enemy : PoolableMono,IAgent,IHittable,IKnockBack,IStun
 
     public void Stun(float duration)
     {
-
+        StartCoroutine(StunCoroution(duration));
+    }
+    public IEnumerator StunCoroution(float duration)
+    {
+        _isStun = true;
+        yield return new WaitForSeconds(duration);
+        _isStun = false;
     }
 
     public void PerformAttack()
     {
         if (GameManager.Instance.shield.isAni) return;
+        if(_isStun)return;
         if (!_isDead)
         {
             OnAttackAnimation?.Invoke();

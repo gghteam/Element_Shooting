@@ -18,8 +18,6 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
     private Camera Camera = null;
     private Vector2 mousePosition = Vector2.zero;
     private SpriteRenderer spriteRenderer = null;
-    [SerializeField]
-    private StateBar healthBar;
     private const float coefficient = 1;
     [SerializeField]
     private float projectileSpread;
@@ -50,7 +48,7 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
         StartCoroutine(GameManager.Instance.camera.Shake(0.2f, 0.3f));
         GameManager.Instance.ChangeHealthValue(-damage);
         Health -= damage;
-        healthBar.SetBar(Health);
+        EventManager.TriggerEvent(EventManager.EventName.PLAYER_DAMAGED);
         Debug.Log(GameManager.Instance.PlayerInfo.hp);
         OnGetHit?.Invoke();
         if(Health <= 0)
