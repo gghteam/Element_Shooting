@@ -5969,7 +5969,6 @@ GameObject:
   - component: {fileID: 616471794}
   - component: {fileID: 616471796}
   - component: {fileID: 616471795}
-  - component: {fileID: 616471797}
   m_Layer: 0
   m_Name: KeyRange (1)
   m_TagString: ' zeolite'
@@ -6004,7 +6003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d490dc24f6310744ab1be9c0615d5206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storySentences: {fileID: 616471797}
+  myKey: 2000
 --- !u!61 &616471796
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6031,28 +6030,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0324407, y: 1}
   m_EdgeRadius: 0
---- !u!114 &616471797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 616471793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa6170c9084a68e4b9166526c4e121a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sentences:
-  - "\uCC9C\uC0AC\uC758 \uCC28\uAC00\uC6B4\uC2EC\uC7A5\uC744 \uBD80\uC11C\uB77C"
-  - "\uCC28\uAC00\uC6B4 \uC2EC\uC7A5\uC774\uB77C..."
-  - "\uBAA8\uB974\uACA0\uB124"
-  - "\uC8FC\uC704\uB97C \uC0B4\uD3B4\uBCF4\uC790!"
-  naming:
-  - "\uBE44\uC11D"
-  - "\uB098"
-  - "\uB098"
-  - "\uB098"
 --- !u!1 &632697619
 GameObject:
   m_ObjectHideFlags: 0
@@ -39681,6 +39658,7 @@ GameObject:
   - component: {fileID: 1563568952}
   - component: {fileID: 1563568953}
   - component: {fileID: 1563568955}
+  - component: {fileID: 1563568954}
   m_Layer: 0
   m_Name: OtherManager
   m_TagString: Untagged
@@ -39896,6 +39874,18 @@ MonoBehaviour:
   nextText: {fileID: 225858026}
   <dialogueGroup>k__BackingField: {fileID: 797231816}
   typingSpeed: 0.1
+--- !u!114 &1563568954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563568949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa6170c9084a68e4b9166526c4e121a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1563568955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45050,7 +45040,6 @@ GameObject:
   - component: {fileID: 1714976111}
   - component: {fileID: 1714976113}
   - component: {fileID: 1714976112}
-  - component: {fileID: 1714976114}
   m_Layer: 0
   m_Name: KeyRange (3)
   m_TagString: ' zeolite'
@@ -45085,7 +45074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d490dc24f6310744ab1be9c0615d5206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storySentences: {fileID: 1714976114}
+  myKey: 4000
 --- !u!61 &1714976113
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45112,30 +45101,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4415426, y: 1.5684018}
   m_EdgeRadius: 0
---- !u!114 &1714976114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1714976110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa6170c9084a68e4b9166526c4e121a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sentences:
-  - "\uCC28\uAC00\uC6B4 \uC2EC\uC7A5\uC740 \uC624\uC9C1 \uBD88\uB85C\uB9CC \uB179\uC77C
-    \uC218 \uC788\uB2E4"
-  - "\uBD88\uC774\uB77C.."
-  - "\uC6D0\uC18C\uB97C \uC0AC\uC6A9\uD558\uBA74 \uB420\uAC83 \uAC19\uC740\uB370?"
-  - "(Q\uB97C \uC0AC\uC6A9 \uD558\uC5EC \uC6D0\uC18C\uB97C \uBCC0\uACBD \uD560 \uC218
-    \uC788\uC2B5\uB2C8\uB2E4)"
-  naming:
-  - "\uBE44\uC11D"
-  - "\uB098"
-  - "\uB098"
-  - "\uB098"
 --- !u!1 &1739270581
 GameObject:
   m_ObjectHideFlags: 0
@@ -45147,7 +45112,6 @@ GameObject:
   - component: {fileID: 1739270582}
   - component: {fileID: 1739270584}
   - component: {fileID: 1739270583}
-  - component: {fileID: 1739270585}
   m_Layer: 0
   m_Name: KeyRange (2)
   m_TagString: ' zeolite'
@@ -45182,7 +45146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d490dc24f6310744ab1be9c0615d5206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storySentences: {fileID: 1739270585}
+  myKey: 3000
 --- !u!61 &1739270584
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45209,30 +45173,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5380282, y: 1.5747232}
   m_EdgeRadius: 0
---- !u!114 &1739270585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739270581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa6170c9084a68e4b9166526c4e121a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sentences:
-  - "\uBD88\uD0C0\uC624\uB974\uB294 \uC2EC\uC7A5\uC740\uC624\uB974\uC9C0 \uBB3C\uB85C\uB9CC
-    \uC2DD\uD790 \uC218 \uC788\uB2E4"
-  - "\uBB3C\uC774\uB77C.."
-  - "\uC6D0\uC18C\uB97C \uC0AC\uC6A9\uD558\uBA74 \uB420\uAC83 \uAC19\uC5B4!"
-  - "(Q\uB97C \uC0AC\uC6A9 \uD558\uC5EC \uC6D0\uC18C\uB97C \uBCC0\uACBD \uD560 \uC218
-    \uC788\uC2B5\uB2C8\uB2E4)"
-  naming:
-  - "\uBE44\uC11D"
-  - "\uB098"
-  - "\uB098"
-  - "\uB098"
 --- !u!1 &1746381183
 GameObject:
   m_ObjectHideFlags: 0
@@ -55103,7 +55043,6 @@ GameObject:
   - component: {fileID: 1943845073}
   - component: {fileID: 1943845075}
   - component: {fileID: 1943845074}
-  - component: {fileID: 1943845076}
   m_Layer: 0
   m_Name: KeyRange
   m_TagString: ' zeolite'
@@ -55138,7 +55077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d490dc24f6310744ab1be9c0615d5206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storySentences: {fileID: 1943845076}
+  myKey: 1000
 --- !u!61 &1943845075
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55165,28 +55104,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1095824, y: 1.2767376}
   m_EdgeRadius: 0
---- !u!114 &1943845076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943845072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa6170c9084a68e4b9166526c4e121a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sentences:
-  - "\uCC9C\uC0AC\uC758 \uBD88\uD0C0\uC624\uB974\uB294 \uC2EC\uC7A5\uC744 \uBD80\uC11C\uB77C"
-  - "\uBD88\uD0C0\uC624\uB974\uB294 \uC2EC\uC7A5?"
-  - "\uC774\uAC8C \uBB34\uC2A8 \uB9D0\uC774\uC9C0?"
-  - "\uC77C\uB2E8 \uC8FC\uC704\uB97C \uB354 \uC0B4\uD3B4\uBCF4\uC790!"
-  naming:
-  - "\uBE44\uC11D"
-  - "\uB098"
-  - "\uB098"
-  - "\uB098"
 --- !u!1 &1976996266
 GameObject:
   m_ObjectHideFlags: 0
@@ -56177,7 +56094,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2067941005}
   - component: {fileID: 2067941004}
-  - component: {fileID: 2067941003}
   - component: {fileID: 2067941006}
   m_Layer: 12
   m_Name: EndingSentance
@@ -56186,26 +56102,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2067941003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2067941002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa6170c9084a68e4b9166526c4e121a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sentences:
-  - "\uC5EC\uAE30\uAE4C\uC9C0\uAC00 \uB05D\uC785\uB2C8\uB2E4!"
-  - "\uD50C\uB808\uC774\uD574\uC8FC\uC154\uC11C \uAC10\uC0AC\uD569\uB2C8\uB2E4!"
-  - "\uC640\uC544\uC544\uC544\uC544 \uD074\uB9AC\uC5B4!!"
-  naming:
-  - NUll
-  - NUll
-  - NUll
 --- !u!61 &2067941004
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -56258,7 +56154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6749c0d6b6a69c4a88ac9abf6debe72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storySentences: {fileID: 2067941003}
+  myKey: 5000
 --- !u!1 &2069241970
 GameObject:
   m_ObjectHideFlags: 0

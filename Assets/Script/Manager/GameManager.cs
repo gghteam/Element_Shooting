@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     public Shield shield { get; private set; }
 
+    public StoryData storyData { get; private set; }
+
     private void Awake() {
         if(Instance != null)
         {
@@ -38,6 +40,7 @@ public class GameManager : MonoBehaviour
         maxPosition = new Vector2(r,r);
         minPosition = new Vector2(-r,-r);
         dialogueManager = FindObjectOfType<DialogueManager>();
+        storyData = FindObjectOfType<StoryData>();
     }
 
     private void Start()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class KeyHit : MonoBehaviour
 {
     [SerializeField]
-    private StorySentences storySentences = null;
+    private int myKey;
 
     private bool isStay = false;
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,7 +21,7 @@ public class KeyHit : MonoBehaviour
     {        
         if(Input.GetKeyDown(KeyCode.E) && isStay)
         {
-            storySentences.Read();
+            GameManager.Instance.storyData.Read(myKey);
         }
     }
 

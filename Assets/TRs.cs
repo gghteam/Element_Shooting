@@ -5,12 +5,12 @@ using UnityEngine;
 public class TRs : MonoBehaviour
 {
     [SerializeField]
-    private StorySentences storySentences;
+    private int myKey;
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player"))
         {
             Debug.Log("asd");
-            storySentences.Read();
+            GameManager.Instance.storyData.Read(myKey);
         }
     }
 }
