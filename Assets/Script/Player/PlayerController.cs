@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
         while(true)
         {
             yield return null;
-            if (GameManager.Instance.shield.isAni) continue;
+            if (GameManager.Instance.shield.isAni || GameManager.Instance.dialogueManager.IsDialogue) continue;
             if(_isElement) continue;
             if(_isSelectElement) continue;
             if(!Input.GetMouseButton(0)) {

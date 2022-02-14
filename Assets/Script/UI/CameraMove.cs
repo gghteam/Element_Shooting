@@ -88,7 +88,7 @@ public class CameraMove : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (GameManager.Instance.shield.isAni) return;
+        if (GameManager.Instance.shield.isAni || GameManager.Instance.dialogueManager.IsDialogue) return;
         if (GetCameraFollowPositionFunc == null) return;
         Vector3 cameraFollowPosition = GetCameraFollowPositionFunc();
         cameraFollowPosition.z = transform.position.z;

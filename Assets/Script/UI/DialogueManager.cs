@@ -23,6 +23,8 @@ public class DialogueManager : MonoBehaviour
 
     private bool isTyping = false;
 
+    public bool IsDialogue { get; private set; } = false;
+
     [SerializeField]
     private float typingSpeed = 0.1f;
 
@@ -36,6 +38,7 @@ public class DialogueManager : MonoBehaviour
     public void Ondialogue(string[] lines, string[] names)
     {
         sentences.Clear();
+        IsDialogue = true;
         foreach (string line in lines)
         {
             sentences.Enqueue(line);
@@ -66,6 +69,7 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueGroup.alpha = 0;
             dialogueGroup.blocksRaycasts = false;
+            IsDialogue = false;
         }
     }
 
