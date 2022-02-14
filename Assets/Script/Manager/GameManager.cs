@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     public StoryData storyData { get; private set; }
 
+    public BloodParticleSystemHandler BloodParticleSystemHandler { get; private set; }
     private void Awake() {
         if(Instance != null)
         {
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
         rebound = FindObjectOfType<Rebound>();
         damagePopup = FindObjectOfType<DamagePopup>();
         shield = FindObjectOfType<Shield>();
+        BloodParticleSystemHandler = FindObjectOfType<BloodParticleSystemHandler>();
     }
     public Character PlayerInfo{
         get{ return player;}
