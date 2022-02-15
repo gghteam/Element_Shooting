@@ -17,9 +17,13 @@ public class PlayerMove : MonoBehaviour
   
     private PlayerState state = PlayerState.NONE;
 
-    private float moveSpeed = 0;
-    private float velocityX = 0;
-    private float velocityY = 0;
+    [SerializeField]
+    private float decreaseSpeed = 2f;
+    private float _stamina = 0f;
+    private float _maxStamina = 0f;
+    private float moveSpeed = 0f;
+    private float velocityX = 0f;
+    private float velocityY = 0f;
 
     private readonly int _walkHashStr = Animator.StringToHash("Walk");
     private readonly int _deathHashStr = Animator.StringToHash("Death");
@@ -32,11 +36,14 @@ public class PlayerMove : MonoBehaviour
     private Camera Camera = null;
 
     private bool _isDead = false;
+    private bool _isRun = false;
     private void Start() {
         Camera = GameObject.Find("Camera").GetComponent<Camera>();
         col = GetComponent<Collider2D>();
         playerRigid = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        _stamina = GameManager.Instance.PlayerInfo.maxStamina;
+        _maxStamina = GameManager.Instance.PlayerInfo.maxStamina;
     }
     private void Update() {
         SetCharacterDirection();
@@ -46,7 +53,12 @@ public class PlayerMove : MonoBehaviour
         }
         else Move();
         Dash();
-        
+        Run();
+        StaminaRecovery();
+    }
+    public void SetStamina(float value)
+    {
+        _maxStamina = value;
     }
     public void Death()
     {
@@ -69,6 +81,8 @@ public class PlayerMove : MonoBehaviour
     }
     private void Idle()
     {
+        _isRun = false;
+        animator.SetBool(_walkHashStr,false);
         state = PlayerState.NONE;
     }
     private void Move()
@@ -89,16 +103,39 @@ public class PlayerMove : MonoBehaviour
     }
     private void Dash()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if(_stamina>0)
         {
-            animator.SetBool(_walkHashStr,true);
-            state = PlayerState.RUN;
+            if(Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                _isRun = true;
+                animator.SetBool(_walkHashStr,true);
+                state = PlayerState.RUN;
+            }
         }
+        else
+            Idle();
         if(Input.GetKeyUp(KeyCode.LeftShift))
         {
-            animator.SetBool(_walkHashStr,false);
             Idle();
         }
+    }
+    private void Run(){
+        if(!_isRun)return;
+        _stamina -= Time.deltaTime *  decreaseSpeed;
+        if(_stamina<0)
+        {
+            _stamina = 0;
+        }
+        GameManager.Instance.ChangeStaminaValue(_stamina);
+        EventManager.TriggerEvent(EventManager.EventName.PLAYER_RUN);
+    }
+    private void StaminaRecovery()
+    {
+        if(_isRun)return;
+        if(_stamina>_maxStamina)return;
+        _stamina += Time.deltaTime *  decreaseSpeed * 1.5f;
+        GameManager.Instance.ChangeStaminaValue(_stamina);
+        EventManager.TriggerEvent(EventManager.EventName.PLAYER_RUN);
     }
     private void DamagedAnimation()
     {

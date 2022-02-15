@@ -172,7 +172,6 @@ MonoBehaviour:
   <OnDie>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
-  healthBar: {fileID: 0}
   projectileSpread: 0
   condition: 1
   bulletDelay: 0
@@ -449,7 +448,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8779181482343512012}
-  - component: {fileID: 5458727537783437668}
+  - component: {fileID: 8422101484594561194}
   m_Layer: 10
   m_Name: Movement
   m_TagString: Untagged
@@ -471,8 +470,8 @@ Transform:
   m_Father: {fileID: 5574230531486282359}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &5458727537783437668
-CircleCollider2D:
+--- !u!70 &8422101484594561194
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -484,9 +483,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.1276043}
-  serializedVersion: 2
-  m_Radius: 0.3146627
+  m_Offset: {x: 0.038924158, y: 0}
+  m_Size: {x: 0.74031436, y: 1}
+  m_Direction: 0
 --- !u!1 &8593165282631833802
 GameObject:
   m_ObjectHideFlags: 0

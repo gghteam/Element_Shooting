@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletMove : PoolableMono
+public class BulletMove : Bullet
 {
     [SerializeField]
     private float bulletSpeed = 0.5f;
@@ -19,7 +19,6 @@ public class BulletMove : PoolableMono
         _wallLayer = LayerMask.NameToLayer("Wall");
     }
     private void Update() {
-        CheckLimit();
         Move();
         AddScale();
     }
@@ -29,17 +28,6 @@ public class BulletMove : PoolableMono
     private void Move()
     {
         transform.position = transform.position + (targetPostion.normalized * bulletSpeed * Time.deltaTime); 
-    }
-    private void CheckLimit()
-    {
-        if(transform.position.x > GameManager.Instance.maxPosition.x||transform.position.x < GameManager.Instance.minPosition.x)
-        {
-            Despaw();
-        }
-        if(transform.position.y > GameManager.Instance.maxPosition.y||transform.position.y < GameManager.Instance.minPosition.y)
-        {
-            Despaw();
-        }
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(_isDead)return;
@@ -62,11 +50,6 @@ public class BulletMove : PoolableMono
         Spark();
         Despaw();
     }
-    private void Despaw()
-    {
-        PoolManager.Instance.Despawn(gameObject);
-    }
-
     private void Spark()
     {
         GameObject spark = PoolManager.Instance.GetPooledObject(2);

@@ -14,17 +14,11 @@ public class GameManager : MonoBehaviour
     public Vector2 minPosition {get;private set;}
 
     public PlayerController playerController { get; private set; }
-
     public ElementManager elementManager { get; private set; }
-
     public UiManager uiManager { get; private set; }
-
     public new CameraMove camera { get; private set; }
-
     public DialogueManager dialogueManager { get; private set; }
-
     public Rebound rebound { get; private set; }
-
     public DamagePopup damagePopup { get; private set; }
 
     public Shield shield { get; private set; }
@@ -57,12 +51,19 @@ public class GameManager : MonoBehaviour
     {
         player.hp += atk;
     }
+    public void ChangeStaminaValue(float stamina)
+    {
+        player.stamina = stamina;
+    }
     public void ChangeExpValue(float exp)
     {
         player.exp += exp;
     }
     public float GetHpBar(){
         return (float)player.hp / player.maxHp;
+    }
+    public float GetStaminaBar(){
+        return player.stamina / player.maxStamina;
     }
     public float GetExpValue(){
         return player.exp;

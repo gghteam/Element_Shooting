@@ -9,6 +9,7 @@ public class EventManager : MonoBehaviour
     {
         PLAYER_DAMAGED = 0,
         PLAYER_DEAD = 1,
+        PLAYER_RUN = 2,
         //0~10 Player Event
         PANEL_SHOW = 100,
         PANEL_HIDE = 101,
