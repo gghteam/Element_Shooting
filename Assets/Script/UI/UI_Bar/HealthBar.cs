@@ -6,7 +6,6 @@ public class HealthBar : StateBar
     public override void AwakeChild()
     {
         maxGaugeValue = 0;
-
     }
     private void Start() {
         SetMaxBar();
@@ -28,9 +27,4 @@ public class HealthBar : StateBar
         slider.value = GameManager.Instance.GetHpBar();
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
-    private void OnDestroy()
-    {
-
-    }
-
 }

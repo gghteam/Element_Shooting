@@ -395,7 +395,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &4624207731449698021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,7 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c1757856bf646244b72beff6f42cf30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 2728824835116459168}
+  canvasGroup: {fileID: 0}
   fill: {fileID: 843619131201245459}
   mark: {fileID: 2694402056000497958}
   gradient:
