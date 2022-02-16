@@ -65,9 +65,6 @@ public class Enemy : PoolableMono,IAgent,IHittable,IKnockBack,IStun
     {
         if (_isDead) return;
 
-        Vector3 bloodDir = (GameManager.Instance.playerController.transform.position -transform.position).normalized;
-        Debug.Log(transform.position);
-        GameManager.Instance.BloodParticleSystemHandler.SpawnBlood(new Vector3(transform.position.x * 3,transform.position.y,transform.position.z), -bloodDir);
 
         _stateBar.SetBar(damage);
 

@@ -31,7 +31,12 @@ public class BulletMove : Bullet
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(_isDead)return;
-        if(other.gameObject.layer == _enemyLayer)
+
+        if(GameManager.Instance.playerController.GetCondition == Conditions.Fire)
+        {
+            GameManager.Instance.BloodParticleSystemHandler.SpawnBlood(transform.position, new Vector2(1,1));
+        }
+        if (other.gameObject.layer == _enemyLayer)
         {
             Element element = other.GetComponent<Element>();
             element?.BulletSkill(GameManager.Instance.playerController.GetCondition,gameObject);
