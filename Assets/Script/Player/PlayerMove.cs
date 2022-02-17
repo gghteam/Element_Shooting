@@ -47,7 +47,7 @@ public class PlayerMove : MonoBehaviour
     }
     private void Update() {
         SetCharacterDirection();
-        if (GameManager.Instance.shield.isAni)
+        if (GameManager.Instance.shield.isAni || GameManager.Instance.dialogueManager.IsDialogue)
         {
             playerRigid.velocity = Vector2.zero;
         }
