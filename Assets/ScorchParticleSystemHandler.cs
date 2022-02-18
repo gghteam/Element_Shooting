@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BloodParticleSystemHandler : MonoBehaviour
+public class ScorchParticleSystemHandler : MonoBehaviour
 {
     private MeshParticleSystem meshParticleSystem;
     private List<Single> singleList;
