@@ -34,6 +34,7 @@ public class LoadManager : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        Debug.Log("¤»¤»¤»");
+        FindObjectOfType<LoadingSceneController>().LoadScene("InGame");
     }
 }

@@ -26,6 +26,23 @@ public class GameManager : MonoBehaviour
     public StoryData storyData { get; private set; }
 
     public ScorchParticleSystemHandler BloodParticleSystemHandler { get; private set; }
+
+    public LoadingSceneController loadingController { get; private set; }
+
+    private Vector2 setPos = Vector2.zero;
+
+    public Vector2 SetPos
+    {
+        get
+        {
+            return setPos;
+        }
+        set
+        {
+            if(setPos == Vector2.zero)
+                setPos = value;
+        }
+    }
     private void Awake() {
         if(Instance != null)
         {
@@ -48,6 +65,7 @@ public class GameManager : MonoBehaviour
         damagePopup = FindObjectOfType<DamagePopup>();
         shield = FindObjectOfType<Shield>();
         BloodParticleSystemHandler = FindObjectOfType<ScorchParticleSystemHandler>();
+        loadingController = FindObjectOfType<LoadingSceneController>();
     }
     public Character PlayerInfo{
         get{ return player;}

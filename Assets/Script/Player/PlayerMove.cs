@@ -44,6 +44,9 @@ public class PlayerMove : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         _stamina = GameManager.Instance.PlayerInfo.maxStamina;
         _maxStamina = GameManager.Instance.PlayerInfo.maxStamina;
+
+        Debug.Log(GameManager.Instance.SetPos);
+        transform.position = GameManager.Instance.SetPos;
     }
     private void Update() {
         SetCharacterDirection();

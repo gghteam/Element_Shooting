@@ -10,7 +10,9 @@ public class TRs : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             Debug.Log("asd");
-            GameManager.Instance.storyData.Read(myKey);
+            GameManager.Instance.loadingController.LoadScene("InGame");
+            PlayerPrefs.SetInt("TURORIAL", 0);
+            //GameManager.Instance.storyData.Read(myKey);
         }
     }
 }

@@ -4729,6 +4729,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialMap: {fileID: 1659357473562909041, guid: badfadef860ac32458c207e888fa370d, type: 3}
+  startingPos: {fileID: 1928287905}
+  start: {fileID: 3087547092484415320, guid: abe87e16358a97e44bcf39ab44be6148, type: 3}
+  end: {fileID: 3943392334115054064, guid: 54fa18c7bafacee48a46d82c7fbd690f, type: 3}
+  rooms:
+  - {fileID: 4192563759833199294, guid: d554f035e75a53548bfc22d4c4c9d2ff, type: 3}
+  - {fileID: 6120694789365741293, guid: a9050baed2227cf458f298989c0144c0, type: 3}
+  - {fileID: 8188579619215166128, guid: 678d0180cdd502a4fafb56df62205aef, type: 3}
+  - {fileID: 1097032798331145053, guid: 3fd82b3bb47018445a6679467624a96c, type: 3}
+  necessaryCount: 7
+  monsterCount: 7
+  trapCount: 7
+  etcCount: 0
+  width: 5
+  height: 5
+  moveAmount: 10
+  startTimetrwRoom: 0
+  stopGeneration: 1
 --- !u!4 &937703349
 Transform:
   m_ObjectHideFlags: 0
@@ -8689,6 +8706,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905000599}
   m_CullTransparentMesh: 1
+--- !u!1 &1928287904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1928287905}
+  m_Layer: 0
+  m_Name: Pose
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1928287905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928287904}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15, y: 15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1943845072
 GameObject:
   m_ObjectHideFlags: 0
