@@ -96,7 +96,11 @@ public class Enemy : PoolableMono,IAgent,IHittable,IKnockBack,IStun
 
     public void KnockBack(Vector2 dir,float power,float duration)
     {
-        _agentMovement.KnockBack(dir,power,duration);
+        if(_enemyData.isKnockBack)
+        {
+            _agentMovement.KnockBack(dir,power,duration);
+        }
+        
     }
 
     public void Stun(float duration)

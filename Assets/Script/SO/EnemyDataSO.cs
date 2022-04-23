@@ -12,4 +12,5 @@ public class EnemyDataSO : ScriptableObject
     public int maxHealth { get; set; } = 3;
     [field: SerializeField]
     public int damage { get; set; } = 1;
+    public bool isKnockBack = false;
 }
