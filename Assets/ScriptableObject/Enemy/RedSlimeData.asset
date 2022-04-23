@@ -17,3 +17,4 @@ MonoBehaviour:
   poolPrefab: {fileID: 8285167171361986767, guid: e54d5e9ede3a8d84a9674e7c6687d2db, type: 3}
   <maxHealth>k__BackingField: 5
   <damage>k__BackingField: 1
+  isKnockBack: 1

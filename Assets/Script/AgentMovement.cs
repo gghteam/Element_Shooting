@@ -78,6 +78,7 @@ public class AgentMovement : MonoBehaviour
 
     public void KnockBack(Vector2 dir,float power,float duration)
     {
+        
         if(!_isKnockBack)
         {
             _isKnockBack = true;
