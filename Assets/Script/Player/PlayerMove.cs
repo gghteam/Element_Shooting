@@ -50,11 +50,17 @@ public class PlayerMove : MonoBehaviour
     }
     private void Update() {
         SetCharacterDirection();
-        if (GameManager.Instance.shield.isAni || GameManager.Instance.dialogueManager.IsDialogue)
+        if (PlayerPrefs.GetInt("TURORIAL", 1) == 1)
         {
-            playerRigid.velocity = Vector2.zero;
+            if (GameManager.Instance.shield.isAni || GameManager.Instance.dialogueManager.IsDialogue)
+            {
+                playerRigid.velocity = Vector2.zero;
+            }
+            else Move();
         }
-        else Move();
+        else {
+            Move();
+                }
         Dash();
         Run();
         StaminaRecovery();
@@ -91,7 +97,10 @@ public class PlayerMove : MonoBehaviour
     private void Move()
     {
         if(_isDead)return;
-        if (GameManager.Instance.shield.isAni) return;
+        if (PlayerPrefs.GetInt("TURORIAL", 1) == 1)
+        {
+            if (GameManager.Instance.shield.isAni) return;
+        }
         velocityX = Input.GetAxisRaw("Horizontal");
         velocityY = Input.GetAxisRaw("Vertical");
         if(state.HasFlag(PlayerState.RUN))

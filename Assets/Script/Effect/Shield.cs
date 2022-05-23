@@ -40,6 +40,10 @@ public class Shield : MonoBehaviour
         box.enabled = false;
     }
 
+    private void Awake()
+    {
+        camera = Camera.main;
+    }
     private void Update()
     {
         if(isEnter)

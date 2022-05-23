@@ -72,6 +72,7 @@ public class LoadingSceneController : MonoBehaviour
     private IEnumerator Fade(bool isFadeIn)
     {
         float timer = 0f;
+        gameObject.SetActive(true);
         while (timer <= 1f)
         {
             yield return null;

@@ -6,7 +6,6 @@ public class AgentAudioPlayer : AudioPlayer
 {
     [SerializeField]
     private AudioClip _hitClip=null, _deathClip=null, _voiceLineclip=null;
-    // �ǰ�, ����, �߽߰��� ����
 
     public void PlayHitSound()
     {

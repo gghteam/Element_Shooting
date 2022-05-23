@@ -66,6 +66,10 @@ public class GameManager : MonoBehaviour
         shield = FindObjectOfType<Shield>();
         BloodParticleSystemHandler = FindObjectOfType<ScorchParticleSystemHandler>();
         loadingController = FindObjectOfType<LoadingSceneController>();
+        if(loadingController == null)
+        {
+           loadingController = Instantiate(Resources.Load<LoadingSceneController>("LoadingUI")); 
+        }
     }
     public Character PlayerInfo{
         get{ return player;}
