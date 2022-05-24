@@ -9,18 +9,18 @@ public class MapController : MonoBehaviour
 
     [Header("Random Map")]
     [SerializeField]
-    public Transform startingPos; //»ý¼ºµÉ À§Ä¡
+    public Transform startingPos; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
 
-    // »ý¼ºÇÒ ¿ÀºêÁ§Æ®
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     [SerializeField]
     private GameObject start;
     [SerializeField]
     private GameObject end;
     [SerializeField]
-    private GameObject[] rooms; // 0 ÇÊ¼öÁöÇü 1 ¸ó½ºÅÍÁöÇü 2 ÇÔÁ¤Áö¿ª 3 ±âÅ¸ÁöÇü
+    private GameObject[] rooms; // 0 ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ 1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3 ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½
 
 
-    //»ý¼ºÇÒ °³¼ö
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     [SerializeField]
     private int necessaryCount;
     [SerializeField]
@@ -28,23 +28,23 @@ public class MapController : MonoBehaviour
     [SerializeField]
     private int trapCount;
     [SerializeField]
-    private int etcCount; // (¸ðµç ÁöÇü - »ç¿ëÇÒ ÁöÇü)
+    private int etcCount; // (ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 
-    //¸Ê Å©±â
+    //ï¿½ï¿½ Å©ï¿½ï¿½
     [SerializeField]
     private int width = 5;
     [SerializeField]
     private int height = 5;
 
-    //ÀÌµ¿ÇÒ ¾ç
+    //ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½
     [SerializeField]
     private float moveAmount;
 
-    //»ý¼º ½Ã°£(Test¿ë)
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½(Testï¿½ï¿½)
     public float startTimetrwRoom;
     private float timeBtwRoom;
 
-    //ÀÌµ¿ÇÑ À§Ä¡ 
+    //ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ 
     private int dx = 0;
     private int dy = 0;
 
@@ -70,6 +70,7 @@ public class MapController : MonoBehaviour
 
     private void Awake()
     {
+       PlayerPrefs.SetInt("TURORIAL",1);
        if(PlayerPrefs.GetInt("TURORIAL",1) == 1)
         {
             GameObject map = Instantiate(tutorialMap, new Vector3(0, 0, 0), Quaternion.identity);
@@ -87,10 +88,10 @@ public class MapController : MonoBehaviour
 
     private void Update()
     {
-        //½Ã°£ÀÌ ³¡³ª¸é
+        //ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if(timeBtwRoom <= 0 && !stopGeneration)
         {
-            //¹æÇâ´ë·Î »ý¼º
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             Move();
             timeBtwRoom = startTimetrwRoom;
         }
@@ -102,7 +103,7 @@ public class MapController : MonoBehaviour
 
     private void SpawnStart()
     {
-        //¿ÀºêÁ§Æ® À§Ä¡¸¦ »ý¼ºÇÒ À§Ä¡·Î º¯°æ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         transform.position = startingPos.position;
 
         int random = Random.Range(0, 4);
@@ -136,7 +137,7 @@ public class MapController : MonoBehaviour
 
         Instantiate(start, newStartPos, Quaternion.identity);
         Instantiate(end, newEndPos, Quaternion.identity);
-        // Start,End´Â ÇÊ¼öÄ«¿îÆ®¿¡ Æ÷ÇÔ
+        // Start,Endï¿½ï¿½ ï¿½Ê¼ï¿½Ä«ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         GameManager.Instance.SetPos = newStartPos;
         necessaryCount -= 2;
         stopGeneration = false;
@@ -164,7 +165,7 @@ public class MapController : MonoBehaviour
             dy++;
         }
 
-        //¸Ê »ý¼º ³¡
+        //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         if (dy >= height) stopGeneration = true;
     }
 

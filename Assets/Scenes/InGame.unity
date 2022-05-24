@@ -5117,6 +5117,26 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8422101484594561194, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5568284
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422101484594561194, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
+      propertyPath: m_Size.y
+      value: 0.65823185
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422101484594561194, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.032357793
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422101484594561194, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.32495725
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422101484594561194, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
+      propertyPath: m_Direction
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
 --- !u!1 &1518490296

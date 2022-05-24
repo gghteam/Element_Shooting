@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
-public class PlayerController : MonoBehaviour,IHittable,IAgent         
+public class PlayerController : MonoBehaviour, IHittable, IAgent         
 {
     [SerializeField]
     private Transform playerPosition = null;
@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour,IHittable,IAgent
     }
 
     private void SpawnBullet() {
+        
         Vector2 v2 = Camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float angle = Mathf.Atan2(v2.y, v2.x) * Mathf.Rad2Deg;
         float startRotation = angle + projectileSpread / 2f;
