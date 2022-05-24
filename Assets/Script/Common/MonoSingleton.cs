@@ -2,56 +2,66 @@ using UnityEngine;
 
 public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
 {
-    private static bool shuttingDown = false;
-    protected static T instance = null;
-    private static object locker = new object();
-    public static T Instance{
-        get{
-            if (shuttingDown)
+    private static T _instance = null;
+
+    public static bool IsInstantiated
+    {
+        get
+        {
+            return _instance != null;
+        }
+    }
+    public static T Instance
+    {
+        get
+        {
+            if (_instance == null)
             {
-                Debug.LogWarning("[Singleton] Instance " + typeof(T) + " already CHOIed. Returning null.");
-                return null;
-            }
-            lock (locker)
-            {
+                T instance = GameObject.FindObjectOfType<T>() as T;
                 if (instance == null)
                 {
-                    instance = FindObjectOfType(typeof(T)) as T;
-                    if (instance == null)
-                    {
-                        instance = new GameObject(typeof(T).ToString(), typeof(T)).GetComponent<T>();
-                    }
-
-                    DontDestroyOnLoad(instance);
+                    instance = new GameObject(typeof(T).ToString(), typeof(T)).GetComponent<T>();
                 }
+                else
+                {
+                    create_instance(instance);
+                }
+
+                Debug.Assert(_instance != null, "failed create instnace of " + typeof(T).ToString());
             }
-            
-            return instance;
+            return _instance;
         }
     }
 
-    public static bool IsNull()
+
+
+    private static void create_instance(Object instance)
     {
-        return instance == null;
+        _instance = instance as T;
+        _instance.Init();
     }
 
-    private void Awake(){
-        if(instance == null){
-            instance = this as T;
-        }
-        else if(instance != this){
-            Debug.LogError("Another instance of " + GetType() + "is already exist. Destroying duplicated one.");
-            DestroyImmediate(this);
-            return;
-        }        
+    void Awake()
+    {
+        create_instance(this);
     }
 
-    private void OnDestroy()
+    protected virtual void Init()
     {
-        shuttingDown = true;
+        DontDestroyOnLoad(_instance);
     }
+
+
+
+    protected virtual void OnDestroy()
+    {
+        _instance = null;
+    }
+
+
+
     private void OnApplicationQuit()
     {
-        shuttingDown = true;
+        _instance = null;
     }
 }

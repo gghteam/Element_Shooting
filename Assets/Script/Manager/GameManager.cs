@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoSingleton<GameManager>
 {
-    public static GameManager Instance;
+    //public static GameManager Instance;
     [SerializeField]
     private Character player;
     [SerializeField]
@@ -43,12 +43,21 @@ public class GameManager : MonoBehaviour
                 setPos = value;
         }
     }
+
+    protected override void Init()
+    {
+        //NOT DONDESTORY
+    }
+
     private void Awake() {
+
+        /*
         if(Instance != null)
         {
             Debug.LogError("Multiple Gamemanager is running");
         }
         Instance = this;
+        */
         maxPosition = new Vector2(r,r);
         minPosition = new Vector2(-r,-r);
         dialogueManager = FindObjectOfType<DialogueManager>();

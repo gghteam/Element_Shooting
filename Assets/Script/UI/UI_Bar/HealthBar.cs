@@ -27,4 +27,14 @@ public class HealthBar : StateBar
         slider.value = GameManager.Instance.GetHpBar();
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
+
+    private void OnDestroy()
+    {
+        EventManager.StopListening(EventManager.EventName.PLAYER_DAMAGED, UpdateValue);
+    }
+
+    private void OnApplicationQuit()
+    {
+        EventManager.StopListening(EventManager.EventName.PLAYER_DAMAGED, UpdateValue);
+    }
 }
