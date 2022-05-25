@@ -18,6 +18,8 @@ public class MapController : MonoBehaviour
     private GameObject end;
     [SerializeField]
     private GameObject[] rooms; // 0 �ʼ����� 1 �������� 2 �������� 3 ��Ÿ����
+    [SerializeField]
+    private GameObject empty;
 
 
     //������ ����
@@ -28,7 +30,7 @@ public class MapController : MonoBehaviour
     [SerializeField]
     private int trapCount;
     [SerializeField]
-    private int etcCount; // (��� ���� - ����� ����)
+    private int etcCount; // (���?���� - �����?����)
 
     //�� ũ��
     [SerializeField]
@@ -50,6 +52,8 @@ public class MapController : MonoBehaviour
 
     private Vector2 startPos = Vector2.zero, endPos = Vector2.zero;
 
+    private Vector2 bounderyPos;
+
     private int mapCount;
     public bool stopGeneration = true;
     enum ERoom
@@ -70,17 +74,19 @@ public class MapController : MonoBehaviour
 
     private void Awake()
     {
-      // PlayerPrefs.SetInt("TURORIAL",1);
-       if(PlayerPrefs.GetInt("TURORIAL",1) == 1)
+        // PlayerPrefs.SetInt("TURORIAL",1);
+        if (PlayerPrefs.GetInt("TURORIAL", 1) == 1)
         {
             GameObject map = Instantiate(tutorialMap, new Vector3(0, 0, 0), Quaternion.identity);
             map.transform.parent = gameObject.transform;
         }
-       else
+        else
         {
             //Etc_Map Setting
             mapCount = width * height;
             etcCount = mapCount - (necessaryCount + monsterCount + trapCount);
+
+            SpawnBoundary();
 
             SpawnStart();
         }
@@ -89,7 +95,7 @@ public class MapController : MonoBehaviour
     private void Update()
     {
         //�ð��� ������
-        if(timeBtwRoom <= 0 && !stopGeneration)
+        if (timeBtwRoom <= 0 && !stopGeneration)
         {
             //������ ����
             Move();
@@ -101,6 +107,30 @@ public class MapController : MonoBehaviour
         }
     }
 
+    private void SpawnBoundary()
+    {
+        bounderyPos = startingPos.position;
+
+        // HEIGHT
+        for (int i = 0; i < height; i++)
+        {
+            Vector2 newPos = new Vector2(bounderyPos.x - moveAmount, bounderyPos.y - (moveAmount * i));
+            Vector2 newSPos = new Vector2(bounderyPos.x + moveAmount * width, bounderyPos.y - (moveAmount * i));
+            Instantiate(empty, newPos, Quaternion.identity);
+            Instantiate(empty, newSPos, Quaternion.identity);
+        }
+
+        //WIDTH
+        for (int i = 0; i < width; i++)
+        {
+            Vector2 newPos = new Vector2(bounderyPos.x + moveAmount * i, bounderyPos.y + moveAmount);
+            Vector2 newSPos = new Vector2(bounderyPos.x + moveAmount * i, bounderyPos.y - moveAmount * height);
+
+            Instantiate(empty, newPos, Quaternion.identity);
+            Instantiate(empty, newSPos, Quaternion.identity);
+        }
+    }
+
     private void SpawnStart()
     {
         //������Ʈ ��ġ�� ������ ��ġ�� ����
@@ -108,7 +138,7 @@ public class MapController : MonoBehaviour
 
         int random = Random.Range(0, 4);
         int pos;
-        switch(random)
+        switch (random)
         {
             case (int)ChangePos.StartX:
                 pos = Random.Range(0, width);
@@ -151,7 +181,7 @@ public class MapController : MonoBehaviour
 
         if ((dx != startPos.x || dy != startPos.y) && (dx != endPos.x || dy != endPos.y))
         {
-            while(!isComplete)
+            while (!isComplete)
             {
                 rand = Random.Range(0, rooms.Length);
                 isComplete = Check(rand);
@@ -159,7 +189,7 @@ public class MapController : MonoBehaviour
             Instantiate(rooms[rand], newPos, Quaternion.identity);
         }
 
-        if(++dx >= width)
+        if (++dx >= width)
         {
             dx = 0;
             dy++;
@@ -171,7 +201,7 @@ public class MapController : MonoBehaviour
 
     private bool Check(int index)
     {
-        switch(index)
+        switch (index)
         {
             case (int)ERoom.Neccssary:
                 if (necessaryCount <= 0) return false;

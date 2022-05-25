@@ -14,7 +14,7 @@ public class CameraMove : MonoBehaviour
     private Func<Vector3> GetCameraFollowPositionFunc;
     private Func<float> GetCameraZoomFunc;
 
-    [SerializeField]
+    //[SerializeField]
     Vector2 center;
     [SerializeField]
     Vector2 size;
@@ -28,6 +28,8 @@ public class CameraMove : MonoBehaviour
 
     void Start()
     {
+        Transform playerPos = GameManager.Instance.playerController.transform;
+        center = new Vector2(playerPos.position.x, playerPos.position.y);
         originPos = transform.localPosition;
         Setup(GetCameraPosition, () => 5f, true, true);
         height = Camera.main.orthographicSize;
