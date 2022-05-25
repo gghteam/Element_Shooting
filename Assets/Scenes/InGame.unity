@@ -4417,16 +4417,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToPool:
   - objectToPool: {fileID: 8251586952555038644, guid: e1ac303d5f978714eb80b2d652bf2146, type: 3}
-    amountToPool: 200
+    amountToPool: 20
     shouldExpand: 0
   - objectToPool: {fileID: 7266360689857745350, guid: 7f1738f3bc2ca45469d93673e1c9bd1f, type: 3}
-    amountToPool: 60
+    amountToPool: 10
     shouldExpand: 0
   - objectToPool: {fileID: 1213710058851854885, guid: f7627986435d5a14d924e6f451f915c1, type: 3}
-    amountToPool: 100
+    amountToPool: 20
     shouldExpand: 0
   - objectToPool: {fileID: 6860964798194136663, guid: 193eb2986a58b3949a46d2971ccd360d, type: 3}
-    amountToPool: 100
+    amountToPool: 20
     shouldExpand: 0
   - objectToPool: {fileID: 8334144702343241978, guid: 38c3b541b30a04341a8345a914c21325, type: 3}
     amountToPool: 20
