@@ -70,7 +70,7 @@ public class MapController : MonoBehaviour
 
     private void Awake()
     {
-       PlayerPrefs.SetInt("TURORIAL",1);
+      // PlayerPrefs.SetInt("TURORIAL",1);
        if(PlayerPrefs.GetInt("TURORIAL",1) == 1)
         {
             GameObject map = Instantiate(tutorialMap, new Vector3(0, 0, 0), Quaternion.identity);

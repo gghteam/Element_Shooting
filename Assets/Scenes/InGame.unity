@@ -3828,14 +3828,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialMap: {fileID: 5860786465067782326, guid: abf5ae7d7996c4f47a4332a3bd974a3d, type: 3}
   startingPos: {fileID: 1928287905}
-  start: {fileID: 3087547092484415320, guid: abe87e16358a97e44bcf39ab44be6148, type: 3}
-  end: {fileID: 3943392334115054064, guid: 54fa18c7bafacee48a46d82c7fbd690f, type: 3}
+  start: {fileID: 3316262224952190108, guid: 5b86bb586e81dcb449a202b0b220384b, type: 3}
+  end: {fileID: 1568057769541202674, guid: 96a3adef759dd7d4aa50e25fd077e370, type: 3}
   rooms:
-  - {fileID: 4192563759833199294, guid: d554f035e75a53548bfc22d4c4c9d2ff, type: 3}
-  - {fileID: 6120694789365741293, guid: a9050baed2227cf458f298989c0144c0, type: 3}
-  - {fileID: 8188579619215166128, guid: 678d0180cdd502a4fafb56df62205aef, type: 3}
-  - {fileID: 1097032798331145053, guid: 3fd82b3bb47018445a6679467624a96c, type: 3}
-  necessaryCount: 7
+  - {fileID: 8598148319746494169, guid: 5ed00f13eb7790b4e999d53750585c2e, type: 3}
+  - {fileID: 8842465285548865884, guid: 983eedbe83a085c499c90a2fddb95d96, type: 3}
+  - {fileID: 8013930748618827153, guid: 3473b30cb23485d4281a923a646e98fb, type: 3}
+  - {fileID: 873407413804742437, guid: a1641f491f1ab144ebaab540dd26575c, type: 3}
+  necessaryCount: 1
   monsterCount: 7
   trapCount: 7
   etcCount: 0
