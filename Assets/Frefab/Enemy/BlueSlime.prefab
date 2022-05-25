@@ -474,7 +474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c1757856bf646244b72beff6f42cf30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 7388478937432648180}
   canvasGroup: {fileID: 7543253893210064568}
   fill: {fileID: 6672962794543460471}
   mark: {fileID: 810382609667813681}
@@ -715,8 +714,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6056465371211091596}
-  - component: {fileID: 5706316918860984892}
   - component: {fileID: 3432894334056707555}
+  - component: {fileID: 5706316918860984892}
   m_Layer: 7
   m_Name: EffectDeath
   m_TagString: Untagged
@@ -738,6 +737,20 @@ Transform:
   m_Father: {fileID: 571959837095004780}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3432894334056707555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6847340835910902776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95271763c919a9544a26ee0475e15b57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _EffectToPlay:
+  - {fileID: 5706316918860984892}
 --- !u!114 &5706316918860984892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,20 +778,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3432894334056707555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6847340835910902776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95271763c919a9544a26ee0475e15b57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _EffectToPlay:
-  - {fileID: 5706316918860984892}
 --- !u!1 &7070846102297390220
 GameObject:
   m_ObjectHideFlags: 0

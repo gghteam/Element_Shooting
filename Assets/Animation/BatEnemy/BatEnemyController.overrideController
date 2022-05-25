@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BatEnemyController
+  m_Controller: {fileID: 9100000, guid: cc27948fe2e217a49b03e6964303c65d, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: bd9b60203c2f61642b98b030c0fd9db5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a02ee17f598f7494fb0157b4098e9240, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f33ebeeead754bd4fa66830c8bba6bc2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c6de6fcec3bf59b4483bf9d1da22e199, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1097b7c5304ee8740a5c9692a817cd38, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2e1ee29501870df4d8fae83f0c5dfb47, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5720663dcc3dc2f489584046dc98371a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 60fa05dd7475a48488fb7045db28d9e8, type: 2}
