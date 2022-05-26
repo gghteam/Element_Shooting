@@ -33,7 +33,7 @@ public class EnemyAiBrain : MonoBehaviour, IAgentInput
     }
     public void Move(Vector2 movementDiraction,Vector2 targetPosition)
     {
-        if (GameManager.Instance.shield.isAni) return;
+        if (GameManager.Instance.IsStopEvent) return;
         OnMovementKeyPressd?.Invoke(movementDiraction);
         OnPointerPositionChanged?.Invoke(targetPosition);
     }

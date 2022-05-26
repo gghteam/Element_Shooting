@@ -77,7 +77,7 @@ public class CameraMove : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("TURORIAL", 1) == 1)
         {
-            if (GameManager.Instance.shield.isAni) yield break;
+            if (GameManager.Instance.IsStopEvent) yield break;
         }
         float timer = 0;
         while (timer <= _duration)
@@ -94,7 +94,7 @@ public class CameraMove : MonoBehaviour
     private void HandleMovement()
     {
         if(PlayerPrefs.GetInt("TURORIAL", 1) == 1)
-            if (GameManager.Instance.shield.isAni || GameManager.Instance.dialogueManager.IsDialogue) return;
+            if (GameManager.Instance.IsStopEvent || GameManager.Instance.dialogueManager.IsDialogue) return;
         if (GetCameraFollowPositionFunc == null) return;
         Vector3 cameraFollowPosition = GetCameraFollowPositionFunc();
         cameraFollowPosition.z = transform.position.z;

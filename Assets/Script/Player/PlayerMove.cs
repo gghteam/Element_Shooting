@@ -52,7 +52,7 @@ public class PlayerMove : MonoBehaviour
         SetCharacterDirection();
         if (PlayerPrefs.GetInt("TURORIAL", 1) == 1)
         {
-            if (GameManager.Instance.shield.isAni || GameManager.Instance.dialogueManager.IsDialogue)
+            if (GameManager.Instance.IsStopEvent || GameManager.Instance.dialogueManager.IsDialogue)
             {
                 playerRigid.velocity = Vector2.zero;
             }
@@ -99,7 +99,7 @@ public class PlayerMove : MonoBehaviour
         if(_isDead)return;
         if (PlayerPrefs.GetInt("TURORIAL", 1) == 1)
         {
-            if (GameManager.Instance.shield.isAni) return;
+            if (GameManager.Instance.IsStopEvent) return;
         }
         velocityX = Input.GetAxisRaw("Horizontal");
         velocityY = Input.GetAxisRaw("Vertical");

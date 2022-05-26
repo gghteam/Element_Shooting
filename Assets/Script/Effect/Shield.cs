@@ -20,7 +20,16 @@ public class Shield : MonoBehaviour
     private bool isS = false;
     private bool isQ = false;
     private Vector3 temp;
-    public bool isAni { get; set; } = false;
+    private bool _isAni = false;
+    public bool IsAni
+    {
+        get => _isAni;
+        set
+        {
+            GameManager.Instance.IsStopEvent = value;
+            _isAni = value;
+        }
+    }
 
     private int count = 0;
     private int check = 0;
@@ -74,7 +83,7 @@ public class Shield : MonoBehaviour
             }
             else isS = false;
         }
-        if(isAni && !isEye)
+        if(IsAni && !isEye)
         {
             camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(0, 10.75f, -10f), 0.05f);
         }
@@ -94,9 +103,9 @@ public class Shield : MonoBehaviour
         }
         if(camera.transform.position == temp)
         {
-            if(isAni && isEye && isQ)
+            if(IsAni && isEye && isQ)
             {
-                isAni = false;
+                IsAni = false;
                 isEye = false;
                 isQ = false;
 
@@ -106,13 +115,13 @@ public class Shield : MonoBehaviour
 
 public void Check()
 {
-    Debug.Log("Ȯ��");
+    Debug.Log("111");
     count++;
     if (count >= 2)
     {
         temp = camera.transform.position;
         isend = true;
-        isAni = true;
+        IsAni = true;
         isEnter = false;
         isExit = false;
         effect.color = new Color(effect.color.r, effect.color.g, effect.color.b, 1);

@@ -21,7 +21,7 @@ public class GameManager : MonoSingleton<GameManager>
     public Rebound rebound { get; private set; }
     public DamagePopup damagePopup { get; private set; }
 
-    public Shield shield { get; private set; }
+
 
     public StoryData storyData { get; private set; }
 
@@ -30,6 +30,16 @@ public class GameManager : MonoSingleton<GameManager>
     public LoadingSceneController loadingController { get; private set; }
 
     private Vector2 setPos = Vector2.zero;
+
+    private bool _isStopEvent = false; //EventStop Bool (Enemy & Player)
+    public bool IsStopEvent
+    {
+        get => _isStopEvent;
+        set
+        {
+            _isStopEvent = value;
+        }
+    }
 
     public Vector2 SetPos
     {
@@ -72,7 +82,6 @@ public class GameManager : MonoSingleton<GameManager>
         uiManager = FindObjectOfType<UiManager>();
         rebound = FindObjectOfType<Rebound>();
         damagePopup = FindObjectOfType<DamagePopup>();
-        shield = FindObjectOfType<Shield>();
         BloodParticleSystemHandler = FindObjectOfType<ScorchParticleSystemHandler>();
         loadingController = FindObjectOfType<LoadingSceneController>();
         if(loadingController == null)
