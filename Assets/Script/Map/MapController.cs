@@ -24,6 +24,8 @@ public class MapController : MonoBehaviour
     private List<GameObject> trapMap = new List<GameObject>();
     [SerializeField]
     private List<GameObject> etcMap = new List<GameObject>();
+    [SerializeField]
+    private List<GameObject> boundaryMap = new List<GameObject>();
     //[SerializeField]
     //private GameObject[] rooms; // 0 �ʼ����� 1 �������� 2 �������� 3 ��Ÿ����
     [SerializeField]
@@ -118,26 +120,45 @@ public class MapController : MonoBehaviour
 
     private void SpawnBoundary()
     {
-        bounderyPos = startingPos.position;
+        bounderyPos = new Vector2(startingPos.position.x, startingPos.position.y + moveAmount);
 
         // HEIGHT
-        for (int i = 0; i < height; i++)
+        for (int i = 0; i <= height + 1; i++)
         {
             Vector2 newPos = new Vector2(bounderyPos.x - moveAmount, bounderyPos.y - (moveAmount * i));
             Vector2 newSPos = new Vector2(bounderyPos.x + moveAmount * width, bounderyPos.y - (moveAmount * i));
-            Instantiate(empty, newPos, Quaternion.identity);
-            Instantiate(empty, newSPos, Quaternion.identity);
+            GameObject fObj = null, sObj = null;
+            if(i == 0)
+            {
+                fObj = boundaryMap[0];
+                sObj = boundaryMap[2];
+            }
+            else if(i == height + 1)
+            {
+                fObj = boundaryMap[5];
+                sObj = boundaryMap[7];
+            }
+            else
+            {
+                fObj = boundaryMap[3];
+                sObj = boundaryMap[4];
+            }
+            Instantiate(fObj, newPos, Quaternion.identity);
+            Instantiate(sObj, newSPos, Quaternion.identity);
         }
 
+        
         //WIDTH
         for (int i = 0; i < width; i++)
         {
-            Vector2 newPos = new Vector2(bounderyPos.x + moveAmount * i, bounderyPos.y + moveAmount);
-            Vector2 newSPos = new Vector2(bounderyPos.x + moveAmount * i, bounderyPos.y - moveAmount * height);
+            Vector2 newPos = new Vector2(bounderyPos.x + moveAmount * i, bounderyPos.y);
+            Vector2 newSPos = new Vector2(bounderyPos.x + moveAmount * i, bounderyPos.y - moveAmount * (height + 1));
 
-            Instantiate(empty, newPos, Quaternion.identity);
-            Instantiate(empty, newSPos, Quaternion.identity);
+
+            Instantiate(boundaryMap[1], newPos, Quaternion.identity);
+            Instantiate(boundaryMap[6], newSPos, Quaternion.identity);
         }
+        
     }
 
     private void SpawnStart()
