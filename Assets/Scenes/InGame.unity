@@ -3829,13 +3829,18 @@ MonoBehaviour:
   startingPos: {fileID: 1928287905}
   start: {fileID: 3316262224952190108, guid: 5b86bb586e81dcb449a202b0b220384b, type: 3}
   end: {fileID: 1568057769541202674, guid: 96a3adef759dd7d4aa50e25fd077e370, type: 3}
-  rooms:
-  - {fileID: 5008256611134709114, guid: 68dd824ee4fcd8c49aaef5762f287e82, type: 3}
+  itemMap:
+  - {fileID: 8598148319746494169, guid: 5ed00f13eb7790b4e999d53750585c2e, type: 3}
+  monsterMap:
   - {fileID: 8842465285548865884, guid: 983eedbe83a085c499c90a2fddb95d96, type: 3}
+  trapMap:
+  - {fileID: 3316262224952190108, guid: 5b86bb586e81dcb449a202b0b220384b, type: 3}
+  etcMap:
   - {fileID: 873407413804742437, guid: a1641f491f1ab144ebaab540dd26575c, type: 3}
   - {fileID: 2407919899052155540, guid: ae20711a45f9b4c44a31b3239f5dda43, type: 3}
+  - {fileID: 8013930748618827153, guid: 3473b30cb23485d4281a923a646e98fb, type: 3}
   empty: {fileID: 3091264683239222296, guid: 3bd6760afb1972944b9b950371a81bcc, type: 3}
-  necessaryCount: 0
+  itemCount: 0
   monsterCount: 7
   trapCount: 7
   etcCount: 0

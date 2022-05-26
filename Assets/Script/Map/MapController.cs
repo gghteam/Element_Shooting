@@ -17,14 +17,22 @@ public class MapController : MonoBehaviour
     [SerializeField]
     private GameObject end;
     [SerializeField]
-    private GameObject[] rooms; // 0 �ʼ����� 1 �������� 2 �������� 3 ��Ÿ����
+    private List<GameObject> itemMap = new List<GameObject>();
+    [SerializeField]
+    private List<GameObject> monsterMap = new List<GameObject>();
+    [SerializeField]
+    private List<GameObject> trapMap = new List<GameObject>();
+    [SerializeField]
+    private List<GameObject> etcMap = new List<GameObject>();
+    //[SerializeField]
+    //private GameObject[] rooms; // 0 �ʼ����� 1 �������� 2 �������� 3 ��Ÿ����
     [SerializeField]
     private GameObject empty;
 
 
     //������ ����
     [SerializeField]
-    private int necessaryCount;
+    private int itemCount;
     [SerializeField]
     private int monsterCount;
     [SerializeField]
@@ -58,10 +66,11 @@ public class MapController : MonoBehaviour
     public bool stopGeneration = true;
     enum ERoom
     {
-        Neccssary,
+        Item,
         Monster,
         Trap,
-        Etc
+        Etc,
+        Count
     }
 
     enum ChangePos
@@ -84,7 +93,7 @@ public class MapController : MonoBehaviour
         {
             //Etc_Map Setting
             mapCount = width * height;
-            etcCount = mapCount - (necessaryCount + monsterCount + trapCount);
+            etcCount = mapCount - (itemCount + monsterCount + trapCount);
 
             SpawnBoundary();
 
@@ -169,7 +178,7 @@ public class MapController : MonoBehaviour
         Instantiate(end, newEndPos, Quaternion.identity);
         // Start,End�� �ʼ�ī��Ʈ�� ����
         GameManager.Instance.SetPos = newStartPos;
-        necessaryCount -= 2;
+        itemCount -= 2;
         stopGeneration = false;
     }
     private void Move()
@@ -183,10 +192,15 @@ public class MapController : MonoBehaviour
         {
             while (!isComplete)
             {
-                rand = Random.Range(0, rooms.Length);
+                rand = Random.Range(0, (int)ERoom.Count);
                 isComplete = Check(rand);
             }
-            Instantiate(rooms[rand], newPos, Quaternion.identity);
+
+            List<GameObject> useList = ProvideList(rand);
+
+            rand = Random.Range(0, useList.Count);
+
+            Instantiate(useList[rand], newPos, Quaternion.identity);
         }
 
         if (++dx >= width)
@@ -203,9 +217,9 @@ public class MapController : MonoBehaviour
     {
         switch (index)
         {
-            case (int)ERoom.Neccssary:
-                if (necessaryCount <= 0) return false;
-                else necessaryCount--;
+            case (int)ERoom.Item:
+                if (itemCount <= 0) return false;
+                else itemCount--;
                 break;
             case (int)ERoom.Monster:
                 if (monsterCount <= 0) return false;
@@ -221,5 +235,21 @@ public class MapController : MonoBehaviour
                 break;
         }
         return true;
+    }
+
+    private List<GameObject> ProvideList(int index)
+    {
+        switch (index)
+        {
+            case (int)ERoom.Item:
+                return itemMap;
+            case (int)ERoom.Monster:
+                return monsterMap;
+            case (int)ERoom.Trap:
+                return trapMap;
+            case (int)ERoom.Etc:
+                return etcMap;
+        }
+        return new List<GameObject>();
     }
 }
