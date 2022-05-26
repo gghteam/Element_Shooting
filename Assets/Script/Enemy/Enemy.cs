@@ -116,7 +116,7 @@ public class Enemy : PoolableMono,IAgent,IHittable,IKnockBack,IStun
 
     public void PerformAttack()
     {
-        if (GameManager.Instance.shield.isAni) return;
+        if (GameManager.Instance.IsStopEvent) return;
         if(_isStun)return;
         if (!_isDead)
         {

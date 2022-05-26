@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
             yield return null;
             if (PlayerPrefs.GetInt("TURORIAL", 1) == 1)
             {
-                if (GameManager.Instance.shield.isAni || GameManager.Instance.dialogueManager.IsDialogue) continue;
+                if (GameManager.Instance.IsStopEvent || GameManager.Instance.dialogueManager.IsDialogue) continue;
             }
             if(_isElement) continue;
             if(_isSelectElement) continue;
