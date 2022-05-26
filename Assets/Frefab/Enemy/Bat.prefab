@@ -237,8 +237,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608639479325700735}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4827615, y: -1.1888367, z: -1.326642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5667128474033773547}
@@ -311,7 +311,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085486279295901473}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.705, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8791512948204705835}
@@ -731,10 +731,11 @@ GameObject:
   - component: {fileID: 9204618812971610681}
   - component: {fileID: 6531193579213874344}
   - component: {fileID: 2116700863910458103}
-  - component: {fileID: 4142049777357215248}
   - component: {fileID: 4752235399069760201}
   - component: {fileID: 5636776605329782676}
+  - component: {fileID: 4142049777357215248}
   - component: {fileID: 3699247980688557241}
+  - component: {fileID: 5987030728237687543}
   m_Layer: 7
   m_Name: Bat
   m_TagString: Untagged
@@ -750,7 +751,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4250687008302772605}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.41, y: 0.12, z: -14.613106}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5115321821511416850}
@@ -801,7 +802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5498f44f89b88584591b7a47e4747736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyData: {fileID: 11400000, guid: 4d969a05c42cf3b4c8e7f7749fe46209, type: 2}
+  _enemyData: {fileID: 11400000, guid: d0be6b1b9260ccb468b842f609a922bf, type: 2}
   <Health>k__BackingField: 0
   <enemyAttack>k__BackingField: {fileID: 0}
   _stateBar: {fileID: 326988811816438050}
@@ -853,19 +854,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &4142049777357215248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4250687008302772605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da971b3206ac7e49b9830900e6ebaf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <attackDelay>k__BackingField: 1
 --- !u!58 &4752235399069760201
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -903,6 +891,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4142049777357215248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4250687008302772605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da971b3206ac7e49b9830900e6ebaf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <attackDelay>k__BackingField: 1
 --- !u!114 &3699247980688557241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -927,6 +928,49 @@ MonoBehaviour:
     KnockTime: 0.3
   stoneParme:
     duration: 5
+--- !u!114 &5987030728237687543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4250687008302772605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5245ef129ee3f40448a9fe45bd766268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Condition>k__BackingField: 0
+  OnWind:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3699247980688557241}
+        m_TargetAssemblyTypeName: ElementDeBuff, Assembly-CSharp
+        m_MethodName: WindDeBuff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnStone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3699247980688557241}
+        m_TargetAssemblyTypeName: ElementDeBuff, Assembly-CSharp
+        m_MethodName: StoneDeBuff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5183143993417751526
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,9 +1015,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.056396693, y: 0.079836726}
+  m_Offset: {x: 0.056396693, y: 0.09651792}
   serializedVersion: 2
-  m_Radius: 0.34596148
+  m_Radius: 0.26255548
 --- !u!1 &7093280938851203365
 GameObject:
   m_ObjectHideFlags: 0
