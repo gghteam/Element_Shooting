@@ -3839,6 +3839,15 @@ MonoBehaviour:
   - {fileID: 873407413804742437, guid: a1641f491f1ab144ebaab540dd26575c, type: 3}
   - {fileID: 2407919899052155540, guid: ae20711a45f9b4c44a31b3239f5dda43, type: 3}
   - {fileID: 8013930748618827153, guid: 3473b30cb23485d4281a923a646e98fb, type: 3}
+  boundaryMap:
+  - {fileID: 6011767159029376394, guid: 9a9a590ff459d2c498b922a4a7562e35, type: 3}
+  - {fileID: 8833201190847517904, guid: 9fb65e55debb856468dc9aff27191cb6, type: 3}
+  - {fileID: 8168700324318841200, guid: cc7666314ce699e468f6c4e30400ecbb, type: 3}
+  - {fileID: 8837596482850937262, guid: b1a926bfeab8cfe45a1c5d176b817083, type: 3}
+  - {fileID: 3021298958016305236, guid: 380af41d8d40bce479ea2ecd86c046bc, type: 3}
+  - {fileID: 4939362360612444962, guid: 8facf9ffde4b2a94b9bdebc57ea46b95, type: 3}
+  - {fileID: 3222578767483306439, guid: e6cc7364a36e35c408c0d6fc08169d64, type: 3}
+  - {fileID: 8787791969101868040, guid: f647ff04750980b469282e776aebaec9, type: 3}
   empty: {fileID: 3091264683239222296, guid: 3bd6760afb1972944b9b950371a81bcc, type: 3}
   itemCount: 0
   monsterCount: 7
