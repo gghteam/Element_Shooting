@@ -1955,7 +1955,6 @@ MonoBehaviour:
   followTransform: {fileID: 956710804}
   <cameraPositionWithMouse>k__BackingField: 0
   cameraMoveSpeed: 3
-  size: {x: 100, y: 100}
 --- !u!114 &498936122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3831,6 +3830,7 @@ MonoBehaviour:
   end: {fileID: 1568057769541202674, guid: 96a3adef759dd7d4aa50e25fd077e370, type: 3}
   itemMap:
   - {fileID: 8598148319746494169, guid: 5ed00f13eb7790b4e999d53750585c2e, type: 3}
+  - {fileID: 5008256611134709114, guid: 68dd824ee4fcd8c49aaef5762f287e82, type: 3}
   monsterMap:
   - {fileID: 8842465285548865884, guid: 983eedbe83a085c499c90a2fddb95d96, type: 3}
   trapMap:
@@ -3849,7 +3849,7 @@ MonoBehaviour:
   - {fileID: 3222578767483306439, guid: e6cc7364a36e35c408c0d6fc08169d64, type: 3}
   - {fileID: 8787791969101868040, guid: f647ff04750980b469282e776aebaec9, type: 3}
   empty: {fileID: 3091264683239222296, guid: 3bd6760afb1972944b9b950371a81bcc, type: 3}
-  itemCount: 0
+  itemCount: 2
   monsterCount: 7
   trapCount: 7
   etcCount: 0
@@ -3858,6 +3858,8 @@ MonoBehaviour:
   moveAmount: 10
   startTimetrwRoom: 0
   stopGeneration: 1
+  stopDownGeneration: 1
+  setDownTime: 5
 --- !u!4 &937703349
 Transform:
   m_ObjectHideFlags: 0

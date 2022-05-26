@@ -16,8 +16,8 @@ public class CameraMove : MonoBehaviour
 
     //[SerializeField]
     Vector2 center;
-    [SerializeField]
-    Vector2 size;
+    //[SerializeField]
+    //Vector2 size;
     private float height;
     private float width;
 
@@ -40,7 +40,7 @@ public class CameraMove : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(center, size);
+        //Gizmos.DrawWireCube(center, size);
     }
     private void Update()
     {
@@ -116,10 +116,10 @@ public class CameraMove : MonoBehaviour
             }
 
             transform.position = newCameraPosition;
-            float lx = size.x * 0.5f - width;
+            float lx = Screen.width * 0.5f - width;
             float clampX = Mathf.Clamp(transform.position.x, -lx + center.x, lx + center.x);
 
-            float ly = size.y * 0.5f - height;
+            float ly = Screen.height * 0.5f - height;
             float clampY = Mathf.Clamp(transform.position.y, -ly + center.y, ly + center.y);
 
             transform.position = new Vector3(clampX, clampY, -10f);

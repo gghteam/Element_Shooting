@@ -9,9 +9,8 @@ public class MapController : MonoBehaviour
 
     [Header("Random Map")]
     [SerializeField]
-    public Transform startingPos; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
+    public Transform startingPos; 
 
-    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     [SerializeField]
     private GameObject start;
     [SerializeField]
@@ -31,8 +30,6 @@ public class MapController : MonoBehaviour
     [SerializeField]
     private GameObject empty;
 
-
-    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     [SerializeField]
     private int itemCount;
     [SerializeField]
@@ -42,30 +39,35 @@ public class MapController : MonoBehaviour
     [SerializeField]
     private int etcCount; // (ï¿½ï¿½ï¿?ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿?ï¿½ï¿½ï¿½ï¿½)
 
-    //ï¿½ï¿½ Å©ï¿½ï¿½
     [SerializeField]
     private int width = 5;
     [SerializeField]
     private int height = 5;
 
-    //ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½
     [SerializeField]
     private float moveAmount;
 
-    //ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½(Testï¿½ï¿½)
     public float startTimetrwRoom;
     private float timeBtwRoom;
 
-    //ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ 
     private int dx = 0;
     private int dy = 0;
 
-    private Vector2 startPos = Vector2.zero, endPos = Vector2.zero;
+    private Vector2 startPos = Vector2.zero, endPos = Vector2.zero, downPos = Vector2.zero;
 
     private Vector2 bounderyPos;
 
     private int mapCount;
     public bool stopGeneration = true;
+    public bool stopDownGeneration = true;
+    private bool isCompleteF = false;
+
+    private GameObject[,] mapObjects;
+
+    [Header("¸Ê Ãß¶ôÀ» À§ÇÑ º¯¼ö")]
+    [SerializeField]
+    private float setDownTime = 5f;
+    private float downTime;
     enum ERoom
     {
         Item,
@@ -85,6 +87,7 @@ public class MapController : MonoBehaviour
 
     private void Awake()
     {
+        mapObjects = new GameObject[height,width];
         // PlayerPrefs.SetInt("TURORIAL",1);
         if (PlayerPrefs.GetInt("TURORIAL", 1) == 1)
         {
@@ -105,16 +108,24 @@ public class MapController : MonoBehaviour
 
     private void Update()
     {
-        //ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (timeBtwRoom <= 0 && !stopGeneration)
         {
-            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             Move();
             timeBtwRoom = startTimetrwRoom;
         }
         else
         {
             timeBtwRoom -= Time.deltaTime;
+        }
+
+        if (stopDownGeneration)
+        {
+            downTime += Time.deltaTime;
+            if (downTime >= setDownTime)
+            {
+                DownMap();
+                downTime = 0;
+            }
         }
     }
 
@@ -192,14 +203,13 @@ public class MapController : MonoBehaviour
                 break;
         }
 
+        downPos = startPos;
         Vector2 newStartPos = new Vector2(transform.position.x + (moveAmount * startPos.x), transform.position.y - (moveAmount * startPos.y));
         Vector2 newEndPos = new Vector2(transform.position.x + (moveAmount * endPos.x), transform.position.y - (moveAmount * endPos.y));
 
-        Instantiate(start, newStartPos, Quaternion.identity);
-        Instantiate(end, newEndPos, Quaternion.identity);
-        // Start,Endï¿½ï¿½ ï¿½Ê¼ï¿½Ä«ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        mapObjects[(int)startPos.y, (int)startPos.x] = Instantiate(start, newStartPos, Quaternion.identity);
+        mapObjects[(int)endPos.y, (int)endPos.x] = Instantiate(end, newEndPos, Quaternion.identity);
         GameManager.Instance.SetPos = newStartPos;
-        itemCount -= 2;
         stopGeneration = false;
     }
     private void Move()
@@ -221,7 +231,7 @@ public class MapController : MonoBehaviour
 
             rand = Random.Range(0, useList.Count);
 
-            Instantiate(useList[rand], newPos, Quaternion.identity);
+            mapObjects[dy, dx] = Instantiate(useList[rand], newPos, Quaternion.identity);
         }
 
         if (++dx >= width)
@@ -231,7 +241,11 @@ public class MapController : MonoBehaviour
         }
 
         //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
-        if (dy >= height) stopGeneration = true;
+        if (dy >= height)
+        {
+            stopGeneration = true;
+            //PrintObject();
+        }
     }
 
     private bool Check(int index)
@@ -272,5 +286,69 @@ public class MapController : MonoBehaviour
                 return etcMap;
         }
         return new List<GameObject>();
+    }
+
+    private void DownMap()
+    {
+        if(!isCompleteF)
+        {
+            mapObjects[(int)downPos.y, (int)downPos.x].SetActive(false);
+            mapObjects[(int)downPos.y, (int)downPos.x] = empty;
+            isCompleteF = true;
+
+            return;
+        }
+        //UDRL
+        Vector2[] dir = new Vector2[4];
+        bool[] dirCheck = new bool[4];
+        dir[0] = new Vector2(0, -1); //UP
+        dir[1] = new Vector2(0, 1); //DOWN
+        dir[2] = new Vector2(1, 0); //RIGHT
+        dir[3] = new Vector2(-1, 0); //LEFT
+
+        int rand = Random.Range(0, 4);
+        Vector2 addPos = downPos + dir[rand];
+        dirCheck[rand] = true;
+
+        while(addPos.x < 0 || addPos.x >= width || addPos.y < 0 || addPos.y >= height 
+            || mapObjects[(int)addPos.y, (int)addPos.x] == empty || mapObjects[(int)addPos.y, (int)addPos.x].CompareTag("Necessary"))
+        {
+            if (CheckBDir(dirCheck))
+            {
+                stopDownGeneration = false;
+                return;
+            }
+
+            rand = Random.Range(0, 4);
+            dirCheck[rand] = true;
+            addPos = downPos + dir[rand];
+        }
+
+        Debug.Log($"Down:{addPos}");
+        downPos = addPos;
+        mapObjects[(int)downPos.y, (int)downPos.x].SetActive(false);
+        mapObjects[(int)downPos.y, (int)downPos.x] = empty;
+
+    }
+
+    private bool CheckBDir(bool[] checks)
+    {
+        foreach(bool check in checks)
+        {
+            if (!check) return false;
+        }
+
+        return true;
+    }
+
+    private void PrintObject()
+    {
+        for(int i  = 0; i < height; i++)
+        {
+            for(int j = 0; j < width; j++)
+            {
+                Debug.Log($"({i},{j}):{mapObjects[i, j].name}");
+            }
+        }
     }
 }

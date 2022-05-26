@@ -9,6 +9,7 @@ TagManager:
   - Range
   - Wall
   - ' zeolite'
+  - Necessary
   layers:
   - Default
   - TransparentFX
