@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class MapController : MonoBehaviour
 {
@@ -67,6 +68,8 @@ public class MapController : MonoBehaviour
     [Header("맵 추락을 위한 변수")]
     [SerializeField]
     private float setDownTime = 5f;
+   [SerializeField]
+    private float shakeDuration = 1f;
     private float downTime;
     enum ERoom
     {
@@ -292,7 +295,11 @@ public class MapController : MonoBehaviour
     {
         if(!isCompleteF)
         {
-            mapObjects[(int)downPos.y, (int)downPos.x].SetActive(false);
+            StartCoroutine(GameManager.Instance.camera.Shake(0.1f, shakeDuration));
+            StartCoroutine(Shake(0.3f, shakeDuration, mapObjects[(int)downPos.y, (int)downPos.x]));
+            mapObjects[(int)downPos.y, (int)downPos.x].GetComponent<MapObject>().IsDown = true;
+            //mapObjects[(int)downPos.y, (int)downPos.x].transform.Translate(Vector2.down * downSpeed * Time.deltaTime);
+            //mapObjects[(int)downPos.y, (int)downPos.x].SetActive(false);
             mapObjects[(int)downPos.y, (int)downPos.x] = empty;
             isCompleteF = true;
 
@@ -326,7 +333,10 @@ public class MapController : MonoBehaviour
 
         Debug.Log($"Down:{addPos}");
         downPos = addPos;
-        mapObjects[(int)downPos.y, (int)downPos.x].SetActive(false);
+        StartCoroutine(GameManager.Instance.camera.Shake(0.1f, shakeDuration));
+        StartCoroutine(Shake(0.3f, shakeDuration, mapObjects[(int)downPos.y, (int)downPos.x]));
+        mapObjects[(int)downPos.y, (int)downPos.x].GetComponent<MapObject>().IsDown = true;
+        //mapObjects[(int)downPos.y, (int)downPos.x].SetActive(false);
         mapObjects[(int)downPos.y, (int)downPos.x] = empty;
 
     }
@@ -350,5 +360,20 @@ public class MapController : MonoBehaviour
                 Debug.Log($"({i},{j}):{mapObjects[i, j].name}");
             }
         }
+    }
+
+    public IEnumerator Shake(float _amount, float _duration, GameObject shakeObj)
+    {
+        Vector3 originVec = shakeObj.transform.localPosition;
+        float timer = 0;
+        while (timer <= _duration)
+        {
+            shakeObj.transform.localPosition = (Vector3)UnityEngine.Random.insideUnitCircle * _amount + originVec;
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        transform.localPosition = originVec;
+
     }
 }
