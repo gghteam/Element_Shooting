@@ -3859,8 +3859,9 @@ MonoBehaviour:
   moveAmount: 10
   startTimetrwRoom: 0
   stopGeneration: 1
-  stopDownGeneration: 0
-  setDownTime: 5
+  stopDownGeneration: 1
+  setDownTime: 4
+  shakeDuration: 1
 --- !u!4 &937703349
 Transform:
   m_ObjectHideFlags: 0
