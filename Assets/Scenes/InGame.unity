@@ -3833,8 +3833,9 @@ MonoBehaviour:
   - {fileID: 5008256611134709114, guid: 68dd824ee4fcd8c49aaef5762f287e82, type: 3}
   monsterMap:
   - {fileID: 8842465285548865884, guid: 983eedbe83a085c499c90a2fddb95d96, type: 3}
+  - {fileID: 9007816061542516941, guid: bc79d47e6e0b43b41b33b130f803597c, type: 3}
   trapMap:
-  - {fileID: 3316262224952190108, guid: 5b86bb586e81dcb449a202b0b220384b, type: 3}
+  - {fileID: 1699029224039510516, guid: 907224c568b69c74eb6b5afcd925ae49, type: 3}
   etcMap:
   - {fileID: 873407413804742437, guid: a1641f491f1ab144ebaab540dd26575c, type: 3}
   - {fileID: 2407919899052155540, guid: ae20711a45f9b4c44a31b3239f5dda43, type: 3}
@@ -3849,9 +3850,9 @@ MonoBehaviour:
   - {fileID: 3222578767483306439, guid: e6cc7364a36e35c408c0d6fc08169d64, type: 3}
   - {fileID: 8787791969101868040, guid: f647ff04750980b469282e776aebaec9, type: 3}
   empty: {fileID: 3091264683239222296, guid: 3bd6760afb1972944b9b950371a81bcc, type: 3}
-  itemCount: 2
-  monsterCount: 7
-  trapCount: 7
+  itemCount: 1
+  monsterCount: 1
+  trapCount: 5
   etcCount: 0
   width: 5
   height: 5

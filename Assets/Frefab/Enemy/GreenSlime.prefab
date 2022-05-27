@@ -615,7 +615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c1757856bf646244b72beff6f42cf30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 8797376279681022366}
   canvasGroup: {fileID: 2038951427808586990}
   fill: {fileID: 1570055977862430481}
   mark: {fileID: 2877631155834656517}
@@ -939,7 +938,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7266360689857745350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -14.613106}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2135132803698531203}
