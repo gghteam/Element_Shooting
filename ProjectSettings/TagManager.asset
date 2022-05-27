@@ -10,6 +10,7 @@ TagManager:
   - Wall
   - ' zeolite'
   - Necessary
+  - End_Map
   layers:
   - Default
   - TransparentFX
