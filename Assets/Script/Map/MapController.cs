@@ -71,6 +71,7 @@ public class MapController : MonoBehaviour
    [SerializeField]
     private float shakeDuration = 1f;
     private float downTime;
+    private int downIndex = -1;
     enum ERoom
     {
         Item,
@@ -309,13 +310,15 @@ public class MapController : MonoBehaviour
         Vector2[] dir = new Vector2[4];
         bool[] dirCheck = new bool[4];
         dir[0] = new Vector2(0, -1); //UP
-        dir[1] = new Vector2(0, 1); //DOWN
-        dir[2] = new Vector2(1, 0); //RIGHT
+        dir[1] = new Vector2(1, 0); //RIGHT
+        dir[2] = new Vector2(0, 1); //DOWN
         dir[3] = new Vector2(-1, 0); //LEFT
 
-        int rand = Random.Range(0, 4);
-        Vector2 addPos = downPos + dir[rand];
-        dirCheck[rand] = true;
+        //int rand = Random.Range(0, 4);
+        downIndex = (downIndex + 1) % 4;
+        Debug.Log($"DOWNINDEX:{downIndex}");
+        Vector2 addPos = downPos + dir[downIndex];
+        dirCheck[downIndex] = true;
 
         while(addPos.x < 0 || addPos.x >= width || addPos.y < 0 || addPos.y >= height 
             || mapObjects[(int)addPos.y, (int)addPos.x] == empty || mapObjects[(int)addPos.y, (int)addPos.x].CompareTag("Necessary"))
@@ -326,9 +329,11 @@ public class MapController : MonoBehaviour
                 return;
             }
 
-            rand = Random.Range(0, 4);
-            dirCheck[rand] = true;
-            addPos = downPos + dir[rand];
+            //rand = Random.Range(0, 4);
+            downIndex = (downIndex + 1) % 4;
+            Debug.Log($"CDOWNINDEX:{downIndex}");
+            dirCheck[downIndex] = true;
+            addPos = downPos + dir[downIndex];
         }
 
         Debug.Log($"Down:{addPos}");
