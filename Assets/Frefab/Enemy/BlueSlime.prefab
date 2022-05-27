@@ -878,6 +878,7 @@ MonoBehaviour:
   - {fileID: 8046971238200348612}
   _transitions:
   - {fileID: 3467677617482308082}
+  - {fileID: 1344598902862268155}
 --- !u!114 &8046971238200348612
 MonoBehaviour:
   m_ObjectHideFlags: 0

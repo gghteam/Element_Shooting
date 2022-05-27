@@ -3851,8 +3851,8 @@ MonoBehaviour:
   - {fileID: 8787791969101868040, guid: f647ff04750980b469282e776aebaec9, type: 3}
   empty: {fileID: 3091264683239222296, guid: 3bd6760afb1972944b9b950371a81bcc, type: 3}
   itemCount: 1
-  monsterCount: 1
-  trapCount: 5
+  monsterCount: 5
+  trapCount: 3
   etcCount: 0
   width: 5
   height: 5
@@ -3861,7 +3861,7 @@ MonoBehaviour:
   stopGeneration: 1
   stopDownGeneration: 1
   setDownTime: 4
-  shakeDuration: 1
+  shakeDuration: 2
 --- !u!4 &937703349
 Transform:
   m_ObjectHideFlags: 0
@@ -3949,8 +3949,8 @@ MonoBehaviour:
     hp: 5
     maxHp: 5
     speed: 4
-    stamina: 20
-    maxStamina: 20
+    stamina: 40
+    maxStamina: 40
     mana: 0
     rpm: 6
     mul: 1
