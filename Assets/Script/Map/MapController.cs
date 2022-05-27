@@ -112,23 +112,26 @@ public class MapController : MonoBehaviour
 
     private void Update()
     {
-        if (timeBtwRoom <= 0 && !stopGeneration)
+        if (PlayerPrefs.GetInt("TURORIAL", 1) == 0)
         {
-            Move();
-            timeBtwRoom = startTimetrwRoom;
-        }
-        else
-        {
-            timeBtwRoom -= Time.deltaTime;
-        }
-
-        if (stopDownGeneration)
-        {
-            downTime += Time.deltaTime;
-            if (downTime >= setDownTime)
+            if (timeBtwRoom <= 0 && !stopGeneration)
             {
-                DownMap();
-                downTime = 0;
+                Move();
+                timeBtwRoom = startTimetrwRoom;
+            }
+            else
+            {
+                timeBtwRoom -= Time.deltaTime;
+            }
+
+            if (stopDownGeneration)
+            {
+                downTime += Time.deltaTime;
+                if (downTime >= setDownTime)
+                {
+                    DownMap();
+                    downTime = 0;
+                }
             }
         }
     }
