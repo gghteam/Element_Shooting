@@ -42,8 +42,9 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
     }
     public void GetHit(int damage, GameObject damageDealer)
     {
+        if (GameManager.Instance.IsStopEvent) return;
         if (_isDead) return;
-        if(_isDamaged)return;
+        if (_isDamaged) return;
         _isDamaged = true;
         StartCoroutine(GameManager.Instance.camera.Shake(0.2f, 0.3f));
         GameManager.Instance.ChangeHealthValue(-damage);
@@ -70,12 +71,14 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
         while(true)
         {
             yield return null;
+            if (GameManager.Instance.IsStopEvent) continue;
             if (PlayerPrefs.GetInt("TURORIAL", 1) == 1)
             {
                 if (GameManager.Instance.IsStopEvent || GameManager.Instance.dialogueManager.IsDialogue) continue;
             }
             if(_isElement) continue;
             if(_isSelectElement) continue;
+
             if(!Input.GetMouseButton(0)) {
                 playerMove.UnAttack();
                 continue;
