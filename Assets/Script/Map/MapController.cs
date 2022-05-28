@@ -72,6 +72,7 @@ public class MapController : MonoBehaviour
     private float shakeDuration = 1f;
     private float downTime;
     private int downIndex = -1;
+    Vector3 mapTransform;
     enum ERoom
     {
         Item,
@@ -297,14 +298,16 @@ public class MapController : MonoBehaviour
 
     private void DownMap()
     {
-        if(!isCompleteF)
+        if (!isCompleteF)
         {
+            mapTransform = mapObjects[(int)downPos.y, (int)downPos.x].transform.position;
             StartCoroutine(GameManager.Instance.camera.Shake(0.1f, shakeDuration));
             StartCoroutine(Shake(0.3f, shakeDuration, mapObjects[(int)downPos.y, (int)downPos.x]));
+            //Debug.Log(mapTransform);
             mapObjects[(int)downPos.y, (int)downPos.x].GetComponent<MapObject>().IsDown = true;
+            Invoke("EmptySpawn", 2f);
             //mapObjects[(int)downPos.y, (int)downPos.x].transform.Translate(Vector2.down * downSpeed * Time.deltaTime);
             //mapObjects[(int)downPos.y, (int)downPos.x].SetActive(false);
-            mapObjects[(int)downPos.y, (int)downPos.x] = empty;
             isCompleteF = true;
 
             return;
@@ -341,13 +344,20 @@ public class MapController : MonoBehaviour
 
         Debug.Log($"Down:{addPos}");
         downPos = addPos;
+        mapTransform = mapObjects[(int)downPos.y, (int)downPos.x].transform.position;
         StartCoroutine(GameManager.Instance.camera.Shake(0.1f, shakeDuration));
         StartCoroutine(Shake(0.3f, shakeDuration, mapObjects[(int)downPos.y, (int)downPos.x]));
         mapObjects[(int)downPos.y, (int)downPos.x].GetComponent<MapObject>().IsDown = true;
+        Invoke("EmptySpawn", 2f);
         //mapObjects[(int)downPos.y, (int)downPos.x].SetActive(false);
         mapObjects[(int)downPos.y, (int)downPos.x] = empty;
         downIndex = -1;
 
+    }
+
+    private void EmptySpawn()
+    {
+        mapObjects[(int)downPos.y, (int)downPos.x] = Instantiate(empty, mapTransform, Quaternion.identity);
     }
 
     private bool CheckBDir(bool[] checks)

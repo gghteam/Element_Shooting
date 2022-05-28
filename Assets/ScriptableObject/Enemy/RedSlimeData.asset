@@ -18,3 +18,4 @@ MonoBehaviour:
   <maxHealth>k__BackingField: 5
   <damage>k__BackingField: 1
   isKnockBack: 1
+  isFly: 0
