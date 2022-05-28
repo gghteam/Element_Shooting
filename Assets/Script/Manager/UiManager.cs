@@ -9,7 +9,7 @@ public class UiManager : MonoBehaviour
 {
     [SerializeField]
     private Image panel;
-        [SerializeField]
+    [SerializeField]
     private Image mark;
     [SerializeField]
     private Image magicColor;
