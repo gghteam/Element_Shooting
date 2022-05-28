@@ -18,7 +18,10 @@ public static class DefineCS
         Not = 0,
         GreenSlime = 1,
         BlueSlime = 4,
-        RedSlime = 5
-
+        RedSlime = 5,
+        DungenGreenSlime = 7,
+        DungenBlueSlime = 8,
+        DungenRedSlime = 9,
+        Bat = 10
     }
 }
