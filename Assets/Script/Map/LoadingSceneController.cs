@@ -72,6 +72,7 @@ public class LoadingSceneController : MonoBehaviour
 
     IEnumerator PlayFadeIn()
     {
+        canvasGroup.blocksRaycasts = false;
         time = 0f;
         canvasGroup.alpha = 1;
 
@@ -87,6 +88,7 @@ public class LoadingSceneController : MonoBehaviour
 
     IEnumerator PlayFadeOut()
     {
+        
         time = 0f;
         canvasGroup.alpha = 0;
 
@@ -98,6 +100,7 @@ public class LoadingSceneController : MonoBehaviour
             canvasGroup.alpha = Mathf.Lerp(0f, 1f, time);
             yield return null;
         }
+        canvasGroup.blocksRaycasts = true;
     }
 
         /*
