@@ -318,7 +318,7 @@ public class MapController : MonoBehaviour
         dir[3] = new Vector2(-1, 0); //LEFT
 
         //int rand = Random.Range(0, 4);
-        downIndex = (downIndex + 1) % 4;
+        downIndex = downIndex + 1;
         Debug.Log($"DOWNINDEX:{downIndex}");
         Vector2 addPos = downPos + dir[downIndex];
         dirCheck[downIndex] = true;
@@ -346,6 +346,7 @@ public class MapController : MonoBehaviour
         mapObjects[(int)downPos.y, (int)downPos.x].GetComponent<MapObject>().IsDown = true;
         //mapObjects[(int)downPos.y, (int)downPos.x].SetActive(false);
         mapObjects[(int)downPos.y, (int)downPos.x] = empty;
+        downIndex = -1;
 
     }
 

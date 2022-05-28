@@ -135,6 +135,9 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("End_Map"))
+        {
             GameManager.Instance.loadingController.LoadScene("InGame");
+            GameManager.Instance.IsStopEvent = true;
+        }
     }
 }

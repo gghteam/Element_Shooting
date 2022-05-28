@@ -56,6 +56,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     protected override void Init()
     {
+        IsStopEvent = false;
         //NOT DONDESTORY
     }
 
