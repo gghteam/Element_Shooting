@@ -19,6 +19,7 @@ public class LoadingSceneController : MonoBehaviour
     private Image progressBar;
 
     private string loadSceneName;
+    private float time = 0;
 
     public void LoadScene(string sceneName)
     {
@@ -33,7 +34,7 @@ public class LoadingSceneController : MonoBehaviour
         progressBar.fillAmount = 0f;
 
         //Fade될때까지 기달리기
-        yield return StartCoroutine(Fade(true));
+        yield return StartCoroutine(PlayFadeOut());
 
         AsyncOperation op = SceneManager.LoadSceneAsync(loadSceneName);
         //씬 로딩이 끝나도 자동으로 씬을 로드하지 않음
@@ -64,25 +65,57 @@ public class LoadingSceneController : MonoBehaviour
     {
         if (arg0.name == loadSceneName)
         {
-            StartCoroutine(Fade(false));
+            StartCoroutine(PlayFadeIn());
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
     }
 
-    private IEnumerator Fade(bool isFadeIn)
+    IEnumerator PlayFadeIn()
     {
-        float timer = 0f;
-        gameObject.SetActive(true);
-        while (timer <= 1f)
-        {
-            yield return null;
-            timer += Time.unscaledTime * 3f;
-            canvasGroup.alpha = isFadeIn ? Mathf.Lerp(0f, 1f, timer) : Mathf.Lerp(1f, 0f, timer);
-        }
+        time = 0f;
+        canvasGroup.alpha = 1;
 
-        if (!isFadeIn)
+        while (canvasGroup.alpha > 0f)
         {
-            gameObject.SetActive(false);
+            time += Time.deltaTime / 2;
+
+            // 알파 값 계산.  
+            canvasGroup.alpha = Mathf.Lerp(1f, 0f, time);
+            yield return null;
         }
     }
-}
+
+    IEnumerator PlayFadeOut()
+    {
+        time = 0f;
+        canvasGroup.alpha = 0;
+
+        while (canvasGroup.alpha < 1f)
+        {
+            time += Time.deltaTime / 2;
+
+            // 알파 값 계산.  
+            canvasGroup.alpha = Mathf.Lerp(0f, 1f, time);
+            yield return null;
+        }
+    }
+
+        /*
+        private IEnumerator Fade(bool isFadeIn)
+        {
+            float timer = 0f;
+            gameObject.SetActive(true);
+            while (timer <= 1f)
+            {
+                yield return null;
+                timer += Time.unscaledTime * 3f;
+                canvasGroup.alpha = isFadeIn ? Mathf.Lerp(0f, 1f, timer) : Mathf.Lerp(1f, 0f, timer);
+            }
+
+            if (!isFadeIn)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+        */
+    }
