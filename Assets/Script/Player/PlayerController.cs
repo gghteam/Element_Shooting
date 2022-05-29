@@ -162,6 +162,7 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
         condition = change;
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("End_Map"))

@@ -71,7 +71,7 @@ public class MapController : MonoBehaviour
    [SerializeField]
     private float shakeDuration = 1f;
     private float downTime;
-    private int downIndex = -1;
+    public int downIndex = -1;
     Vector3 mapTransform;
     enum ERoom
     {
@@ -300,16 +300,8 @@ public class MapController : MonoBehaviour
     {
         if (!isCompleteF)
         {
-            mapTransform = mapObjects[(int)downPos.y, (int)downPos.x].transform.position;
-            StartCoroutine(GameManager.Instance.camera.Shake(0.1f, shakeDuration));
-            StartCoroutine(Shake(0.3f, shakeDuration, mapObjects[(int)downPos.y, (int)downPos.x]));
-            //Debug.Log(mapTransform);
-            mapObjects[(int)downPos.y, (int)downPos.x].GetComponent<MapObject>().IsDown = true;
-            Invoke("EmptySpawn", 2f);
-            //mapObjects[(int)downPos.y, (int)downPos.x].transform.Translate(Vector2.down * downSpeed * Time.deltaTime);
-            //mapObjects[(int)downPos.y, (int)downPos.x].SetActive(false);
+            SpawnEmpty();
             isCompleteF = true;
-
             return;
         }
         //UDRL
@@ -327,32 +319,60 @@ public class MapController : MonoBehaviour
         dirCheck[downIndex] = true;
 
         while(addPos.x < 0 || addPos.x >= width || addPos.y < 0 || addPos.y >= height 
-            || mapObjects[(int)addPos.y, (int)addPos.x] == empty || mapObjects[(int)addPos.y, (int)addPos.x].CompareTag("Necessary"))
+            || mapObjects[(int)addPos.y, (int)addPos.x].CompareTag("Empty") || mapObjects[(int)addPos.y, (int)addPos.x].CompareTag("Necessary"))
         {
             if (CheckBDir(dirCheck))
             {
-                stopDownGeneration = false;
+                List<int> indexY = new List<int>();
+                List<int> indexX = new List<int>();
+
+                // ¼øÈ¸
+                for(int y = 0; y < height; y++)
+                {
+                    for(int x = 0; x < width; x++)
+                    {
+                        if(!mapObjects[y, x].CompareTag("Empty") && !mapObjects[y, x].CompareTag("Necessary"))
+                        {
+                            indexY.Add(y);
+                            indexX.Add(x);
+                        }
+                    }
+                }
+
+                if(indexY.Count == 0)
+                {
+                    stopDownGeneration = false;
+                    return;
+                }
+
+                int randomIndex = Random.Range(0, indexY.Count);
+                downPos = new Vector2(indexX[randomIndex], indexY[randomIndex]);
+                SpawnEmpty();
+                
                 return;
             }
 
             //rand = Random.Range(0, 4);
-            downIndex = (downIndex + 1) % 4;
+            downIndex = (downIndex + 1);
             Debug.Log($"CDOWNINDEX:{downIndex}");
             dirCheck[downIndex] = true;
             addPos = downPos + dir[downIndex];
         }
 
-        Debug.Log($"Down:{addPos}");
+        Debug.Log($"Down:{downIndex}");
         downPos = addPos;
+        SpawnEmpty();
+
+    }
+
+    private void SpawnEmpty()
+    {
         mapTransform = mapObjects[(int)downPos.y, (int)downPos.x].transform.position;
         StartCoroutine(GameManager.Instance.camera.Shake(0.1f, shakeDuration));
         StartCoroutine(Shake(0.3f, shakeDuration, mapObjects[(int)downPos.y, (int)downPos.x]));
         mapObjects[(int)downPos.y, (int)downPos.x].GetComponent<MapObject>().IsDown = true;
-        Invoke("EmptySpawn", 2f);
-        //mapObjects[(int)downPos.y, (int)downPos.x].SetActive(false);
-        mapObjects[(int)downPos.y, (int)downPos.x] = empty;
+        Invoke("EmptySpawn", 2);
         downIndex = -1;
-
     }
 
     private void EmptySpawn()
