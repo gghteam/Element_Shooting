@@ -3850,18 +3850,15 @@ MonoBehaviour:
   - {fileID: 3222578767483306439, guid: e6cc7364a36e35c408c0d6fc08169d64, type: 3}
   - {fileID: 8787791969101868040, guid: f647ff04750980b469282e776aebaec9, type: 3}
   empty: {fileID: 3091264683239222296, guid: 3bd6760afb1972944b9b950371a81bcc, type: 3}
-  itemCount: 1
-  monsterCount: 7
-  trapCount: 5
+  mapDataSO: {fileID: 11400000, guid: 5664f725c8d6d1542a5b6ed188173205, type: 2}
   etcCount: 0
-  width: 5
-  height: 5
   moveAmount: 10
   startTimetrwRoom: 0
   stopGeneration: 1
   stopDownGeneration: 1
   setDownTime: 3
   shakeDuration: 2
+  downIndex: -1
 --- !u!4 &937703349
 Transform:
   m_ObjectHideFlags: 0
