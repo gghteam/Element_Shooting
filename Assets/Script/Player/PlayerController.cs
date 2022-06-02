@@ -167,6 +167,8 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
     {
         if (collision.gameObject.CompareTag("End_Map"))
         {
+            // To Do 수정 필요
+            PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel", 1) + 1);
             GameManager.Instance.loadingController.LoadScene("InGame");
             GameManager.Instance.IsStopEvent = true;
         }

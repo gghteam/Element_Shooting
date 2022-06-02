@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596d936e85b7a904b8ea9d614a535de6, type: 3}
   m_Name: Stage2
   m_EditorClassIdentifier: 
-  itemCount: 2
-  monsterCount: 0
-  trapCount: 4
-  width: 5
-  height: 5
+  itemCount: 3
+  minMonsterCount: 0
+  maxMonsterCount: 0
+  minTrapCount: 3
+  maxTrapCount: 5
+  minWidth: 4
+  maxWidth: 4
+  minHeight: 4
+  maxHeight: 4

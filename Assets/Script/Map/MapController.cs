@@ -30,8 +30,8 @@ public class MapController : MonoBehaviour
     //private GameObject[] rooms; // 0 ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ 1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3 ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½
     [SerializeField]
     private GameObject empty;
-    [SerializeField]
-    private MapDataSO mapDataSO;
+    //[SerializeField]
+    //private MapDataSO mapDataSO;
 
     private int itemCount;
     private int monsterCount;
@@ -39,6 +39,8 @@ public class MapController : MonoBehaviour
     [SerializeField]
     private int etcCount; // (ï¿½ï¿½ï¿?ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿?ï¿½ï¿½ï¿½ï¿½)
 
+    private int width;
+    private int height;
 
     [SerializeField]
     private float moveAmount;
@@ -68,6 +70,9 @@ public class MapController : MonoBehaviour
     private float downTime;
     public int downIndex = -1;
     Vector3 mapTransform;
+
+    [SerializeField]
+    private LevelController levelController = null;
     enum ERoom
     {
         Item,
@@ -87,7 +92,7 @@ public class MapController : MonoBehaviour
 
     private void Awake()
     {
-        mapObjects = new GameObject[mapDataSO.height, mapDataSO.width];
+        //¸¸¾à Æ©Åä¸®¾óÀÌ¶ó¸é
         // PlayerPrefs.SetInt("TURORIAL",1);
         if (PlayerPrefs.GetInt("TURORIAL", 1) == 1)
         {
@@ -96,16 +101,27 @@ public class MapController : MonoBehaviour
         }
         else
         {
-            itemCount = mapDataSO.itemCount;
-            monsterCount = mapDataSO.monsterCount;
-            trapCount = mapDataSO.trapCount;
+            // ÇöÀç LevelÀÇ map°³¼ö ºÒ·¯¿À±â
+            levelController.SetLevelMap();
+
+            // Áö¿ª º¯¼ö¿¡ ÀúÀå
+            itemCount = levelController.itemCount;
+            monsterCount = levelController.monsterCount;
+            trapCount = levelController.trapCount;
+            width = levelController.width;
+            height = levelController.height;
+
+            mapObjects = new GameObject[height, width];
+
 
             //Etc_Map Setting
-            mapCount = mapDataSO.width * mapDataSO.height;
+            mapCount = width * height;
             etcCount = mapCount - (itemCount + monsterCount + trapCount);
 
+            // °æ°è¸é »ý¼º
             SpawnBoundary();
 
+            // ¸Ê ½ºÆù
             SpawnStart();
         }
     }
@@ -141,17 +157,17 @@ public class MapController : MonoBehaviour
         bounderyPos = new Vector2(startingPos.position.x, startingPos.position.y + moveAmount);
 
         // HEIGHT
-        for (int i = 0; i <= mapDataSO.height + 1; i++)
+        for (int i = 0; i <= height + 1; i++)
         {
             Vector2 newPos = new Vector2(bounderyPos.x - moveAmount, bounderyPos.y - (moveAmount * i));
-            Vector2 newSPos = new Vector2(bounderyPos.x + moveAmount * mapDataSO.width, bounderyPos.y - (moveAmount * i));
+            Vector2 newSPos = new Vector2(bounderyPos.x + moveAmount * width, bounderyPos.y - (moveAmount * i));
             GameObject fObj = null, sObj = null;
             if(i == 0)
             {
                 fObj = boundaryMap[0];
                 sObj = boundaryMap[2];
             }
-            else if(i == mapDataSO.height + 1)
+            else if(i == height + 1)
             {
                 fObj = boundaryMap[5];
                 sObj = boundaryMap[7];
@@ -167,10 +183,10 @@ public class MapController : MonoBehaviour
 
         
         //WIDTH
-        for (int i = 0; i < mapDataSO.width; i++)
+        for (int i = 0; i < width; i++)
         {
             Vector2 newPos = new Vector2(bounderyPos.x + moveAmount * i, bounderyPos.y);
-            Vector2 newSPos = new Vector2(bounderyPos.x + moveAmount * i, bounderyPos.y - moveAmount * (mapDataSO.height + 1));
+            Vector2 newSPos = new Vector2(bounderyPos.x + moveAmount * i, bounderyPos.y - moveAmount * (height + 1));
 
 
             Instantiate(boundaryMap[1], newPos, Quaternion.identity);
@@ -189,24 +205,24 @@ public class MapController : MonoBehaviour
         switch (random)
         {
             case (int)ChangePos.StartX:
-                pos = Random.Range(0, mapDataSO.width);
+                pos = Random.Range(0, width);
                 startPos = new Vector2(pos, 0);
-                endPos = new Vector2((mapDataSO.width - 1) - pos, mapDataSO.height - 1);
+                endPos = new Vector2((width - 1) - pos, height - 1);
                 break;
             case (int)ChangePos.StartY:
-                pos = Random.Range(0, mapDataSO.height);
+                pos = Random.Range(0, height);
                 startPos = new Vector2(0, pos);
-                endPos = new Vector2(mapDataSO.width - 1, (mapDataSO.height - 1) - pos);
+                endPos = new Vector2(width - 1, (height - 1) - pos);
                 break;
             case (int)ChangePos.EndX:
-                pos = Random.Range(0, mapDataSO.width);
-                startPos = new Vector2(pos, mapDataSO.height - 1);
-                endPos = new Vector2((mapDataSO.width - 1) - pos, 0);
+                pos = Random.Range(0, width);
+                startPos = new Vector2(pos, height - 1);
+                endPos = new Vector2((width - 1) - pos, 0);
                 break;
             case (int)ChangePos.EndY:
-                pos = Random.Range(0, mapDataSO.height);
-                startPos = new Vector2(mapDataSO.width - 1, pos);
-                endPos = new Vector2(0, (mapDataSO.height - 1) - pos);
+                pos = Random.Range(0, height);
+                startPos = new Vector2(width - 1, pos);
+                endPos = new Vector2(0, (height - 1) - pos);
                 break;
         }
 
@@ -241,14 +257,14 @@ public class MapController : MonoBehaviour
             mapObjects[dy, dx] = Instantiate(useList[rand], newPos, Quaternion.identity);
         }
 
-        if (++dx >= mapDataSO.width)
+        if (++dx >= width)
         {
             dx = 0;
             dy++;
         }
 
         //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
-        if (dy >= mapDataSO.height)
+        if (dy >= height)
         {
             stopGeneration = true;
             //PrintObject();
@@ -317,7 +333,7 @@ public class MapController : MonoBehaviour
         Vector2 addPos = downPos + dir[downIndex];
         dirCheck[downIndex] = true;
 
-        while(addPos.x < 0 || addPos.x >= mapDataSO.width || addPos.y < 0 || addPos.y >= mapDataSO.height 
+        while(addPos.x < 0 || addPos.x >= width || addPos.y < 0 || addPos.y >= height 
             || mapObjects[(int)addPos.y, (int)addPos.x].CompareTag("Empty") || mapObjects[(int)addPos.y, (int)addPos.x].CompareTag("Necessary"))
         {
             if (CheckBDir(dirCheck))
@@ -326,9 +342,9 @@ public class MapController : MonoBehaviour
                 List<int> indexX = new List<int>();
 
                 // ¼øÈ¸
-                for(int y = 0; y < mapDataSO.height; y++)
+                for(int y = 0; y < height; y++)
                 {
-                    for(int x = 0; x < mapDataSO.width; x++)
+                    for(int x = 0; x < width; x++)
                     {
                         if(!mapObjects[y, x].CompareTag("Empty") && !mapObjects[y, x].CompareTag("Necessary"))
                         {
@@ -391,9 +407,9 @@ public class MapController : MonoBehaviour
 
     private void PrintObject()
     {
-        for(int i  = 0; i < mapDataSO.height; i++)
+        for(int i  = 0; i < height; i++)
         {
-            for(int j = 0; j < mapDataSO.width; j++)
+            for(int j = 0; j < width; j++)
             {
                 Debug.Log($"({i},{j}):{mapObjects[i, j].name}");
             }

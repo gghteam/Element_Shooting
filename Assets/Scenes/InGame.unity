@@ -3805,6 +3805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 937703349}
   - component: {fileID: 937703348}
+  - component: {fileID: 937703350}
   m_Layer: 0
   m_Name: MapController
   m_TagString: Untagged
@@ -3850,7 +3851,6 @@ MonoBehaviour:
   - {fileID: 3222578767483306439, guid: e6cc7364a36e35c408c0d6fc08169d64, type: 3}
   - {fileID: 8787791969101868040, guid: f647ff04750980b469282e776aebaec9, type: 3}
   empty: {fileID: 3091264683239222296, guid: 3bd6760afb1972944b9b950371a81bcc, type: 3}
-  mapDataSO: {fileID: 11400000, guid: 5664f725c8d6d1542a5b6ed188173205, type: 2}
   etcCount: 0
   moveAmount: 10
   startTimetrwRoom: 0
@@ -3859,6 +3859,7 @@ MonoBehaviour:
   setDownTime: 3
   shakeDuration: 2
   downIndex: -1
+  levelController: {fileID: 937703350}
 --- !u!4 &937703349
 Transform:
   m_ObjectHideFlags: 0
@@ -3873,6 +3874,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &937703350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937703347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f80711b78a997b34c9424445d10de41e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelMapDatas:
+  - {fileID: 11400000, guid: ce39e04825eadcc4589f6ffef0cec973, type: 2}
+  - {fileID: 11400000, guid: 1f8ec890fbf9c3940884cbce9bfff6be, type: 2}
+  current: 0
 --- !u!4 &956710804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5574230531486282359, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
