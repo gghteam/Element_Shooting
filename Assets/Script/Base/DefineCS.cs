@@ -13,7 +13,7 @@ public static class DefineCS
         Stone, //4
         Grass 
     }
-    public enum EnemyIndex
+    public enum PooledIndex
     {
         Not = 0,
         GreenSlime = 1,
@@ -22,6 +22,7 @@ public static class DefineCS
         DungenGreenSlime = 7,
         DungenBlueSlime = 8,
         DungenRedSlime = 9,
-        Bat = 10
+        Bat = 10,
+        ItemTooltip = 11
     }
 }

@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
     [SerializeField]
     private float sphereSize;
     private void Start() {
+        playerPosition = GetComponent<Transform>();
         playerMove = GetComponent<PlayerMove>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         Health = GameManager.Instance.PlayerInfo.maxHp;

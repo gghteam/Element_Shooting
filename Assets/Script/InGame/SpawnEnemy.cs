@@ -10,15 +10,15 @@ public class SpawnEnemy : MonoBehaviour
 
     public void SpawnGreenSlime(Transform pos)
     {
-        StartCoroutine(Spawn(10,pos.position,30,(int)EnemyIndex.GreenSlime));
+        StartCoroutine(Spawn(10,pos.position,30,(int)PooledIndex.GreenSlime));
     }
     public void SpawnRedSlime(Transform pos)
     {
-        StartCoroutine(Spawn(20,pos.position,50,(int)EnemyIndex.RedSlime));
+        StartCoroutine(Spawn(20,pos.position,50,(int)PooledIndex.RedSlime));
     }
     public void SpawnBlueSlime(Transform pos)
     {
-        StartCoroutine(Spawn(20,pos.position,50,(int)EnemyIndex.BlueSlime));
+        StartCoroutine(Spawn(20,pos.position,50,(int)PooledIndex.BlueSlime));
     }
     private IEnumerator Spawn(int c, Vector2 p, int duration,int index)
     {

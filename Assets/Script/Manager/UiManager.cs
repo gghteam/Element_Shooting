@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using static DefineCS;
 
 public class UiManager : MonoBehaviour
 {
+    public Transform ItemShowTrm;
+
     [SerializeField]
     private Image panel;
     [SerializeField]
@@ -25,6 +28,13 @@ public class UiManager : MonoBehaviour
     private Color[] markColor;
     [field : SerializeField]
     public Sprite[] elementMark { get; private set; }
+
+    #region ItemTooltip
+    private int _itemTooltipCount = 0;
+    private int _itemTooltipOrder = 0;
+    #endregion
+
+
     private void Start() {
         mark.sprite = selectMark[0];
         mark.color = markColor[0];
@@ -53,7 +63,6 @@ public class UiManager : MonoBehaviour
     
     public void SelectElement()
     {
-       
         string ButtonName = EventSystem.current.currentSelectedGameObject.name;
         if (ButtonName == "Fire") {
             mark.sprite = selectMark[0];
@@ -77,5 +86,29 @@ public class UiManager : MonoBehaviour
             GameManager.Instance.playerController.ChangeCondition(Conditions.Stone);
         }
         panel.gameObject.SetActive(false);
+    }
+
+    public ItemTooltip OpenItemTooltip(ItemDataSO itemData,Vector3 worldPos)
+    {
+        ItemTooltip tooltip = PoolManager.Instance.GetPooledObject((int)PooledIndex.ItemTooltip).GetComponent<ItemTooltip>() as ItemTooltip;
+        if(tooltip==null)
+        {
+            Debug.LogError("NullReference ItemTooltip");
+        }
+        tooltip.SetText(itemData);
+
+        tooltip.PopupTooltip(worldPos, _itemTooltipOrder);
+        _itemTooltipOrder++;
+        _itemTooltipCount++;
+        return tooltip;
+    }
+    public void CloseWeaponTooltip(ItemTooltip tooltip)
+    {
+        tooltip?.CloseTooltip();
+        _itemTooltipCount--;
+        if (_itemTooltipCount <= 0)
+        {
+            _itemTooltipOrder = 0;
+        }
     }
 }
