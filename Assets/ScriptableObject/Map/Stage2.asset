@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Stage2
   m_EditorClassIdentifier: 
   itemCount: 3
-  minMonsterCount: 0
-  maxMonsterCount: 0
+  minMonsterCount: 2
+  maxMonsterCount: 5
   minTrapCount: 3
   maxTrapCount: 5
   minWidth: 4
   maxWidth: 4
   minHeight: 4
   maxHeight: 4
+  enemys: 0100000005000000

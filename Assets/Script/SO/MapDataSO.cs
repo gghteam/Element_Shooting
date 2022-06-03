@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static DefineCS;
 
 [CreateAssetMenu(menuName = "SO/Maps/MapData")]
 public class MapDataSO : ScriptableObject
@@ -18,4 +19,6 @@ public class MapDataSO : ScriptableObject
     [Header("세로 랜덤 크기")]
     public int minHeight = 0;
     public int maxHeight = 0;
+
+    public List<EnemyIndex> enemys;
 }

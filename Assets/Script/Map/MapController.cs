@@ -255,6 +255,13 @@ public class MapController : MonoBehaviour
             rand = Random.Range(0, useList.Count);
 
             mapObjects[dy, dx] = Instantiate(useList[rand], newPos, Quaternion.identity);
+
+            MapSpawnEnemy mapSpawnEnemy = mapObjects[dy, dx]?.GetComponent<MapSpawnEnemy>();
+
+            if(mapSpawnEnemy != null)
+            {
+                mapSpawnEnemy.SpawnEnemy(levelController.enemysList);
+            }
         }
 
         if (++dx >= width)

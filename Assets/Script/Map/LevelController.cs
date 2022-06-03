@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static DefineCS;
 
 public class LevelController : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class LevelController : MonoBehaviour
     public int trapCount { get; private set; }
     public int width { get; private set; }
     public int height { get; private set; }
+
+    public List<EnemyIndex> enemysList = new List<EnemyIndex>();
 
     [SerializeField]
     private List<MapDataSO> LevelMapDatas = new List<MapDataSO>();
@@ -25,5 +28,6 @@ public class LevelController : MonoBehaviour
         trapCount = Random.Range(currentMapData.minTrapCount, currentMapData.maxTrapCount + 1);
         width = Random.Range(currentMapData.minWidth, currentMapData.maxWidth);
         height = Random.Range(currentMapData.minHeight, currentMapData.maxHeight);
+        enemysList = currentMapData.enemys;
     }
 }
