@@ -13,4 +13,5 @@ public class EnemyDataSO : ScriptableObject
     [field: SerializeField]
     public int damage { get; set; } = 1;
     public bool isKnockBack = false;
+    public bool isFly = false;
 }

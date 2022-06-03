@@ -11,6 +11,8 @@ TagManager:
   - ' zeolite'
   - Necessary
   - End_Map
+  - Empty
+  - GOINGAME
   layers:
   - Default
   - TransparentFX

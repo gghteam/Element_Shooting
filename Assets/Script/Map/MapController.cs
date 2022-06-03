@@ -30,20 +30,17 @@ public class MapController : MonoBehaviour
     //private GameObject[] rooms; // 0 ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ 1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3 ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½
     [SerializeField]
     private GameObject empty;
+    //[SerializeField]
+    //private MapDataSO mapDataSO;
 
-    [SerializeField]
     private int itemCount;
-    [SerializeField]
     private int monsterCount;
-    [SerializeField]
     private int trapCount;
     [SerializeField]
     private int etcCount; // (ï¿½ï¿½ï¿?ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿?ï¿½ï¿½ï¿½ï¿½)
 
-    [SerializeField]
-    private int width = 5;
-    [SerializeField]
-    private int height = 5;
+    private int width;
+    private int height;
 
     [SerializeField]
     private float moveAmount;
@@ -71,7 +68,11 @@ public class MapController : MonoBehaviour
    [SerializeField]
     private float shakeDuration = 1f;
     private float downTime;
-    private int downIndex = -1;
+    public int downIndex = -1;
+    Vector3 mapTransform;
+
+    [SerializeField]
+    private LevelController levelController = null;
     enum ERoom
     {
         Item,
@@ -91,7 +92,7 @@ public class MapController : MonoBehaviour
 
     private void Awake()
     {
-        mapObjects = new GameObject[height,width];
+        //¸¸¾à Æ©Åä¸®¾óÀÌ¶ó¸é
         // PlayerPrefs.SetInt("TURORIAL",1);
         if (PlayerPrefs.GetInt("TURORIAL", 1) == 1)
         {
@@ -100,12 +101,27 @@ public class MapController : MonoBehaviour
         }
         else
         {
+            // ÇöÀç LevelÀÇ map°³¼ö ºÒ·¯¿À±â
+            levelController.SetLevelMap();
+
+            // Áö¿ª º¯¼ö¿¡ ÀúÀå
+            itemCount = levelController.itemCount;
+            monsterCount = levelController.monsterCount;
+            trapCount = levelController.trapCount;
+            width = levelController.width;
+            height = levelController.height;
+
+            mapObjects = new GameObject[height, width];
+
+
             //Etc_Map Setting
             mapCount = width * height;
             etcCount = mapCount - (itemCount + monsterCount + trapCount);
 
+            // °æ°è¸é »ý¼º
             SpawnBoundary();
 
+            // ¸Ê ½ºÆù
             SpawnStart();
         }
     }
@@ -239,6 +255,13 @@ public class MapController : MonoBehaviour
             rand = Random.Range(0, useList.Count);
 
             mapObjects[dy, dx] = Instantiate(useList[rand], newPos, Quaternion.identity);
+
+            MapSpawnEnemy mapSpawnEnemy = mapObjects[dy, dx]?.GetComponent<MapSpawnEnemy>();
+
+            if(mapSpawnEnemy != null)
+            {
+                mapSpawnEnemy.SpawnEnemy(levelController.enemysList);
+            }
         }
 
         if (++dx >= width)
@@ -297,16 +320,10 @@ public class MapController : MonoBehaviour
 
     private void DownMap()
     {
-        if(!isCompleteF)
+        if (!isCompleteF)
         {
-            StartCoroutine(GameManager.Instance.camera.Shake(0.1f, shakeDuration));
-            StartCoroutine(Shake(0.3f, shakeDuration, mapObjects[(int)downPos.y, (int)downPos.x]));
-            mapObjects[(int)downPos.y, (int)downPos.x].GetComponent<MapObject>().IsDown = true;
-            //mapObjects[(int)downPos.y, (int)downPos.x].transform.Translate(Vector2.down * downSpeed * Time.deltaTime);
-            //mapObjects[(int)downPos.y, (int)downPos.x].SetActive(false);
-            mapObjects[(int)downPos.y, (int)downPos.x] = empty;
+            SpawnEmpty();
             isCompleteF = true;
-
             return;
         }
         //UDRL
@@ -324,30 +341,65 @@ public class MapController : MonoBehaviour
         dirCheck[downIndex] = true;
 
         while(addPos.x < 0 || addPos.x >= width || addPos.y < 0 || addPos.y >= height 
-            || mapObjects[(int)addPos.y, (int)addPos.x] == empty || mapObjects[(int)addPos.y, (int)addPos.x].CompareTag("Necessary"))
+            || mapObjects[(int)addPos.y, (int)addPos.x].CompareTag("Empty") || mapObjects[(int)addPos.y, (int)addPos.x].CompareTag("Necessary"))
         {
             if (CheckBDir(dirCheck))
             {
-                stopDownGeneration = false;
+                List<int> indexY = new List<int>();
+                List<int> indexX = new List<int>();
+
+                // ¼øÈ¸
+                for(int y = 0; y < height; y++)
+                {
+                    for(int x = 0; x < width; x++)
+                    {
+                        if(!mapObjects[y, x].CompareTag("Empty") && !mapObjects[y, x].CompareTag("Necessary"))
+                        {
+                            indexY.Add(y);
+                            indexX.Add(x);
+                        }
+                    }
+                }
+
+                if(indexY.Count == 0)
+                {
+                    stopDownGeneration = false;
+                    return;
+                }
+
+                int randomIndex = Random.Range(0, indexY.Count);
+                downPos = new Vector2(indexX[randomIndex], indexY[randomIndex]);
+                SpawnEmpty();
+                
                 return;
             }
 
             //rand = Random.Range(0, 4);
-            downIndex = (downIndex + 1) % 4;
+            downIndex = (downIndex + 1);
             Debug.Log($"CDOWNINDEX:{downIndex}");
             dirCheck[downIndex] = true;
             addPos = downPos + dir[downIndex];
         }
 
-        Debug.Log($"Down:{addPos}");
+        Debug.Log($"Down:{downIndex}");
         downPos = addPos;
+        SpawnEmpty();
+
+    }
+
+    private void SpawnEmpty()
+    {
+        mapTransform = mapObjects[(int)downPos.y, (int)downPos.x].transform.position;
         StartCoroutine(GameManager.Instance.camera.Shake(0.1f, shakeDuration));
         StartCoroutine(Shake(0.3f, shakeDuration, mapObjects[(int)downPos.y, (int)downPos.x]));
         mapObjects[(int)downPos.y, (int)downPos.x].GetComponent<MapObject>().IsDown = true;
-        //mapObjects[(int)downPos.y, (int)downPos.x].SetActive(false);
-        mapObjects[(int)downPos.y, (int)downPos.x] = empty;
+        Invoke("EmptySpawn", 2);
         downIndex = -1;
+    }
 
+    private void EmptySpawn()
+    {
+        mapObjects[(int)downPos.y, (int)downPos.x] = Instantiate(empty, mapTransform, Quaternion.identity);
     }
 
     private bool CheckBDir(bool[] checks)

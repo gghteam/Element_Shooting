@@ -78,9 +78,14 @@ public class Enemy : PoolableMono,IAgent,IHittable,IKnockBack,IStun
         //Debug.Log("Damaged +"+gameObject+" : "+Health);
         if (Health <= 0)
         {
-            _isDead = true;
-            OnDie?.Invoke();
+            DieEnemy();
         }
+    }
+
+    private void DieEnemy()
+    {
+        _isDead = true;
+        OnDie?.Invoke();
     }
 
     public void Die()
@@ -122,6 +127,14 @@ public class Enemy : PoolableMono,IAgent,IHittable,IKnockBack,IStun
         {
             OnAttackAnimation?.Invoke();
             enemyAttack.Attack(_enemyData.damage);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Empty") && !_enemyData.isFly)
+        {
+            DieEnemy();
         }
     }
 

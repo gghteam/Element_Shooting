@@ -33,6 +33,11 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
     private float bulletDelay;
     [SerializeField]
     private float sphereSize;
+    [SerializeField]
+    private float maxFlyTime;
+    private float time = 0;
+    private bool isFly = false;
+    private int count = 0;
     private void Start() {
         playerPosition = GetComponent<Transform>();
         playerMove = GetComponent<PlayerMove>();
@@ -41,6 +46,31 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
         Camera = GameObject.Find("Camera").GetComponent<Camera>();
         StartCoroutine(Fire());
     }
+
+    private void Update()
+    {
+        if (!_isDead)
+        {
+            if (isFly)
+            {
+                time += Time.deltaTime;
+                if (time > maxFlyTime)
+                {
+                    Debug.Log("DEATH");
+                    playerMove.Death();
+                    OnDie?.Invoke();
+                    _isDead = true;
+                    isFly = false;
+                }
+            }
+            else
+            {
+                if (time > 0)
+                    time -= Time.deltaTime;
+            }
+        }
+    }
+
     public void GetHit(int damage, GameObject damageDealer)
     {
         if (GameManager.Instance.IsStopEvent) return;
@@ -133,12 +163,35 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
         condition = change;
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("End_Map"))
         {
+            // To Do 수정 필요
+            PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel", 1) + 1);
             GameManager.Instance.loadingController.LoadScene("InGame");
             GameManager.Instance.IsStopEvent = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {       
+        if(collision.gameObject.CompareTag("Empty"))
+        {
+            //count++;
+            Debug.Log("Enter");
+            isFly = true;
+        }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Empty"))
+        {
+            Debug.Log("Exit");
+            isFly = false;
         }
     }
 }
