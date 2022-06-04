@@ -14,15 +14,15 @@ public class DefaultElement : Element
         switch (conditions)
         {
             case Conditions.Wind:
-                hittable?.GetHit(GameManager.Instance.PlayerInfo.atk, dealer);
+                hittable?.GetHit(GameManager.Instance.PlayerATK, dealer);
                 OnWind?.Invoke();
                 break;
             case Conditions.Stone:
-                hittable?.GetHit(GameManager.Instance.PlayerInfo.atk, dealer);
+                hittable?.GetHit(GameManager.Instance.PlayerATK, dealer);
                 OnStone?.Invoke();
                 break;
             default:
-                hittable?.GetHit(GameManager.Instance.PlayerInfo.atk, dealer);
+                hittable?.GetHit(GameManager.Instance.PlayerATK, dealer);
                 break;
         }
     }

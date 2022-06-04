@@ -1476,6 +1476,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &365998582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365998580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e90ecf1ac71ab4cab55cf20af778f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterState:
+    hp: 5
+    maxHp: 5
+    speed: 1
+    stamina: 40
+    maxStamina: 40
+    mana: 0
+    rpm: 1
+    mul: 1
+    atk: 1
+    exp: 0
 --- !u!114 &365998587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3925,6 +3948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80711b78a997b34c9424445d10de41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemysList: 
   LevelMapDatas:
   - {fileID: 11400000, guid: ce39e04825eadcc4589f6ffef0cec973, type: 2}
   - {fileID: 11400000, guid: 1f8ec890fbf9c3940884cbce9bfff6be, type: 2}

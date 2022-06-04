@@ -8,27 +8,38 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
 {
     [SerializeField]
     private Transform playerPosition = null;
+
+    #region Interface
     [field:SerializeField]
     public int Health {get; private set;}
     [field:SerializeField]
     public UnityEvent OnGetHit { get; set; }
     [field:SerializeField]
     public UnityEvent OnDie { get; set; }
+    #endregion
+
+    private SpriteRenderer spriteRenderer = null;
     private PlayerMove playerMove;
     private Camera Camera = null;
+    private PlayerState _playerState;
+
     private Vector2 mousePosition = Vector2.zero;
-    private SpriteRenderer spriteRenderer = null;
+    
     private const float coefficient = 1;
     [SerializeField]
     private float projectileSpread;
+
     private bool _isDead;
-    [SerializeField]
-    private Conditions condition;
+    private bool _isDamaged = false;
     public bool _isElement {get;set;} = false;
     public bool _isSelectElement {get;set;} = false;
-    private bool _isDamaged = false;
+
     public Vector3 _hitPoint {get; private set;}
+
+    [SerializeField]
+    private Conditions condition;
     public Conditions GetCondition { get { return condition; } }
+
     [SerializeField]
     private float bulletDelay;
     [SerializeField]
@@ -37,12 +48,18 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
     private float maxFlyTime;
     private float time = 0;
     private bool isFly = false;
+
     private int count = 0;
+
+    private void Awake()
+    {
+        _playerState = GetComponent<PlayerState>();
+    }
     private void Start() {
         playerPosition = GetComponent<Transform>();
         playerMove = GetComponent<PlayerMove>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        Health = GameManager.Instance.PlayerInfo.maxHp;
+        Health = _playerState.CharacterState.maxHp;
         Camera = GameObject.Find("Camera").GetComponent<Camera>();
         StartCoroutine(Fire());
     }
@@ -81,7 +98,6 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
         GameManager.Instance.ChangeHealthValue(-damage);
         Health -= damage;
         EventManager.TriggerEvent(EventManager.EventName.PLAYER_DAMAGED);
-        Debug.Log(GameManager.Instance.PlayerInfo.hp);
         OnGetHit?.Invoke();
         if(Health <= 0)
         {
@@ -117,7 +133,7 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
             SoundManager.Instance.AttackSound();
             playerMove.Attack();
             Invoke("SpawnBullet", bulletDelay);
-            yield return new WaitForSeconds(coefficient/(float)GameManager.Instance.PlayerInfo.rpm);
+            yield return new WaitForSeconds(coefficient/(float)_playerState.CharacterState.rpm);
         }
         
     }
@@ -127,14 +143,14 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
         Vector2 v2 = Camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float angle = Mathf.Atan2(v2.y, v2.x) * Mathf.Rad2Deg;
         float startRotation = angle + projectileSpread / 2f;
-        float angleIncrease = projectileSpread / ((float)GameManager.Instance.PlayerInfo.mul - 1f);
+        float angleIncrease = projectileSpread / ((float)_playerState.CharacterState.mul - 1f);
         float randomAngle = 0;
-        for (int i = 0; i < GameManager.Instance.PlayerInfo.mul; i++)
+        for (int i = 0; i < _playerState.CharacterState.mul; i++)
         {
             GameObject bullet = PoolManager.Instance.GetPooledObject(0);
             if (bullet != null)
                 
-                if (GameManager.Instance.PlayerInfo.rpm >= 6)
+                if (_playerState.CharacterState.rpm >= 6)
                 {
                     randomAngle = Random.Range(-5f, 5f);
                 }

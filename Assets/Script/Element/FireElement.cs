@@ -16,22 +16,22 @@ public class FireElement : Element
         switch(conditions)
         {
             case Conditions.Fire:
-                hittable?.GetHit(-GameManager.Instance.PlayerInfo.atk,dealer);
+                hittable?.GetHit(-GameManager.Instance.PlayerATK, dealer);
                 break;
             case Conditions.Water:
-                hittable?.GetHit(GameManager.Instance.PlayerInfo.atk*2,dealer);
+                hittable?.GetHit(GameManager.Instance.PlayerATK * 2,dealer);
                 OnWater?.Invoke();
                 break;
             case Conditions.Wind:
-                hittable?.GetHit(GameManager.Instance.PlayerInfo.atk,dealer);
+                hittable?.GetHit(GameManager.Instance.PlayerATK, dealer);
                 OnWind?.Invoke();
                 break;
             case Conditions.Stone:
-                hittable?.GetHit(GameManager.Instance.PlayerInfo.atk,dealer);
+                hittable?.GetHit(GameManager.Instance.PlayerATK, dealer);
                 OnStone?.Invoke();
                 break;
             default:
-                hittable?.GetHit(GameManager.Instance.PlayerInfo.atk,dealer);
+                hittable?.GetHit(GameManager.Instance.PlayerATK, dealer);
                 break;
         }
     }

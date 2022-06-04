@@ -9,7 +9,7 @@ public class WaterCristalElememt : Element
         switch(conditions)
         {
             case Conditions.Fire:
-                hittable?.GetHit(GameManager.Instance.PlayerInfo.atk,dealer);
+                hittable?.GetHit(GameManager.Instance.PlayerATK,dealer);
                 break;
             default:
 

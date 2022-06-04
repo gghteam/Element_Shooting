@@ -10,7 +10,7 @@ public class ItemDataSO : ScriptableObject
     public int addHealth;
     public float speed;
     public float stamina;
-    public float mana;
+    public int mana;
 
     public int atk;
     public int rpm;

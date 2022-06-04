@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [Flags]
-    private enum PlayerState
+    private enum PlayerMotionState
     {
         NONE = 0,
         RUN = 1 << 0,
@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
 
     }
   
-    private PlayerState state = PlayerState.NONE;
+    private PlayerMotionState state = PlayerMotionState.NONE;
 
     [SerializeField]
     private float decreaseSpeed = 2f;
@@ -34,16 +34,20 @@ public class PlayerMove : MonoBehaviour
     private Rigidbody2D playerRigid = null;
     private Animator animator = null;
     private Camera Camera = null;
+    private PlayerState _playerState;
 
     private bool _isDead = false;
     private bool _isRun = false;
+    private void Awake()
+    {
+        _playerState = GetComponent<PlayerState>();
+    }
     private void Start() {
         Camera = GameObject.Find("Camera").GetComponent<Camera>();
         col = GetComponent<Collider2D>();
         playerRigid = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
-        _stamina = GameManager.Instance.PlayerInfo.maxStamina;
-        _maxStamina = GameManager.Instance.PlayerInfo.maxStamina;
+        _stamina = _playerState.CharacterState.maxStamina;
 
         //Debug.Log(GameManager.Instance.SetPos);
         transform.position = GameManager.Instance.SetPos;
@@ -76,12 +80,12 @@ public class PlayerMove : MonoBehaviour
     }
     public void Damaged()
     {
-        state = PlayerState.DAMAGED;
+        state = PlayerMotionState.DAMAGED;
         DamagedAnimation();
     }
     public void Attack()
     {
-        state = PlayerState.Attack;
+        state = PlayerMotionState.Attack;
         AttackAnimation(true);
     }
     public void UnAttack()
@@ -92,7 +96,7 @@ public class PlayerMove : MonoBehaviour
     {
         _isRun = false;
         animator.SetBool(_walkHashStr,false);
-        state = PlayerState.NONE;
+        state = PlayerMotionState.NONE;
     }
     private void Move()
     {
@@ -103,13 +107,13 @@ public class PlayerMove : MonoBehaviour
         }
         velocityX = Input.GetAxisRaw("Horizontal");
         velocityY = Input.GetAxisRaw("Vertical");
-        if(state.HasFlag(PlayerState.RUN))
+        if(state.HasFlag(PlayerMotionState.RUN))
         {
-            moveSpeed = GameManager.Instance.PlayerInfo.speed * 2;
+            moveSpeed = _playerState.CharacterState.speed * 2;
         }
         else
         {
-            moveSpeed = GameManager.Instance.PlayerInfo.speed;
+            moveSpeed = _playerState.CharacterState.speed;
         }
         playerRigid.velocity = new Vector2(velocityX, velocityY).normalized * moveSpeed;
     }
@@ -121,7 +125,7 @@ public class PlayerMove : MonoBehaviour
             {
                 _isRun = true;
                 animator.SetBool(_walkHashStr,true);
-                state = PlayerState.RUN;
+                state = PlayerMotionState.RUN;
             }
         }
         else
@@ -144,7 +148,7 @@ public class PlayerMove : MonoBehaviour
     private void StaminaRecovery()
     {
         if(_isRun)return;
-        if(_stamina>_maxStamina)return;
+        if(_stamina> _playerState.CharacterState.maxStamina)return;
         _stamina += Time.deltaTime *  decreaseSpeed * 1.5f;
         GameManager.Instance.ChangeStaminaValue(_stamina);
         EventManager.TriggerEvent(EventManager.EventName.PLAYER_RUN);

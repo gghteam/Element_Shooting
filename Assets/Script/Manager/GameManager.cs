@@ -54,6 +54,14 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
+    #region PlayerState
+    private int health = 0, maxHealth = 0;
+    private float stamina = 0, maxStamina = 0;
+    private int mana = 0;
+    private float exp = 0;
+    private int atk = 0;
+    #endregion
+
     protected override void Init()
     {
         IsStopEvent = false;
@@ -90,28 +98,47 @@ public class GameManager : MonoSingleton<GameManager>
            loadingController = Instantiate(Resources.Load<LoadingSceneController>("LoadingUI")); 
         }
     }
-    public Character PlayerInfo{
-        get{ return player;}
+    //public Character PlayerInfo{
+    //    get{ return player;}
+    //}
+
+    public int PlayerATK
+    {
+        get => atk;
+        set
+        {
+            atk = value;
+        }
     }
+    public int PlayerHealth
+    { get => health; }
     public void ChangeHealthValue(int atk)
     {
-        player.hp += atk;
+        health += atk;
+    }
+    public void ChangeMaxHealthValue(int health)
+    {
+        maxHealth = health;
     }
     public void ChangeStaminaValue(float stamina)
     {
-        player.stamina = stamina;
+        this.stamina = stamina;
+    }
+    public void ChangeMaxStaminaValue(float stamina)
+    {
+        maxStamina = stamina;
     }
     public void ChangeExpValue(float exp)
     {
-        player.exp += exp;
+        this.exp += exp;
     }
     public float GetHpBar(){
-        return (float)player.hp / player.maxHp;
+        return (float)health / maxHealth;
     }
     public float GetStaminaBar(){
-        return player.stamina / player.maxStamina;
+        return stamina / maxStamina;
     }
     public float GetExpValue(){
-        return player.exp;
+        return exp;
     }
 }
