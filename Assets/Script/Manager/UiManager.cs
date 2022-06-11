@@ -111,4 +111,9 @@ public class UiManager : MonoBehaviour
             _itemTooltipOrder = 0;
         }
     }
+
+    public void UpdateItemPanel()
+    {
+
+    }
 }
