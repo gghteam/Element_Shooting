@@ -6,6 +6,7 @@ using UnityEngine;
 public class ItemDataSO : ScriptableObject
 {
     public string itemName;
+    public Sprite itemSprite;
 
     public int addHealth;
     public float speed;

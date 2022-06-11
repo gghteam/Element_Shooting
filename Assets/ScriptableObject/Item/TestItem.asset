@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TestItem
   m_EditorClassIdentifier: 
   itemName: asd
+  itemSprite: {fileID: 381900462156300807, guid: 039d9849344710447a69fcdb5dca7129, type: 3}
   addHealth: 1
   speed: 100
   stamina: 100

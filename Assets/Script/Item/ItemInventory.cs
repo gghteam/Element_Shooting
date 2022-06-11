@@ -19,8 +19,9 @@ public class ItemInventory : MonoBehaviour
     {
         if (CurrentItem != null)
         {
-            _addItemData =  CurrentItem.ItemDataSO;
+            _addItemData =  CurrentItem.ItemData;
             SetPlayerStateValue(_addItemData);
+            GameManager.Instance.uiManager.AddItemIamge(_addItemData.itemSprite);
             CurrentItem.gameObject.SetActive(false);
             Debug.Log("GetItem!!!");
         }

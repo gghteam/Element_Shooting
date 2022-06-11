@@ -29,6 +29,9 @@ public class UiManager : MonoBehaviour
     [field : SerializeField]
     public Sprite[] elementMark { get; private set; }
 
+    [SerializeField]
+    private ItemImagePanel _itemImagePanelTemple;
+
     #region ItemTooltip
     private int _itemTooltipCount = 0;
     private int _itemTooltipOrder = 0;
@@ -56,6 +59,15 @@ public class UiManager : MonoBehaviour
         }
         Rotate();
     }    
+    public void AddItemIamge(Sprite sprite)
+    {
+        GameObject panel = null;
+        ItemImagePanel item = null;
+        panel = Instantiate(_itemImagePanelTemple.gameObject, _itemImagePanelTemple.transform.parent);
+        item = panel.GetComponent<ItemImagePanel>();
+        item.SetValue(sprite);
+        panel.SetActive(true);
+    }
     private void Rotate()
     {
         magic.gameObject.transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, magicSpeed * Time.deltaTime));

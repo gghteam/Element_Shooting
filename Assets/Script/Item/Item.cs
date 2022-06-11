@@ -7,7 +7,7 @@ public class Item : MonoBehaviour
 {
     [SerializeField]
     private ItemDataSO _itemDataSO;
-    public ItemDataSO ItemDataSO
+    public ItemDataSO ItemData
     {
         get => _itemDataSO;
     }
@@ -24,7 +24,7 @@ public class Item : MonoBehaviour
 
     private void Start()
     {
-
+        _spriteRenderer.sprite = ItemData.itemSprite;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
