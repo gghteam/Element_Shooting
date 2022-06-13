@@ -1689,7 +1689,7 @@ MonoBehaviour:
   _characterState:
     hp: 5
     maxHp: 5
-    speed: 1
+    speed: 10
     stamina: 40
     maxStamina: 40
     mana: 0
@@ -4329,7 +4329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &937703348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5622,6 +5622,10 @@ PrefabInstance:
       propertyPath: <OnDie>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2069241972}
+    - target: {fileID: 5190554263118170075, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
+      propertyPath: decreaseSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5574230531486282359, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: m_RootOrder
       value: 2
