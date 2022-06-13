@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6ca8264ae28a424c9ab5133122b80e5, type: 3}
-  m_Name: TestItem
+  m_Name: TestItem 2
   m_EditorClassIdentifier: 
-  itemName: asd
-  itemSprite: {fileID: 381900462156300807, guid: 039d9849344710447a69fcdb5dca7129, type: 3}
+  itemName: Item2
+  itemSprite: {fileID: 1427477077825845232, guid: 039d9849344710447a69fcdb5dca7129, type: 3}
   addHealth: 1
-  speed: 100
-  stamina: 100
+  speed: 10
+  stamina: 10
   mana: 0
   atk: 20
   rpm: 20

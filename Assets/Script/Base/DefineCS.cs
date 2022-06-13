@@ -23,6 +23,7 @@ public static class DefineCS
         DungenBlueSlime = 8,
         DungenRedSlime = 9,
         Bat = 10,
-        ItemTooltip = 11
+        ItemTooltip = 11,
+        Item = 12
     }
 }
