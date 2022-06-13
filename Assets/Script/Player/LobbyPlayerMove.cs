@@ -13,7 +13,14 @@ public class LobbyPlayerMove : MonoBehaviour
     private bool isPanel = false;
 
     [SerializeField]
+    private Image fadePanel;
+
+    [SerializeField]
     private GameObject panel;
+    [SerializeField]
+    private Transform[] spawn;
+
+    int index;
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -46,6 +53,47 @@ public class LobbyPlayerMove : MonoBehaviour
             isPanel = true;
             panel.SetActive(isPanel);
         }
+
+        if(collision.CompareTag("Room"))
+        {
+            index = collision.transform.GetComponent<RoomIndex>().GetIndex();
+            StartCoroutine(PlayFadeOut());
+
+        }
+    }
+
+    IEnumerator PlayFadeIn()
+    {
+        float time = 0f;
+        fadePanel.color = new Color(0, 0, 0, 1);
+
+        while (fadePanel.color.a > 0f)
+        {
+            time += Time.deltaTime / 2;
+
+            // 알파 값 계산.  
+            fadePanel.color = new Color(0, 0, 0, Mathf.Lerp(1f, 0f, time));
+            yield return null;
+        }
+    }
+
+    IEnumerator PlayFadeOut()
+    {
+
+        float time = 0f;
+        fadePanel.color = new Color(0, 0, 0, 0);
+
+        while (fadePanel.color.a < 1f)
+        {
+            time += Time.deltaTime / 2;
+
+            // 알파 값 계산.  
+            fadePanel.color = new Color(0, 0, 0, Mathf.Lerp(0f, 1f, time));
+            yield return null;
+        }
+
+        transform.localPosition = spawn[index].position;
+        StartCoroutine(PlayFadeIn());
     }
 
     public void OKButton()
