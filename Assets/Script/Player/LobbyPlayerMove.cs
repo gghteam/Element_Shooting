@@ -7,6 +7,8 @@ public class LobbyPlayerMove : MonoBehaviour
 {
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private Animator animator;
 
     private Rigidbody2D rigidbody = null;
 
@@ -24,6 +26,7 @@ public class LobbyPlayerMove : MonoBehaviour
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        animator = transform.GetChild(0).GetComponent<Animator>();
     }
 
     private void Update()
@@ -34,6 +37,15 @@ public class LobbyPlayerMove : MonoBehaviour
             float v = Input.GetAxisRaw("Vertical");
 
             Vector2 moveDir = new Vector2(h, v);
+
+            if(moveDir.sqrMagnitude > 0)
+            {
+                animator.SetFloat("X", h);
+                animator.SetFloat("Y", v);
+                animator.SetBool("IsMove", true);
+            }
+            else
+                animator.SetBool("IsMove", false);
 
             moveDir.Normalize();
 
