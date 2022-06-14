@@ -26,4 +26,12 @@ public static class DefineCS
         ItemTooltip = 11,
         Item = 12
     }
+
+    public enum ResourceTypeEnum
+    {
+        None,
+        Coin,
+        MonsterDropItem,
+        MagicSpell
+    }
 }
