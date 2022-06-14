@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class TrapBomb : MonoBehaviour
 {
@@ -22,8 +23,11 @@ public class TrapBomb : MonoBehaviour
         {
             if (!isBomb)
             {
-                StartCoroutine(LerpColor(Color.red, true));
-                isBomb = true;
+                magic.DOFade(1, 1.5f).OnComplete(() =>
+                {
+                    StartCoroutine(LerpColor(Color.red, true));
+                    isBomb = true;
+                });
             }
         }
     }
@@ -45,5 +49,6 @@ public class TrapBomb : MonoBehaviour
             bombParticle.Play();
             StartCoroutine(LerpColor(Color.white, false));
         }
+        magic.DOFade(0, 1f);
     }
 }
