@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,8 +27,22 @@ public class GameManager : MonoSingleton<GameManager>
     public StoryData storyData { get; private set; }
 
     public ScorchParticleSystemHandler BloodParticleSystemHandler { get; private set; }
-
     public LoadingSceneController loadingController { get; private set; }
+
+    private ItemInventoryCase itemInventoryCase;
+    public ItemInventoryCase ItemInventoryCase
+    {
+        get
+        {
+            if(itemInventoryCase == null)
+            {
+                itemInventoryCase = FindObjectOfType<ItemInventoryCase>();
+            }
+            return itemInventoryCase;
+        }
+    }
+
+    public Action OnClearAllDropItems = null; //떨어진 아이템 삭제
 
     private Vector2 setPos = Vector2.zero;
 

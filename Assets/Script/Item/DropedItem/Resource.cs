@@ -14,9 +14,14 @@ public class Resource : PoolableMono
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        _audioSource.clip = ResourceData.useSound;
         _collider2d = GetComponent<Collider2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        SetValue();
+    }
+    public void SetValue()
+    {
+        _spriteRenderer.sprite = ResourceData.itemSprite;
+        _audioSource.clip = ResourceData.useSound;
     }
     public void PickUpResource()
     {

@@ -11,6 +11,10 @@ public class EventManager : MonoBehaviour
         PLAYER_DEAD = 1,
         PLAYER_RUN = 2,
         //0~10 Player Event
+
+        GET_ITEM = 50,
+        //50~100 Item
+
         PANEL_SHOW = 100,
         PANEL_HIDE = 101,
         PANEL_ElementChanged = 102

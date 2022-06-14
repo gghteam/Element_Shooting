@@ -7,6 +7,10 @@ using static DefineCS;
 [CreateAssetMenu(menuName ="SO/Item/ResourceData")]
 public class ResourceDataSO : ScriptableObject
 {
+    public string itemName;
+    public Sprite itemSprite;
+    public string itemExplanation;
+
     public float rate; //아이템 드랍 확률
     public GameObject itemPrefab;
 
