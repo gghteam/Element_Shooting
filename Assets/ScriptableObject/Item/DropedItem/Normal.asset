@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9812e4e48ae677b4b9da2b8195658e45, type: 3}
+  m_Name: Normal
+  m_EditorClassIdentifier: 
+  itemName: Normal
+  itemSprite: {fileID: 21300000, guid: c21e31ab06ae41f4a8899cc20d490d48, type: 3}
+  rate: 1
+  itemPrefab: {fileID: 8792100685953702816, guid: f5e3ef46225374f43bb4280c539f647e, type: 3}
+  <ResourceType>k__BackingField: 2
+  minAmount: 1
+  maxAmount: 3
+  useSound: {fileID: 8300000, guid: 0ee4649912f1b9d49a45f67146390dd1, type: 3}
+  popUpColor: {r: 0, g: 0, b: 0, a: 0}

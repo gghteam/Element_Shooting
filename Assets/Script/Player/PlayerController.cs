@@ -147,15 +147,15 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
         float randomAngle = 0;
         for (int i = 0; i < _playerState.CharacterState.mul; i++)
         {
+
             GameObject bullet = PoolManager.Instance.GetPooledObject(0);
             if (bullet != null)
-                
-                if (_playerState.CharacterState.rpm >= 6)
+                if (_playerState.CharacterState.mul >= 4)
                 {
-                    randomAngle = Random.Range(-5f, 5f);
+                    randomAngle = Random.Range(-7f, 7f);
                 }
-                else randomAngle = 0;
-                float tempRot = i == 0 ? randomAngle + angle : (startRotation - angleIncrease * i) + randomAngle;
+                else randomAngle = Random.Range(-3f, 3f);
+            float tempRot = i == 0 ? randomAngle + angle : (startRotation - angleIncrease * i) + randomAngle;
                 bullet.transform.position = playerPosition.transform.position;
                 bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, tempRot));
                 bullet.GetComponent<BulletMove>().targetPostion = new Vector2(Mathf.Cos(tempRot * Mathf.Deg2Rad), Mathf.Sin(tempRot * Mathf.Deg2Rad));

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,8 +28,22 @@ public class GameManager : MonoSingleton<GameManager>
     public StoryData storyData { get; private set; }
 
     public ScorchParticleSystemHandler BloodParticleSystemHandler { get; private set; }
-
     public LoadingSceneController loadingController { get; private set; }
+
+    private ItemInventoryCase itemInventoryCase;
+    public ItemInventoryCase ItemInventoryCase
+    {
+        get
+        {
+            if(itemInventoryCase == null)
+            {
+                itemInventoryCase = FindObjectOfType<ItemInventoryCase>();
+            }
+            return itemInventoryCase;
+        }
+    }
+
+    public Action OnClearAllDropItems = null; //떨어진 아이템 삭제
 
     private Vector2 setPos = Vector2.zero;
 
@@ -62,6 +78,39 @@ public class GameManager : MonoSingleton<GameManager>
     private int atk = 0;
     #endregion
 
+    #region JSON 
+
+    [SerializeField] 
+    private User user = null;
+
+    private string SAVE_PATH = "";
+    private readonly string SAVE_FILENAME = "/SaveFile.txt";
+
+    private void LoadFromJson()
+    {
+        string json = "";
+        if (File.Exists(SAVE_PATH + SAVE_FILENAME))
+        {
+            json = File.ReadAllText(SAVE_PATH + SAVE_FILENAME);
+            user = JsonUtility.FromJson<User>(json);
+        }
+        else
+        {
+            SaveToJson();
+            LoadFromJson();
+        }
+
+    }
+    private void SaveToJson()
+    {
+        SAVE_PATH = Application.dataPath + "/Save";
+        if (user == null) return;
+        string json = JsonUtility.ToJson(user, true);
+        File.WriteAllText(SAVE_PATH + SAVE_FILENAME, json, System.Text.Encoding.UTF8);
+    }
+
+    #endregion
+
     protected override void Init()
     {
         IsStopEvent = false;
@@ -77,6 +126,14 @@ public class GameManager : MonoSingleton<GameManager>
         }
         Instance = this;
         */
+
+        //SAVE_PATH = Application.dataPath + "/Save";
+        //if (!Directory.Exists(SAVE_PATH))
+        //{
+        //    Directory.CreateDirectory(SAVE_PATH);
+        //}
+        //LoadFromJson();
+
         maxPosition = new Vector2(r,r);
         minPosition = new Vector2(-r,-r);
         dialogueManager = FindObjectOfType<DialogueManager>();

@@ -24,6 +24,8 @@ public class ItemCollector : MonoBehaviour
                     case ResourceTypeEnum.Coin:
                         break;
                     case ResourceTypeEnum.MonsterDropItem:
+                        GameManager.Instance.ItemInventoryCase.InputItemCase(res.ResourceData);
+                        res.PickUpResource();
                         break;
                     case ResourceTypeEnum.MagicSpell:
                         break;

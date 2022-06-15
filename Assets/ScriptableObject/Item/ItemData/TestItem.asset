@@ -18,6 +18,6 @@ MonoBehaviour:
   speed: 10
   stamina: 10
   mana: 0
-  atk: 20
-  rpm: 20
-  mul: 20
+  atk: 10
+  rpm: 1
+  mul: 1
