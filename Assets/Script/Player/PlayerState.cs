@@ -8,7 +8,7 @@ public class PlayerState : MonoBehaviour
     private Character _characterState;
     private void Start()
     {
-        GameManager.Instance.PlayerATK = _characterState.atk;
+        GameManager.Instance.InitStateValue(_characterState.maxHp, _characterState.atk, _characterState.maxStamina);
     }
 
     public Character CharacterState
