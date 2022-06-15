@@ -808,7 +808,7 @@ RectTransform:
   m_Children:
   - {fileID: 1897409738}
   m_Father: {fileID: 945074674}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4509,7 +4509,7 @@ MonoBehaviour:
   startTimetrwRoom: 0
   stopGeneration: 1
   stopDownGeneration: 1
-  setDownTime: 3
+  setDownTime: 5
   shakeDuration: 2
   downIndex: -1
   levelController: {fileID: 937703350}
@@ -4543,7 +4543,7 @@ MonoBehaviour:
   LevelMapDatas:
   - {fileID: 11400000, guid: ce39e04825eadcc4589f6ffef0cec973, type: 2}
   - {fileID: 11400000, guid: 1f8ec890fbf9c3940884cbce9bfff6be, type: 2}
-  current: 0
+  current: 1
 --- !u!1 &945074673
 GameObject:
   m_ObjectHideFlags: 0
@@ -4573,6 +4573,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1943963208}
   - {fileID: 150884024}
   m_Father: {fileID: 2018960017}
   m_RootOrder: 0
@@ -5339,10 +5340,10 @@ MonoBehaviour:
     shouldExpand: 1
   - objectToPool: {fileID: 1213710058851854885, guid: f7627986435d5a14d924e6f451f915c1, type: 3}
     amountToPool: 30
-    shouldExpand: 0
+    shouldExpand: 1
   - objectToPool: {fileID: 6860964798194136663, guid: 193eb2986a58b3949a46d2971ccd360d, type: 3}
     amountToPool: 30
-    shouldExpand: 0
+    shouldExpand: 1
   - objectToPool: {fileID: 8334144702343241978, guid: 38c3b541b30a04341a8345a914c21325, type: 3}
     amountToPool: 10
     shouldExpand: 1

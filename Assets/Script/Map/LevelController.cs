@@ -20,7 +20,7 @@ public class LevelController : MonoBehaviour
 
     public void SetLevelMap()
     {
-        //PlayerPrefs.SetInt("CurrentLevel", 1);
+        PlayerPrefs.SetInt("CurrentLevel", 1);
         current = PlayerPrefs.GetInt("CurrentLevel", 1);
         MapDataSO currentMapData = LevelMapDatas[current - 1];
         itemCount = currentMapData.itemCount;
