@@ -189,6 +189,16 @@ public class GameManager : MonoSingleton<GameManager>
     {
         this.exp += exp;
     }
+
+    public void InitStateValue(int maxHealth,int atk,float stamina)
+    {
+        this.maxHealth = maxHealth;
+        this.health = maxHealth;
+        PlayerATK = atk;
+        this.maxStamina = stamina;
+        this.stamina = stamina;
+    }
+
     public float GetHpBar(){
         return (float)health / maxHealth;
     }
