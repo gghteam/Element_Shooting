@@ -6,7 +6,11 @@ public class PlayerState : MonoBehaviour
 {
     [SerializeField]
     private Character _characterState;
-    
+    private void Start()
+    {
+        GameManager.Instance.PlayerATK = _characterState.atk;
+    }
+
     public Character CharacterState
     {
         get => _characterState;
@@ -20,7 +24,7 @@ public class PlayerState : MonoBehaviour
             _characterState.mana += value.mana;
 
             _characterState.atk += value.atk;
-            //GameManager.Instance.PlayerATK = _characterState.atk;
+            GameManager.Instance.PlayerATK = _characterState.atk;
             _characterState.rpm += value.rpm;
             _characterState.mul += value.mul;
         }
