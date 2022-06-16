@@ -4420,6 +4420,7 @@ MonoBehaviour:
   startingPos: {fileID: 1928287905}
   start: {fileID: 3316262224952190108, guid: 5b86bb586e81dcb449a202b0b220384b, type: 3}
   end: {fileID: 1568057769541202674, guid: 96a3adef759dd7d4aa50e25fd077e370, type: 3}
+  key: {fileID: 3934037430110691498, guid: 6e594b2aaf8df8e42a2f392d7a0b0946, type: 3}
   itemMap:
   - {fileID: 5008256611134709114, guid: 68dd824ee4fcd8c49aaef5762f287e82, type: 3}
   monsterMap:

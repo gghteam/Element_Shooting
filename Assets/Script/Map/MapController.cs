@@ -17,6 +17,8 @@ public class MapController : MonoBehaviour
     [SerializeField]
     private GameObject end;
     [SerializeField]
+    private GameObject key;
+    [SerializeField]
     private List<GameObject> itemMap = new List<GameObject>();
     [SerializeField]
     private List<GameObject> monsterMap = new List<GameObject>();
@@ -51,7 +53,7 @@ public class MapController : MonoBehaviour
     private int dx = 0;
     private int dy = 0;
 
-    private Vector2 startPos = Vector2.zero, endPos = Vector2.zero, downPos = Vector2.zero;
+    private Vector2 startPos = Vector2.zero, endPos = Vector2.zero, downPos = Vector2.zero, keyPos = Vector2.zero;
 
     private Vector2 bounderyPos;
 
@@ -233,6 +235,19 @@ public class MapController : MonoBehaviour
         mapObjects[(int)startPos.y, (int)startPos.x] = Instantiate(start, newStartPos, Quaternion.identity);
         mapObjects[(int)endPos.y, (int)endPos.x] = Instantiate(end, newEndPos, Quaternion.identity);
         GameManager.Instance.SetPos = newStartPos;
+
+        keyPos.x = Random.Range(0, width);
+        keyPos.y = Random.Range(0, height);
+
+        while((keyPos.x == startPos.x && keyPos.y == startPos.y) || (keyPos.x == endPos.x && keyPos.y == endPos.y))
+        {
+            keyPos.x = Random.Range(0, width);
+            keyPos.y = Random.Range(0, height);
+        }
+
+        Vector2 newKeyPos = new Vector2(transform.position.x + (moveAmount * keyPos.x), transform.position.y - (moveAmount * keyPos.y));
+        mapObjects[(int)keyPos.y, (int)keyPos.x] = Instantiate(key, newKeyPos, Quaternion.identity);
+
         stopGeneration = false;
     }
     private void Move()
@@ -242,7 +257,7 @@ public class MapController : MonoBehaviour
         bool isComplete = false;
         int rand = 0;
 
-        if ((dx != startPos.x || dy != startPos.y) && (dx != endPos.x || dy != endPos.y))
+        if ((dx != startPos.x || dy != startPos.y) && (dx != endPos.x || dy != endPos.y) && (dx != keyPos.x || dy != keyPos.y))
         {
             while (!isComplete)
             {
