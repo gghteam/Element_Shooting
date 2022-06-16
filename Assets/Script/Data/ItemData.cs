@@ -1,14 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 [System.Serializable]
-[CreateAssetMenu(menuName ="SO/Item/ItemData")]
-public class ItemDataSO : ScriptableObject
+public class ItemData
 {
     public string itemName;
-    public Sprite itemSprite;
-
     public int addHealth;
     public float speed;
     public float stamina;

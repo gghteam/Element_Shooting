@@ -1,0 +1,15 @@
+﻿{
+    "Coin": 0,
+    "_ativeItemList": [
+        {
+            "itemName": "asd",
+            "addHealth": 1,
+            "speed": 2.0,
+            "stamina": 10.0,
+            "mana": 0,
+            "atk": 1,
+            "rpm": 1,
+            "mul": 1
+        }
+    ]
+}

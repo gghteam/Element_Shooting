@@ -90,7 +90,8 @@ GameObject:
   - component: {fileID: 365998581}
   - component: {fileID: 365998582}
   - component: {fileID: 365998587}
-  - component: {fileID: 4187623299631633169}
+  - component: {fileID: 1680932072896418028}
+  - component: {fileID: 3821439632466594560}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -328,7 +329,7 @@ MonoBehaviour:
   _characterState:
     hp: 5
     maxHp: 5
-    speed: 1
+    speed: 5
     stamina: 40
     maxStamina: 40
     mana: 0
@@ -348,7 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f8781e694f1b246beca9d448e38892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4187623299631633169
+--- !u!114 &1680932072896418028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,9 +358,47 @@ MonoBehaviour:
   m_GameObject: {fileID: 81848737094792969}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbaecbb7de9d33b4a8d1a87a3cf38f1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f8881d7d9ef7df45bb06bf14f36cede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GetItemKeyPress>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ItemInventory, Assembly-CSharp
+        m_MethodName: GetActiveItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3821439632466594560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81848737094792969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e90ecf1ac71ab4cab55cf20af778f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterState:
+    hp: 5
+    maxHp: 5
+    speed: 10
+    stamina: 40
+    maxStamina: 40
+    mana: 0
+    rpm: 1
+    mul: 1
+    atk: 1
+    exp: 0
 --- !u!1 &422510960723611540
 GameObject:
   m_ObjectHideFlags: 0
