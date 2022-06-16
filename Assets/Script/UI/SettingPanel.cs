@@ -32,7 +32,7 @@ public class SettingPanel : MonoBehaviour
     public void OnRePlay()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("InGame");
+        SceneManager.LoadScene("Lobby");
     }
     public void OnRePlayPanel()
     {
