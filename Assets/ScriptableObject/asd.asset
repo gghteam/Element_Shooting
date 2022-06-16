@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: asd
   prefab: {fileID: 8861882238719232496, guid: 0654418c54b8a8245860e2b19e71455a, type: 3}
   poolPrefab: {fileID: 8042994637602743769, guid: 0654418c54b8a8245860e2b19e71455a, type: 3}
-  <maxHealth>k__BackingField: 1230
+  <maxHealth>k__BackingField: 5
   <damage>k__BackingField: 1
   isKnockBack: 0
   isFly: 0
