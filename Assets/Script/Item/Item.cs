@@ -8,7 +8,7 @@ public class Item : MonoBehaviour
 {
     [SerializeField]
     private ItemDataSO _itemDataSO;
-    public ItemDataSO ItemData
+    public ItemDataSO ItemDataSO
     {
         get => _itemDataSO;
         set
@@ -22,12 +22,14 @@ public class Item : MonoBehaviour
         }
     }
 
+    public ItemData Data { get; set; }
+
     private SpriteRenderer _spriteRenderer;
     private Collider2D _collider;
 
     private ItemTooltip _itemTooltip = null;
 
-    private bool _isActive = false;
+    //private bool _isActive = false;
 
     private void Awake()
     {
@@ -40,7 +42,17 @@ public class Item : MonoBehaviour
 
     private void Start()
     {
-        _spriteRenderer.sprite = ItemData.itemSprite;
+        _spriteRenderer.sprite = ItemDataSO.itemSprite;
+
+        Data = new ItemData();
+        Data.itemName = ItemDataSO.itemName;
+        Data.addHealth = ItemDataSO.addHealth;
+        Data.speed = ItemDataSO.speed;
+        Data.stamina = ItemDataSO.stamina;
+        Data.mana = ItemDataSO.mana;
+        Data.atk = ItemDataSO.atk;
+        Data.rpm = ItemDataSO.rpm;
+        Data.mul = ItemDataSO.mul;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

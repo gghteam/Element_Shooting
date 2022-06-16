@@ -67,8 +67,6 @@ public class ItemBox : MonoBehaviour
 
                 DropItem(dropIndex);
 
-                Debug.Log(_itemBoxData.itemList[dropIndex]);
-
                 i++;
             }
         }
@@ -78,7 +76,7 @@ public class ItemBox : MonoBehaviour
     {
         GameObject prefab = PoolManager.Instance.GetPooledObject((int)PooledIndex.Item);
         Item dropItem = prefab.GetComponent<Item>();
-        dropItem.ItemData = _itemBoxData.itemList[idx];
+        dropItem.ItemDataSO = _itemBoxData.itemList[idx];
         prefab.transform.position = transform.position;
         prefab.SetActive(true);
 

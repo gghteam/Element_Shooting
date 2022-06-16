@@ -73,7 +73,7 @@ public class GameManager : MonoSingleton<GameManager>
     #region PlayerState
     private int health = 0, maxHealth = 0;
     private float stamina = 0, maxStamina = 0;
-    private int mana = 0;
+    //private int mana = 0;
     private float exp = 0;
     private int atk = 0;
     #endregion
@@ -82,6 +82,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     [SerializeField] 
     private User user = null;
+    public User User { get { return user; } }
 
     private string SAVE_PATH = "";
     private readonly string SAVE_FILENAME = "/SaveFile.txt";
@@ -101,7 +102,7 @@ public class GameManager : MonoSingleton<GameManager>
         }
 
     }
-    private void SaveToJson()
+    public void SaveToJson()
     {
         SAVE_PATH = Application.dataPath + "/Save";
         if (user == null) return;
@@ -127,12 +128,14 @@ public class GameManager : MonoSingleton<GameManager>
         Instance = this;
         */
 
-        //SAVE_PATH = Application.dataPath + "/Save";
-        //if (!Directory.Exists(SAVE_PATH))
-        //{
-        //    Directory.CreateDirectory(SAVE_PATH);
-        //}
-        //LoadFromJson();
+        SAVE_PATH = Application.dataPath + "/Save";
+        if (!Directory.Exists(SAVE_PATH))
+        {
+            Directory.CreateDirectory(SAVE_PATH);
+        }
+        LoadFromJson();
+
+        InvokeRepeating("SaveToJson", 1f, 60f);
 
         maxPosition = new Vector2(r,r);
         minPosition = new Vector2(-r,-r);
