@@ -13,6 +13,7 @@ public class LobbyPlayerMove : MonoBehaviour
     private Rigidbody2D rigidbody = null;
 
     private bool isPanel = false;
+    private bool isTeleportation = false;
 
     [SerializeField]
     private Image fadePanel;
@@ -31,7 +32,7 @@ public class LobbyPlayerMove : MonoBehaviour
 
     private void Update()
     {
-        if (!isPanel)
+        if (!isPanel && !isTeleportation)
         {
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
@@ -69,6 +70,7 @@ public class LobbyPlayerMove : MonoBehaviour
         if(collision.CompareTag("Room"))
         {
             index = collision.transform.GetComponent<RoomIndex>().GetIndex();
+            isTeleportation = true;
             StartCoroutine(PlayFadeOut());
 
         }
@@ -87,6 +89,7 @@ public class LobbyPlayerMove : MonoBehaviour
             fadePanel.color = new Color(0, 0, 0, Mathf.Lerp(1f, 0f, time));
             yield return null;
         }
+        isTeleportation = false;
     }
 
     IEnumerator PlayFadeOut()
