@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
     private float maxFlyTime;
     private float time = 0;
     private bool isFly = false;
+    private bool isKey = false;
 
     private int count = 0;
 
@@ -159,12 +160,18 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
                 bullet.transform.position = playerPosition.transform.position;
                 bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, tempRot));
                 bullet.GetComponent<BulletMove>().targetPostion = new Vector2(Mathf.Cos(tempRot * Mathf.Deg2Rad), Mathf.Sin(tempRot * Mathf.Deg2Rad));
-                bullet.SetActive(true);
-                int rX = Random.Range(-20, 20);
-                int rY = Random.Range(-20, 20);
-                GameManager.Instance.rebound.StartBandong(rX, rY);
-                StartCoroutine(GameManager.Instance.camera.Shake(0.02f, 0.1f));
-                ChangeBulletSprite(bullet);
+
+            //Vector3 targetPos = ((Vector3)v2);
+
+            //Vector3 startControl = (targetPos - transform.position / 4);
+
+            bullet.SetActive(true);
+            //bullet.GetComponent<BulletMove>().Bezier(targetPos, startControl);
+            int rX = Random.Range(-20, 20);
+            int rY = Random.Range(-20, 20);
+            GameManager.Instance.rebound.StartBandong(rX, rY);
+            StartCoroutine(GameManager.Instance.camera.Shake(0.02f, 0.1f));
+            ChangeBulletSprite(bullet);
             
         }
     }
@@ -184,10 +191,19 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
     {
         if (collision.gameObject.CompareTag("End_Map"))
         {
-            // To Do 수정 필요
-            PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel", 1) + 1);
-            GameManager.Instance.loadingController.LoadScene("InGame");
-            GameManager.Instance.IsStopEvent = true;
+            if (isKey)
+            {
+                GameManager.Instance.IsStopEvent = true;
+                PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel", 1) + 1);
+                GameManager.Instance.loadingController.LoadScene("InGame");
+                GameManager.Instance.IsStopEvent = true;
+            }
+        }
+
+        if(collision.gameObject.CompareTag("Key"))
+        {
+            collision.gameObject.SetActive(false);
+            isKey = true;
         }
     }
 

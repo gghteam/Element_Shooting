@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class BulletMove : Bullet
 {
@@ -14,13 +15,24 @@ public class BulletMove : Bullet
     private bool _isDead;
     [SerializeField]
     private float speed = 0.1f;
+    private bool isEnd = false;
+
+    #region 베지어커브 관련 코드
+    [SerializeField]
+    private int _bezierResolution = 30;
+    private Vector3[] _bezierPoints;
+    #endregion
+
+    private float _frameSpeed = 0;
+    [SerializeField]
+    private float _jumpSpeed = 0.9f;
     private void Awake() {
         _enemyLayer = LayerMask.NameToLayer("Enemy");
         _wallLayer = LayerMask.NameToLayer("Wall");
     }
     private void Update() {
-        Move();
-        AddScale();
+       Move();
+       AddScale();
     }
     private void FixedUpdate() {
 
@@ -29,6 +41,31 @@ public class BulletMove : Bullet
     {
         transform.position = transform.position + (targetPostion.normalized * bulletSpeed * Time.deltaTime); 
     }
+
+   public void Bezier(Vector3 targetPos, Vector3 startControl)
+    {
+        float angle = targetPos.x - transform.position.x < 0 ? -25f : 25f;
+
+        Vector3 cp1 = Quaternion.Euler(0, 0, angle) * startControl;
+        Vector3 cp2 = Quaternion.Euler(0, 0, angle) * (startControl * 3);
+
+        _bezierPoints = DOCurve.CubicBezier.GetSegmentPointCloud(transform.position, transform.position + cp1, targetPos, transform.position + cp2, _bezierResolution);
+        _frameSpeed = _jumpSpeed / _bezierResolution;
+
+        StartCoroutine(BezierMove());
+    }
+
+    public IEnumerator BezierMove()
+    {
+        for (int i = 0; i < _bezierPoints.Length; i++)
+        {
+            yield return new WaitForSeconds(_frameSpeed);
+            transform.position = _bezierPoints[i];
+        }
+
+        isEnd = true;
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
         if(_isDead)return;
 
@@ -69,6 +106,7 @@ public class BulletMove : Bullet
     public override void Reset()
     {
         _isDead=false;
+        isEnd = false;
         transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
     }
 

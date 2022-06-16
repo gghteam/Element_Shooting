@@ -38,6 +38,8 @@ public class PlayerMove : MonoBehaviour
 
     private bool _isDead = false;
     private bool _isRun = false;
+
+    //private bool isMStop = false;
     private void Awake()
     {
         _playerState = GetComponent<PlayerState>();
