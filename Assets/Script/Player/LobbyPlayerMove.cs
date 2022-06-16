@@ -54,6 +54,7 @@ public class LobbyPlayerMove : MonoBehaviour
         }
         else
         {
+            animator.SetBool("IsMove", false);
             rigidbody.velocity = Vector2.zero;
         }
     }
@@ -71,6 +72,7 @@ public class LobbyPlayerMove : MonoBehaviour
         {
             index = collision.transform.GetComponent<RoomIndex>().GetIndex();
             isTeleportation = true;
+            
             StartCoroutine(PlayFadeOut());
 
         }
