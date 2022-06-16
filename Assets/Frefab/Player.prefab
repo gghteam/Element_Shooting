@@ -45,21 +45,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0.9109982, b: 0, a: 1}
-  m_Intensity: 1.01
+  m_FalloffIntensity: 0.863
+  m_Color: {r: 1, g: 0.99353313, b: 0.9283019, a: 1}
+  m_Intensity: 0.8
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000a93a29f60fe3d84a0b4c51ef8b8d61cd073b2e4a2b1b6b0a
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
-  m_ShadowIntensity: 0
+  m_ShadowIntensity: 1
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1
+  m_PointLightInnerRadius: 0.45
+  m_PointLightOuterRadius: 5
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -84,9 +84,13 @@ GameObject:
   - component: {fileID: -7113634536501618352}
   - component: {fileID: 9189107688109370548}
   - component: {fileID: 179450655584699953}
+  - component: {fileID: 2634536368510226210}
   - component: {fileID: 5190554263118170075}
   - component: {fileID: 1050173394722304809}
-  - component: {fileID: 2634536368510226210}
+  - component: {fileID: 365998581}
+  - component: {fileID: 365998582}
+  - component: {fileID: 365998587}
+  - component: {fileID: 4187623299631633169}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -201,6 +205,25 @@ CapsuleCollider2D:
   m_Offset: {x: 0.030385569, y: 0}
   m_Size: {x: 0.30575916, y: 0.68}
   m_Direction: 0
+--- !u!95 &2634536368510226210
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81848737094792969}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 371047dfec1ec494995648a2708330fe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5190554263118170075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,25 +285,81 @@ MonoBehaviour:
   condition: 1
   bulletDelay: 0.1
   sphereSize: 2
---- !u!95 &2634536368510226210
-Animator:
-  serializedVersion: 3
+  maxFlyTime: 3
+--- !u!114 &365998581
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 81848737094792969}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 371047dfec1ec494995648a2708330fe, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8881d7d9ef7df45bb06bf14f36cede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <GetItemKeyPress>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 365998587}
+        m_TargetAssemblyTypeName: ItemInventory, Assembly-CSharp
+        m_MethodName: GetActiveItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &365998582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81848737094792969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e90ecf1ac71ab4cab55cf20af778f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterState:
+    hp: 5
+    maxHp: 5
+    speed: 1
+    stamina: 40
+    maxStamina: 40
+    mana: 0
+    rpm: 1
+    mul: 1
+    atk: 1
+    exp: 0
+--- !u!114 &365998587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81848737094792969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f8781e694f1b246beca9d448e38892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4187623299631633169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81848737094792969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbaecbb7de9d33b4a8d1a87a3cf38f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &422510960723611540
 GameObject:
   m_ObjectHideFlags: 0

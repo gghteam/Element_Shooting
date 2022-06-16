@@ -20,7 +20,7 @@ public class ItemBox : MonoBehaviour
 
     private void Awake()
     {
-       // _animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
     private void Start()
     {
@@ -34,16 +34,18 @@ public class ItemBox : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            OpenBox();
+            StartCoroutine(OpenBox());
         }
     }
 
-    private void OpenBox()
+    private IEnumerator OpenBox()
     {
         if(_isOpenBox==false)
         {
             _isOpenBox = true;
-            //_animator.SetTrigger(_openHasStr);
+            _animator.SetTrigger(_openHasStr);
+
+            yield return new WaitForSeconds(0.5f);
 
             int dropItemCount = _itemBoxData.maxDropItem;
             dropItemCount = Mathf.Clamp(dropItemCount, 1, _boxInItemCount);
@@ -82,6 +84,6 @@ public class ItemBox : MonoBehaviour
 
         Vector2 randomOffset = Random.insideUnitCircle;
 
-        dropItem.SpawnInBox(transform.position + (Vector3)randomOffset* 1.2f,power:1.5f,time:0.8f);
+        dropItem.SpawnInBox(transform.position + (Vector3)randomOffset* 1.2f,power:1f,time:0.8f);
     }
 }

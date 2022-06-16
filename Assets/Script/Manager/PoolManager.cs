@@ -75,7 +75,6 @@ public class PoolManager : MonoBehaviour
             obj.SetActive(false);
             obj.transform.parent = this.transform;
             pooledObjectsList[index].Add(obj);
-            Debug.Log("��");
             return obj;
 
         }
