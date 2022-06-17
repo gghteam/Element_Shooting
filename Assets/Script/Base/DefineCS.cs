@@ -25,7 +25,8 @@ public static class DefineCS
         Bat = 10,
         ItemTooltip = 11,
         Item = 12,
-        MonsterDropItem = 13
+        MonsterDropItem = 13,
+        BossBullet = 14
     }
 
     public enum ResourceTypeEnum
