@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -76,6 +77,21 @@ public class Boss : MonoBehaviour, IHittable,IAgent
     {
         //State();
         ChoiseAttackState();
+        ChangeFace();
+    }
+
+    private void ChangeFace()
+    {
+        if (_isAttack) return;
+        Vector2 vec = _targetTrm.position - transform.position;
+        if(vec.x>0)
+        {
+            _animator.transform.localScale = new Vector3(-1.5f, 1.5f, 1);
+        }
+        else
+        {
+            _animator.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+        }
     }
 
     private void State()
@@ -137,9 +153,14 @@ public class Boss : MonoBehaviour, IHittable,IAgent
 
     private IEnumerator RangeAPattern()
     {
-        CircleFire(30, 5, transform, 10);
-        yield return new WaitForSeconds(1f);
-
+        int a = 0;
+        for(int i = 0;i<15;i++)
+        {
+            CircleFire(30, a, transform, 10);
+            a+=15;
+            yield return new WaitForSeconds(0.5f);
+        }
+        _animator.SetBool(_rangeAttackHashStr, false);
         StartCoroutine(WaitForAttackTime());
     }
 
@@ -151,7 +172,7 @@ public class Boss : MonoBehaviour, IHittable,IAgent
         {
             go = Bullet();
             go.transform.position = bulletPos.position;
-            Vector2 dir = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / shotingCnt), Mathf.Sin(Mathf.PI * 2 * i / shotingCnt));
+            Vector2 dir = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / shotingCnt + one) , Mathf.Sin(Mathf.PI * 2 * i / shotingCnt + one));
             Vector3 rot = new Vector3(0f, 0f, 360 * i / shotingCnt - 90);
             bullet = go.GetComponent<BossBullet>();
             bullet.SetBullet(dir, rot, 0);
