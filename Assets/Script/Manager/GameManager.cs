@@ -141,10 +141,7 @@ public class GameManager : MonoSingleton<GameManager>
         minPosition = new Vector2(-r,-r);
         dialogueManager = FindObjectOfType<DialogueManager>();
         storyData = FindObjectOfType<StoryData>();
-    }
 
-    private void Start()
-    {
         playerController = FindObjectOfType<PlayerController>();
         elementManager = FindObjectOfType<ElementManager>();
         camera = FindObjectOfType<CameraMove>();
@@ -153,10 +150,15 @@ public class GameManager : MonoSingleton<GameManager>
         damagePopup = FindObjectOfType<DamagePopup>();
         BloodParticleSystemHandler = FindObjectOfType<ScorchParticleSystemHandler>();
         loadingController = FindObjectOfType<LoadingSceneController>();
-        if(loadingController == null)
+        if (loadingController == null)
         {
-           loadingController = Instantiate(Resources.Load<LoadingSceneController>("LoadingUI")); 
+            loadingController = Instantiate(Resources.Load<LoadingSceneController>("LoadingUI"));
         }
+    }
+
+    private void Start()
+    {
+
     }
     //public Character PlayerInfo{
     //    get{ return player;}

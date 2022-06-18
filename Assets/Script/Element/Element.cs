@@ -10,7 +10,12 @@ public abstract class Element : MonoBehaviour
     public Conditions Condition { get; private set; }
     private void Awake() {
         enemy = GetComponent<Enemy>();
-        hittable = enemy.GetComponent<IHittable>();
+        hittable = enemy?.GetComponent<IHittable>();
+        ChildAwake();
+    }
+    protected virtual void ChildAwake()
+    {
+
     }
     public abstract void BulletSkill(Conditions conditions,GameObject dealer);
     public virtual void Bullet()
