@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: NormalItemBox
   m_EditorClassIdentifier: 
   itemList:
-  - {fileID: 11400000, guid: 62da952a9d6f95946a029d27eb3236ff, type: 2}
+  - {fileID: 11400000, guid: 8302f303f5c8c35459e379b36b31c5fb, type: 2}
+  - {fileID: 11400000, guid: 96b0b5bda84a30d4592616761994adbe, type: 2}
+  - {fileID: 11400000, guid: 4b59d3c9a0c2f8442acad7a5c7509e93, type: 2}
+  - {fileID: 11400000, guid: bd028e91e51b5a745b39066a86e784a1, type: 2}
+  - {fileID: 11400000, guid: 92f6d98ae06926e4081eec36e95af986, type: 2}
   maxDropItem: 1
