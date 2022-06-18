@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6ca8264ae28a424c9ab5133122b80e5, type: 3}
-  m_Name: TestItem
+  m_Name: SwordItemData
   m_EditorClassIdentifier: 
-  itemName: asd
-  itemSprite: {fileID: -3468446598359703644, guid: b45ba3d129a7c854f90ae406a5acb3f8, type: 3}
-  addHealth: 1
-  speed: 2
-  stamina: 10
+  itemName: Sword
+  itemSprite: {fileID: 21300000, guid: 67ecdd88d0480bd4583897e6bfd7d7a8, type: 3}
+  addHealth: 0
+  speed: 1
+  stamina: 0
   mana: 0
-  atk: 1
-  rpm: 1
-  mul: 1
+  atk: -1
+  rpm: 2
+  mul: 0

@@ -91,7 +91,6 @@ GameObject:
   - component: {fileID: 365998582}
   - component: {fileID: 365998587}
   - component: {fileID: 1680932072896418028}
-  - component: {fileID: 3821439632466594560}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -157,7 +156,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -849244789
   m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -3032884806057973175, guid: ba5a901e3d066454e93f2f8d13b88039, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -286,7 +285,7 @@ MonoBehaviour:
   condition: 1
   bulletDelay: 0.1
   sphereSize: 2
-  maxFlyTime: 3
+  maxFlyTime: 1
 --- !u!114 &365998581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,29 +375,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3821439632466594560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81848737094792969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20e90ecf1ac71ab4cab55cf20af778f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _characterState:
-    hp: 5
-    maxHp: 5
-    speed: 10
-    stamina: 40
-    maxStamina: 40
-    mana: 0
-    rpm: 1
-    mul: 1
-    atk: 1
-    exp: 0
 --- !u!1 &422510960723611540
 GameObject:
   m_ObjectHideFlags: 0

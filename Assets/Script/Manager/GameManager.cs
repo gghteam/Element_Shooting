@@ -9,8 +9,6 @@ public class GameManager : MonoSingleton<GameManager>
 {
     //public static GameManager Instance;
     [SerializeField]
-    private Character player;
-    [SerializeField]
     private int r;
     public Vector2 maxPosition {get;private set;}
     public Vector2 minPosition {get;private set;}
@@ -71,10 +69,13 @@ public class GameManager : MonoSingleton<GameManager>
     }
 
     #region PlayerState
+    [SerializeField]
     private int health = 0, maxHealth = 0;
+    [SerializeField]
     private float stamina = 0, maxStamina = 0;
     //private int mana = 0;
     private float exp = 0;
+    [SerializeField]
     private int atk = 0;
     #endregion
 
@@ -180,7 +181,31 @@ public class GameManager : MonoSingleton<GameManager>
     }
     public void ChangeMaxHealthValue(int health)
     {
-        maxHealth = health;
+        if(maxHealth != health)
+        {
+
+            if(maxHealth<health)
+            {
+
+                this.health += health - maxHealth;
+                maxHealth = health;
+                if (this.health>maxHealth)
+                {
+                    this.health = maxHealth;
+                }
+            }
+            else
+            {
+                maxHealth = health;
+                if (this.health > maxHealth)
+                {
+                    this.health = maxHealth;
+                }
+            }
+
+            
+        }
+
     }
     public void ChangeStaminaValue(float stamina)
     {
