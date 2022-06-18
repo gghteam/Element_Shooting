@@ -16,6 +16,9 @@ public class TrapBomb : MonoBehaviour
     float smoothness = 0.02f;
 
     bool isBomb = false;
+    bool isDamage = false;
+
+    IHittable hittable;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,8 +30,18 @@ public class TrapBomb : MonoBehaviour
                 {
                     StartCoroutine(LerpColor(Color.red, true));
                     isBomb = true;
+                    isDamage = true;
+                    hittable = collision.GetComponent<IHittable>();
                 });
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player"))
+        {
+            isDamage = false;
         }
     }
 
@@ -47,6 +60,10 @@ public class TrapBomb : MonoBehaviour
         if (isBomb)
         {
             bombParticle.Play();
+            if(isDamage)
+            {
+                hittable.GetHit(50, gameObject);
+            }
             StartCoroutine(LerpColor(Color.white, false));
         }
         magic.DOFade(0, 1f);
