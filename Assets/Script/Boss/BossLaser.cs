@@ -31,11 +31,5 @@ public class BossLaser : MonoBehaviour
         hit = Physics2D.Raycast(transform.position, vec.normalized);
         Vector2 distance = hit.transform.position - transform.position;
         Debug.DrawRay(transform.position, vec.normalized * distance.x, Color.red) ;
-
-        Debug.Log(hit.);
-        //Vector2 distance = hit.transform.position - transform.position;
-        //Debug.Log(hit.transform.position);
-        //Debug.Log(distance);
-        //transform.localScale = new Vector3(distance.x / 2, 1, 1);
     }
 }
