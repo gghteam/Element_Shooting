@@ -15,16 +15,16 @@ public class BossElement : Element
         switch(conditions)
         {
             case Conditions.Fire:
-                hittable.GetHit(1, dealer);
+                hittable.GetHit(GameManager.Instance.PlayerATK, dealer);
                 break;
             case Conditions.Water:
-                hittable.GetHit(1, dealer);
+                hittable.GetHit(GameManager.Instance.PlayerATK, dealer);
                 break;
             case Conditions.Wind:
-                hittable.GetHit(1, dealer);
+                hittable.GetHit(GameManager.Instance.PlayerATK, dealer);
                 break;
             case Conditions.Stone:
-                hittable.GetHit(1, dealer);
+                hittable.GetHit(GameManager.Instance.PlayerATK, dealer);
                 break;
         }
     }

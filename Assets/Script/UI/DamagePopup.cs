@@ -95,6 +95,9 @@ public class DamagePopup : PoolableMono
 
     public override void Reset()
     {
+        transform.localScale = Vector3.one;
+        transform.position = Vector3.zero;
+        sortindOrder = 0;
         //NULL
     }
 }

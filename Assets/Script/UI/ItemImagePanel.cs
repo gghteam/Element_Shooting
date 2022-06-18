@@ -11,7 +11,6 @@ public class ItemImagePanel : MonoBehaviour
 
     public void SetValue(Sprite sprite)
     {
-        Debug.Log(_itemImage);
         _itemImage.sprite = sprite;
     }
 }

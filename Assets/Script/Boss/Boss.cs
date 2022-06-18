@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using static DefineCS;
+using Random = UnityEngine.Random;
 
 enum BossState
 {
@@ -25,13 +26,14 @@ public class Boss : MonoBehaviour, IHittable,IAgent
     private GameObject _bossBulletPrefab;
 
     private BossState _currentState = BossState.Idle;
-    private BossState _deforeState = BossState.Idle;
+    private BossState _beforeState = BossState.Idle;
 
     private Transform _targetTrm = null;
 
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     private AudioSource _audio;
+    private BossHp _bossHp;
 
     private readonly int _attackHashStr = Animator.StringToHash("Attack");
     private readonly int _rangeAttackHashStr = Animator.StringToHash("RangeAttack");
@@ -53,7 +55,12 @@ public class Boss : MonoBehaviour, IHittable,IAgent
     {
         Health -= damage;
 
-        if(Health <= 0)
+        float hp = (float)Health / _bossDataSO.health;
+        _bossHp.SetValue(hp);
+
+        DamagePopup.Create(transform.localPosition, -damage, false);
+
+        if (Health <= 0)
         {
             Debug.Log("Boss Die");
         }
@@ -68,6 +75,7 @@ public class Boss : MonoBehaviour, IHittable,IAgent
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _audio = GetComponent<AudioSource>();
+        _bossHp = FindObjectOfType<BossHp>();
     }
     private void Start()
     {
@@ -77,12 +85,11 @@ public class Boss : MonoBehaviour, IHittable,IAgent
     {
         //State();
         ChoiseAttackState();
-        ChangeFace();
+
     }
 
     private void ChangeFace()
     {
-        if (_isAttack) return;
         Vector2 vec = _targetTrm.position - transform.position;
         if(vec.x>0)
         {
@@ -123,59 +130,156 @@ public class Boss : MonoBehaviour, IHittable,IAgent
         if (_isAttack) return;
         _isAttack = true;
         Vector2 dir = _targetTrm.position - transform.position;
-        if(dir.sqrMagnitude < 75)
+        if(dir.sqrMagnitude < 75&& _beforeState != BossState.Attack)
         {
             MeleeAttack();
         }
-        else
+        else if(_beforeState != BossState.Range)
         {
             RangeAttack();
         }
+        else
+        {
+            MoveDown();
+        }
+    }
+
+    private void MoveDown()
+    {
+        _currentState = BossState.MoveDown;
+        _animator.SetTrigger(_moveDownHashStr);
+        StartCoroutine(MoveDownCoroutine());
+    }
+
+    private IEnumerator MoveDownCoroutine()
+    {
+        yield return new WaitForSeconds(4f);
+        transform.position = new Vector2(Mathf.Clamp(_targetTrm.position.x, -7, 7), Mathf.Clamp(_targetTrm.position.y, -6, 6));
+        _currentState = BossState.MoveUp;
+        _animator.SetTrigger(_moveUpHashStr);
+        StartCoroutine(WaitForAttackTime());
     }
 
     private void MeleeAttack()
     {
+        _currentState = BossState.Attack;
+        ChangeFace();
         _animator.SetTrigger(_attackHashStr);
         StartCoroutine(WaitForAttackTime());
 
     }
     private void RangeAttack()
     {
+        _currentState = BossState.Range;
         _animator.SetBool(_rangeAttackHashStr, true);
         _animator.SetTrigger(_attackHashStr);
-        StartCoroutine(RangeAPattern());
+        int ran = Random.Range(0, 3);
+        switch (ran)
+        {
+            case 0:
+                StartCoroutine(RangeAPattern());
+                break;
+            case 1:
+                StartCoroutine(RangeBPattern());
+                break;
+            case 2:
+                StartCoroutine(RangeCPattern());
+                break;
+            default:
+                break;
+        }
+
     }
     private IEnumerator WaitForAttackTime()
     {
-        yield return new WaitForSeconds(5f);
+        _beforeState = _currentState;
+        _currentState = BossState.Idle;
+        yield return new WaitForSeconds(3f);
         _isAttack = false;
     }
 
     private IEnumerator RangeAPattern()
     {
+        yield return new WaitForSeconds(2f);
         int a = 0;
         for(int i = 0;i<15;i++)
         {
-            CircleFire(30, a, transform, 10);
+            CircleFire(20, a, transform, 10);
             a+=15;
             yield return new WaitForSeconds(0.5f);
         }
         _animator.SetBool(_rangeAttackHashStr, false);
         StartCoroutine(WaitForAttackTime());
     }
+    private IEnumerator RangeBPattern()
+    {
+        yield return new WaitForSeconds(2f);
+        GameObject go;
+        BossBullet bullet;
+        float ShootingCnt = 60;
+        for (int i = 0;i< ShootingCnt; i++)
+        {
+            go = Bullet();
+            go.transform.position = transform.position;
+            Vector2 dir = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / ShootingCnt), Mathf.Sin(Mathf.PI* 2 * i / ShootingCnt));
+            bullet = go.GetComponent<BossBullet>();
+            bullet.SetBullet(dir, Vector2.zero, 0);
+            go.SetActive(true);
+            go = Bullet();
+            go.transform.position = transform.position;
+            bullet = go.GetComponent<BossBullet>();
+            bullet.SetBullet(-dir, Vector2.zero, 0);
+            go.SetActive(true);
+            go = Bullet();
+            go.transform.position = transform.position;
+            bullet = go.GetComponent<BossBullet>();
+            bullet.SetBullet(new Vector2(dir.y,-dir.x), Vector2.zero, 0);
+            go.SetActive(true);
+            go = Bullet();
+            go.transform.position = transform.position;
+            bullet = go.GetComponent<BossBullet>();
+            bullet.SetBullet(new Vector2(-dir.y, dir.x), Vector2.zero, 0);
+            go.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+        }
+        _animator.SetBool(_rangeAttackHashStr, false);
+        StartCoroutine(WaitForAttackTime());
+    }
+    private IEnumerator RangeCPattern()
+    {
+        
+        GameObject go;
+        BossBullet bullet;
+        int shootingCnt = 10;
+        for (int j = 0;j<12;j++)
+        {
+            Vector2 vec = _targetTrm.position - transform.position;
+            for (int i = 0; i < shootingCnt; i++)
+            {
+                go = Bullet();
+                Vector2 dir = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / shootingCnt), Mathf.Sin(Mathf.PI * 2 * i / shootingCnt));
+                go.transform.position = new Vector2(dir.x, dir.y) + (Vector2)transform.position;
+                bullet = go.GetComponent<BossBullet>();
+                bullet.SetBullet(vec.normalized, Vector2.zero, 0);
+                go.SetActive(true);
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
+        _animator.SetBool(_rangeAttackHashStr, false);
+        StartCoroutine(WaitForAttackTime());
+    }
 
-    private void CircleFire(float shotingCnt, int one, Transform bulletPos, float addspeed)
+    private void CircleFire(float ShootingCnt, int one, Transform bulletPos, float addspeed)
     {
         GameObject go;
         BossBullet bullet;
-        for (int i = 0;i<shotingCnt;i++)
+        for (int i = 0;i<ShootingCnt;i++)
         {
             go = Bullet();
             go.transform.position = bulletPos.position;
-            Vector2 dir = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / shotingCnt + one) , Mathf.Sin(Mathf.PI * 2 * i / shotingCnt + one));
-            Vector3 rot = new Vector3(0f, 0f, 360 * i / shotingCnt - 90);
+            Vector2 dir = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / ShootingCnt + one) , Mathf.Sin(Mathf.PI * 2 * i / ShootingCnt + one));
             bullet = go.GetComponent<BossBullet>();
-            bullet.SetBullet(dir, rot, 0);
+            bullet.SetBullet(dir, Vector2.zero, 0);
             go.SetActive(true);
 
         }
