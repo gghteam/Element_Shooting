@@ -42,6 +42,7 @@ public class Boss : MonoBehaviour, IHittable,IAgent
 
     private bool _isAttack;
     private bool _isRange;
+    private bool _isFaceRight = false;
 
     #region Inferface
     public Vector3 _hitPoint { get; set; }
@@ -93,10 +94,12 @@ public class Boss : MonoBehaviour, IHittable,IAgent
         Vector2 vec = _targetTrm.position - transform.position;
         if(vec.x>0)
         {
+            _isFaceRight = true;
             _animator.transform.localScale = new Vector3(-1.5f, 1.5f, 1);
         }
         else
         {
+            _isFaceRight = false;
             _animator.transform.localScale = new Vector3(1.5f, 1.5f, 1);
         }
     }
@@ -130,11 +133,11 @@ public class Boss : MonoBehaviour, IHittable,IAgent
         if (_isAttack) return;
         _isAttack = true;
         Vector2 dir = _targetTrm.position - transform.position;
-        if(dir.sqrMagnitude < 75&& _beforeState != BossState.Attack)
+        if (dir.sqrMagnitude < 75 && _beforeState != BossState.Attack)
         {
             MeleeAttack();
         }
-        else if(_beforeState != BossState.Range)
+        else if (_beforeState != BossState.Range)
         {
             RangeAttack();
         }
@@ -149,6 +152,30 @@ public class Boss : MonoBehaviour, IHittable,IAgent
         _currentState = BossState.MoveDown;
         _animator.SetTrigger(_moveDownHashStr);
         StartCoroutine(MoveDownCoroutine());
+    }
+    public void CheckMeleeAttack()
+    {
+        Vector2 vec = _targetTrm.position - transform.position;
+        Debug.Log(vec.sqrMagnitude);
+        if((vec.x>0&&_isFaceRight)|| (vec.x < 0 && _isFaceRight == false))
+        {
+            if(vec.sqrMagnitude<90)
+            {
+                IHittable hittable = GameManager.Instance.playerController.GetComponent<IHittable>();
+                hittable.GetHit(4, gameObject);
+            }
+        }
+    }
+    public void CheckMoveAttack()
+    {
+        Vector2 vec = _targetTrm.position - transform.position;
+        Debug.Log(vec);
+        Debug.Log(vec.sqrMagnitude);
+        if (vec.sqrMagnitude < 60 && vec.y<5&&vec.y>-3.5f)
+        {
+            IHittable hittable = GameManager.Instance.playerController.GetComponent<IHittable>();
+            hittable.GetHit(4, gameObject);
+        }
     }
 
     private IEnumerator MoveDownCoroutine()
