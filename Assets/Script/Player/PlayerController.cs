@@ -104,6 +104,7 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
         {
             playerMove.Death();
             OnDie?.Invoke();
+            PlayerPrefs.SetInt("CurrentLevel", 1);
             _isDead = true;
         }
         playerMove.Damaged();
