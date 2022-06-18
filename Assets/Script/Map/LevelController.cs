@@ -17,12 +17,19 @@ public class LevelController : MonoBehaviour
     private List<MapDataSO> LevelMapDatas = new List<MapDataSO>();
 
     public int current;
+    private MapDataSO currentMapData;
 
     public void SetLevelMap()
     {
         PlayerPrefs.SetInt("CurrentLevel", 1);
         current = PlayerPrefs.GetInt("CurrentLevel", 1);
-        MapDataSO currentMapData = LevelMapDatas[current - 1];
+        if(current % 10 == 0)
+        {
+            // Boss ¸Ê Ãâ·Â
+        }
+        else
+            currentMapData = LevelMapDatas[current - 1];
+
         itemCount = currentMapData.itemCount;
         monsterCount = Random.Range(currentMapData.minMonsterCount, currentMapData.maxMonsterCount + 1);
         trapCount = Random.Range(currentMapData.minTrapCount, currentMapData.maxTrapCount + 1);
