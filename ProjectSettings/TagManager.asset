@@ -15,6 +15,7 @@ TagManager:
   - GOINGAME
   - FxTemporaire
   - Room
+  - Key
   layers:
   - Default
   - TransparentFX

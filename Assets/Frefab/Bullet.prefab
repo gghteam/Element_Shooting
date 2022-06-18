@@ -51,6 +51,8 @@ MonoBehaviour:
   bulletSpeed: 13
   targetPostion: {x: 0, y: 0, z: 0}
   speed: 5
+  _bezierResolution: 30
+  _jumpSpeed: 0.9
 --- !u!212 &8251586952555038647
 SpriteRenderer:
   m_ObjectHideFlags: 0

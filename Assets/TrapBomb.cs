@@ -26,7 +26,7 @@ public class TrapBomb : MonoBehaviour
         {
             if (!isBomb)
             {
-                magic.DOFade(1, 1.5f).OnComplete(() =>
+                magic.DOFade(1, 0.5f).OnComplete(() =>
                 {
                     StartCoroutine(LerpColor(Color.red, true));
                     isBomb = true;
