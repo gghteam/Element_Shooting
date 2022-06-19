@@ -4621,8 +4621,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemysList: 
   LevelMapDatas:
-  - {fileID: 11400000, guid: ce39e04825eadcc4589f6ffef0cec973, type: 2}
-  - {fileID: 11400000, guid: 1f8ec890fbf9c3940884cbce9bfff6be, type: 2}
+  - {fileID: 11400000, guid: 60572c7bdf2b9e54a90c1057a57ebaeb, type: 2}
+  - {fileID: 11400000, guid: 29b3e259659010c44aeaec5e626dbac7, type: 2}
+  - {fileID: 11400000, guid: 928efa5029290da4c9500e1d6457dd2c, type: 2}
+  - {fileID: 11400000, guid: aec1facc986b8784fa78f4c4ee78517f, type: 2}
+  - {fileID: 11400000, guid: 806c59c81198bd54dbbfd6330120de5e, type: 2}
+  - {fileID: 11400000, guid: a5927b9970f3fd14b9c102c001d64676, type: 2}
+  - {fileID: 11400000, guid: 5ec5a699f9299c447bb00254beba5547, type: 2}
+  - {fileID: 11400000, guid: c8a135de8a358924ebf7e17f3534ed2a, type: 2}
+  - {fileID: 11400000, guid: 87a27b7c8dbeeb84ab9017c133204774, type: 2}
   current: 1
 --- !u!1 &945074673
 GameObject:

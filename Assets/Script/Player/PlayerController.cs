@@ -75,7 +75,9 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
                 time += Time.deltaTime;
                 if (time > maxFlyTime)
                 {
-                    Debug.Log("DEATH");
+                    //Debug.Log("DEATH");
+                    GameManager.Instance.ActiveItemInit();
+                    PlayerPrefs.SetInt("CurrentLevel", 1);
                     playerMove.Death();
                     OnDie?.Invoke();
                     _isDead = true;
@@ -103,9 +105,12 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
         OnGetHit?.Invoke();
         if(Health <= 0)
         {
+            Debug.Log("AAAAAAAAA");
+            GameManager.Instance.ActiveItemInit();
+            PlayerPrefs.SetInt("CurrentLevel", 1);
             playerMove.Death();
             OnDie?.Invoke();
-            PlayerPrefs.SetInt("CurrentLevel", 1);
+            
             _isDead = true;
         }
         playerMove.Damaged();
@@ -214,7 +219,7 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
         if(collision.gameObject.CompareTag("Empty"))
         {
             //count++;
-            Debug.Log("Enter");
+            //Debug.Log("Enter");
             isFly = true;
         }
     }

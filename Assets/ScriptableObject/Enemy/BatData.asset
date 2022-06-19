@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: Bat
   prefab: {fileID: 4250687008302772605, guid: 19eb9536657f49145a219e157a52830b, type: 3}
   poolPrefab: {fileID: 2116700863910458103, guid: 19eb9536657f49145a219e157a52830b, type: 3}
-  <maxHealth>k__BackingField: 10
+  <maxHealth>k__BackingField: 15
   <damage>k__BackingField: 1
   isKnockBack: 1
   isFly: 1

@@ -65,6 +65,8 @@ public class Boss : MonoBehaviour, IHittable,IAgent
 
         if (Health <= 0)
         {
+            //PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel", 1) + 1);
+            //GameManager.Instance.loadingController.LoadScene("InGame");
             Debug.Log("Boss Die");
         }
     }

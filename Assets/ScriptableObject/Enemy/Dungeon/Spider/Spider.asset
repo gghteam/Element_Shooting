@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: Spider
   prefab: {fileID: 5773052237845855233, guid: c20f78c46147fef4f92a426b7c3be464, type: 3}
   poolPrefab: {fileID: 8611851178465525643, guid: c20f78c46147fef4f92a426b7c3be464, type: 3}
-  <maxHealth>k__BackingField: 8
+  <maxHealth>k__BackingField: 20
   <damage>k__BackingField: 1
   isKnockBack: 1
   isFly: 0

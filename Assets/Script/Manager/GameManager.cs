@@ -111,6 +111,12 @@ public class GameManager : MonoSingleton<GameManager>
         File.WriteAllText(SAVE_PATH + SAVE_FILENAME, json, System.Text.Encoding.UTF8);
     }
 
+    public void ActiveItemInit()
+    {
+        user._ativeItemList.Clear();
+        Debug.Log(user._ativeItemList);
+        SaveToJson();
+    }
     #endregion
 
     protected override void Init()
@@ -237,5 +243,11 @@ public class GameManager : MonoSingleton<GameManager>
     }
     public float GetExpValue(){
         return exp;
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("CurrentLevel", 1);
+        GameManager.Instance.ActiveItemInit();
     }
 }

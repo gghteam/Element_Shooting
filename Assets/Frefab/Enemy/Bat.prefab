@@ -680,6 +680,7 @@ GameObject:
   - component: {fileID: 2578740570704764304}
   - component: {fileID: 2399564522577923087}
   - component: {fileID: 4711065541862656167}
+  - component: {fileID: 2759884431720287069}
   m_Layer: 7
   m_Name: VisualSprite
   m_TagString: Untagged
@@ -781,6 +782,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89cc31bcc8449a04ab53f789a3f30744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2759884431720287069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3614524424164361694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25841e91986dbad4c89db3cd429f2c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4250687008302772605
@@ -968,6 +981,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <attackDelay>k__BackingField: 1
+  AttackFeedback:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3699247980688557241
 MonoBehaviour:
   m_ObjectHideFlags: 0

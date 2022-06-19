@@ -22,10 +22,10 @@ public class LevelController : MonoBehaviour
     public bool SetLevelMap()
     {
         //PlayerPrefs.SetInt("CurrentLevel", 1);
-        current = PlayerPrefs.GetInt("CurrentLevel", 1) % 20;
+        current = PlayerPrefs.GetInt("CurrentLevel", 1);
         if(current % 10 == 0)
         {
-            // Boss ¸Ê Ãâ·Â
+            // Boss ï¿½ï¿½ ï¿½ï¿½ï¿½
             return true;
         }
         else
