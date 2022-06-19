@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: BlueSlime
   prefab: {fileID: 8334144702343241978, guid: 38c3b541b30a04341a8345a914c21325, type: 3}
   poolPrefab: {fileID: 6067937611920139120, guid: 38c3b541b30a04341a8345a914c21325, type: 3}
-  <maxHealth>k__BackingField: 5
+  <maxHealth>k__BackingField: 2
   <damage>k__BackingField: 1
   isKnockBack: 1
   isFly: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: RedSlime
   prefab: {fileID: 5400640800061595133, guid: e54d5e9ede3a8d84a9674e7c6687d2db, type: 3}
   poolPrefab: {fileID: 8285167171361986767, guid: e54d5e9ede3a8d84a9674e7c6687d2db, type: 3}
-  <maxHealth>k__BackingField: 5
+  <maxHealth>k__BackingField: 2
   <damage>k__BackingField: 1
   isKnockBack: 1
   isFly: 0

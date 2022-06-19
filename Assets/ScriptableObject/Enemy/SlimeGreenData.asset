@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: GreenSlime
   prefab: {fileID: 7266360689857745350, guid: 7f1738f3bc2ca45469d93673e1c9bd1f, type: 3}
   poolPrefab: {fileID: 4166810619660521604, guid: b0e7effbfc99a3846ae04756db71878d, type: 3}
-  <maxHealth>k__BackingField: 5
+  <maxHealth>k__BackingField: 2
   <damage>k__BackingField: 1
   isKnockBack: 1
   isFly: 0

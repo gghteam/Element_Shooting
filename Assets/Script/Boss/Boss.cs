@@ -25,6 +25,9 @@ public class Boss : MonoBehaviour, IHittable,IAgent
     [SerializeField]
     private GameObject _bossBulletPrefab;
 
+    [SerializeField]
+    private GameObject _EndPanel;
+
     private BossState _currentState = BossState.Idle;
     private BossState _beforeState = BossState.Idle;
 
@@ -67,6 +70,7 @@ public class Boss : MonoBehaviour, IHittable,IAgent
         {
             //PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel", 1) + 1);
             //GameManager.Instance.loadingController.LoadScene("InGame");
+            _EndPanel.SetActive(true);
             Debug.Log("Boss Die");
         }
     }
