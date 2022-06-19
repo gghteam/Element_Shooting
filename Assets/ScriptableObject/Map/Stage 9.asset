@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 596d936e85b7a904b8ea9d614a535de6, type: 3}
-  m_Name: Stage1
+  m_Name: Stage 9
   m_EditorClassIdentifier: 
   itemCount: 1
-  minMonsterCount: 2
-  maxMonsterCount: 5
-  minTrapCount: 2
-  maxTrapCount: 5
+  minMonsterCount: 3
+  maxMonsterCount: 4
+  minTrapCount: 3
+  maxTrapCount: 4
   minWidth: 5
   maxWidth: 5
   minHeight: 5
   maxHeight: 5
-  enemys: 070000000800000009000000
+  enemys: 0700000008000000090000000f000000100000000a000000

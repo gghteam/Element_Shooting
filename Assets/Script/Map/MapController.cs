@@ -366,7 +366,7 @@ public class MapController : MonoBehaviour
 
         //int rand = Random.Range(0, 4);
         downIndex = downIndex + 1;
-        Debug.Log($"DOWNINDEX:{downIndex}");
+        //Debug.Log($"DOWNINDEX:{downIndex}");
         Vector2 addPos = downPos + dir[downIndex];
         dirCheck[downIndex] = true;
 
@@ -406,12 +406,12 @@ public class MapController : MonoBehaviour
 
             //rand = Random.Range(0, 4);
             downIndex = (downIndex + 1);
-            Debug.Log($"CDOWNINDEX:{downIndex}");
+            //Debug.Log($"CDOWNINDEX:{downIndex}");
             dirCheck[downIndex] = true;
             addPos = downPos + dir[downIndex];
         }
 
-        Debug.Log($"Down:{downIndex}");
+        //Debug.Log($"Down:{downIndex}");
         downPos = addPos;
         SpawnEmpty();
 

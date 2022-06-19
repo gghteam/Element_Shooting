@@ -23,7 +23,7 @@ public class LevelController : MonoBehaviour
     {
         //PlayerPrefs.SetInt("CurrentLevel", 1);
         current = PlayerPrefs.GetInt("CurrentLevel", 1);
-        if(current % 3 == 0)
+        if(current % 10 == 0)
         {
             // Boss ¸Ê Ãâ·Â
             return true;
