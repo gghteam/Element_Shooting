@@ -401,7 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75109ec7f73f65449903fc6d38bf4d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <distance>k__BackingField: 15
+  <distance>k__BackingField: 5
 --- !u!1 &2355633111700355412
 GameObject:
   m_ObjectHideFlags: 0

@@ -66,7 +66,7 @@ public class EventManager : MonoBehaviour
         Action thisAction = null;
         if(eventDictionary.TryGetValue(eventName,out thisAction))
         {
-            thisAction.Invoke();
+            thisAction?.Invoke();
         }
     }
 }

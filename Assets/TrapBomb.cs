@@ -10,6 +10,7 @@ public class TrapBomb : MonoBehaviour
     [SerializeField]
     private ParticleSystem bombParticle;
 
+
     [SerializeField]
     float duration = 2; 
     [SerializeField]
@@ -41,6 +42,7 @@ public class TrapBomb : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
+            Debug.Log("Exit");
             isDamage = false;
         }
     }
@@ -63,7 +65,7 @@ public class TrapBomb : MonoBehaviour
             bombParticle.Play();
             if(isDamage)
             {
-                hittable.GetHit(50, gameObject);
+                hittable.GetHit(2, gameObject);
             }
             StartCoroutine(LerpColor(Color.white, false));
         }

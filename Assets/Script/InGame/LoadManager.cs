@@ -8,33 +8,20 @@ using DG.Tweening;
 public class LoadManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject fire;
-    [SerializeField]
-    private GameObject water;
-    [SerializeField]
-    private RectTransform nameText;
-
-    private void Start()
+    private Canvas _canvas;
+    private void Awake()
     {
-        nameText.DOAnchorPosY(-250,0.5f).SetLoops(-1, LoopType.Yoyo);
-    }
-
-    private void Update()
-    {
-        fire.transform.Rotate(0, 0, -Time.deltaTime * 200, Space.Self);
-        water.transform.Rotate(0, 0, Time.deltaTime * 200, Space.Self);
-        if(Input.GetMouseButtonDown(0))
-        {
-            StartGame();
-        }
-        if(Input.GetKey(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
+        
     }
     public void StartGame()
     {
         Debug.Log("¤»¤»¤»");
+        _canvas.sortingOrder = -1;
         FindObjectOfType<LoadingSceneController>().LoadScene("Lobby");
+    }
+    public void QuitGame()
+    {
+        Debug.Log("Game Quit");
+        Application.Quit();
     }
 }

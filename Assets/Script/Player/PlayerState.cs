@@ -27,7 +27,11 @@ public class PlayerState : MonoBehaviour
             GameManager.Instance.PlayerATK = _characterState.atk;
             _characterState.rpm += value.rpm;
             _characterState.mul += value.mul;
-            EventManager.TriggerEvent(EventManager.EventName.PLAYER_DAMAGED);
+            if(EventManager.IsListening(EventManager.EventName.PLAYER_DAMAGED))
+            {
+                EventManager.TriggerEvent(EventManager.EventName.PLAYER_DAMAGED);
+            }
+
         }
     }
 
