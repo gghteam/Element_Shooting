@@ -22,8 +22,8 @@ public class LevelController : MonoBehaviour
     public bool SetLevelMap()
     {
         //PlayerPrefs.SetInt("CurrentLevel", 1);
-        current = PlayerPrefs.GetInt("CurrentLevel", 1);
-        if(current % 3 == 0)
+        current = PlayerPrefs.GetInt("CurrentLevel", 1) % 20;
+        if(current % 10 == 0)
         {
             // Boss ¸Ê Ãâ·Â
             return true;
