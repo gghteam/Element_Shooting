@@ -8,7 +8,7 @@ public class BossHp : MonoBehaviour
 {
     private Slider _slider;
 
-    private float _maxValue = 1, _value = 1;
+    private float _value = 1;
 
     private void Awake()
     {

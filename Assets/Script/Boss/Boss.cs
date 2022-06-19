@@ -52,6 +52,8 @@ public class Boss : MonoBehaviour, IHittable,IAgent
     public UnityEvent OnDie { get; set; }
     public UnityEvent OnGetHit { get; set; }
 
+    public bool IsEnemy { get; }
+
     public void GetHit(int damage, GameObject damageDealer)
     {
         Health -= damage;

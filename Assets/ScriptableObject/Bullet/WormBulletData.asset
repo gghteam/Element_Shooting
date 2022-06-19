@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9222e8a7b83fb784eb5bf5a134304df5, type: 3}
+  m_Name: WormBulletData
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7118041624482667729, guid: 74981d0540e336349b05d9014c57aa5c, type: 3}
+  damage: 1
+  bulletSpeed: 5
+  explosionRadius: 2
+  sprite: {fileID: 3743957659742367504, guid: 53479fac94ce89344b5b9e3aa2743dc5, type: 3}
+  animatorController: {fileID: 9100000, guid: 26f4b040bdfd1a941aaa329ae8d850a6, type: 2}
+  friction: 0
+  bounce: 0
+  goThroughHit: 0
+  isRayCast: 0
+  isCharging: 1
+  impactObstaclePrefab: {fileID: 1962652587890117117, guid: 5f2938bb2af6dae46afe25c91ba2938f, type: 3}
+  impactEnemyPrefab: {fileID: 1962652587890117117, guid: 5f2938bb2af6dae46afe25c91ba2938f, type: 3}
+  knockBackPower: 3
+  knockBackDelay: 0.3
+  bulletMat: {fileID: 2100000, guid: 5950144dfcfa0a740ad5def9f2bfb0e9, type: 2}
+  lifeTime: 2

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8735232d7bc2b2f49a342ae303a54b4e, type: 3}
+  m_Name: Skeleton
+  m_EditorClassIdentifier: 
+  enemyName: skeleton
+  prefab: {fileID: 4358138286098005263, guid: ad88dd0c814f1e44b9ec4413ac707045, type: 3}
+  poolPrefab: {fileID: 2010372103181876869, guid: ad88dd0c814f1e44b9ec4413ac707045, type: 3}
+  <maxHealth>k__BackingField: 15
+  <damage>k__BackingField: 2
+  isKnockBack: 1
+  isFly: 0

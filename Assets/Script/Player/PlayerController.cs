@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
     private Conditions condition;
     public Conditions GetCondition { get { return condition; } }
 
+    public bool IsEnemy { get; }
+
     [SerializeField]
     private float bulletDelay;
     [SerializeField]
@@ -50,7 +52,6 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
     private bool isFly = false;
     private bool isKey = false;
 
-    private int count = 0;
 
     private void Awake()
     {

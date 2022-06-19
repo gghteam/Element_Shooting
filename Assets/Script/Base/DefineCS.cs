@@ -26,7 +26,14 @@ public static class DefineCS
         ItemTooltip = 11,
         Item = 12,
         MonsterDropItem = 13,
-        BossBullet = 14
+        BossBullet = 14,
+        Spider = 15,
+        Skeleton = 16,
+
+        ExplosionBullet,
+        ExplosionImpact,
+        RegularBullet
+
     }
 
     public enum ResourceTypeEnum

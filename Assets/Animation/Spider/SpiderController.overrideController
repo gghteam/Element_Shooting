@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SpiderController
+  m_Controller: {fileID: 9100000, guid: 984c46e1b861aab4b83e264c8f68e02c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: f238bd8a0fb59fc459c09a86ce37d8c5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1d5d8e7f19735984bb53cbdd7ad9919b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: bd216991cb396e0468e64c089b45f6b8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a949ad3a3c5a7fe43a54c55916b65908, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 52a459c6db37b6b4aa0556575a377d73, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 301a820a780f57b4e8ef212b8bd9d9f8, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 48976c52be635dc488d0dd879d7a51f7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: db357b7808de98541b3dac39447060d8, type: 2}

@@ -15,6 +15,7 @@ public class BulletMove : Bullet
     private bool _isDead;
     [SerializeField]
     private float speed = 0.1f;
+
     private bool isEnd = false;
 
     #region 베지어커브 관련 코드

@@ -41,6 +41,8 @@ public class Enemy : PoolableMono,IAgent,IHittable,IKnockBack,IStun
     public UnityEvent OnReset { get; set; }
     public Vector3 _hitPoint { get; private set; }
 
+    public bool IsEnemy { get; }
+
     public Action OnAttackAnimation;
 
     private EnemyAiBrain _enemyBrain;

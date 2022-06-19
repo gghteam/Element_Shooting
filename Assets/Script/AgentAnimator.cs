@@ -9,7 +9,7 @@ public class AgentAnimator : MonoBehaviour
 
     private readonly int _walkHashStr = Animator.StringToHash("Walk");
     private readonly int _deathHashStr = Animator.StringToHash("Death");
-    private readonly int _attackHashStr = Animator.StringToHash("Attack");
+    protected readonly int _attackHashStr = Animator.StringToHash("Attack");
 
     private void Awake()
     {
@@ -17,11 +17,16 @@ public class AgentAnimator : MonoBehaviour
         GetComponentInParent<AgentMovement>().OnVelocityChange += AnimatePlayer;
         GetComponentInParent<Enemy>().OnAttackAnimation += SetAttackAnimaiton;
         GetComponentInParent<Enemy>().OnDieAnimaiton += PlayDeathAnimation;
+        ChildAwake();
+    }
+    protected virtual void ChildAwake()
+    {
+
     }
     public void SetAttackAnimaiton()
     {
         _agentAnimator.SetBool(_walkHashStr, false);
-        _agentAnimator.SetTrigger("Attack");
+        _agentAnimator.SetTrigger(_attackHashStr);
     }
 
     public void SetWalkAnimation(bool value)
