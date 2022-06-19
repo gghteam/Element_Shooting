@@ -159,6 +159,7 @@ public class Boss : MonoBehaviour, IHittable,IAgent
     {
         Vector2 vec = _targetTrm.position - transform.position;
         Debug.Log(vec.sqrMagnitude);
+        SoundManager.Instance.MeleeSound();
         if((vec.x>0&&_isFaceRight)|| (vec.x < 0 && _isFaceRight == false))
         {
             if(vec.sqrMagnitude<90)

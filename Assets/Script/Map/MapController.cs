@@ -28,6 +28,8 @@ public class MapController : MonoBehaviour
     private List<GameObject> etcMap = new List<GameObject>();
     [SerializeField]
     private List<GameObject> boundaryMap = new List<GameObject>();
+    [SerializeField]
+    private GameObject bossMap;
     //[SerializeField]
     //private GameObject[] rooms; // 0 ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ 1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3 ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½
     [SerializeField]
@@ -100,31 +102,44 @@ public class MapController : MonoBehaviour
         {
             GameObject map = Instantiate(tutorialMap, new Vector3(0, 0, 0), Quaternion.identity);
             map.transform.parent = gameObject.transform;
+            SoundManager.Instance.SetTutorialAudio();
         }
         else
         {
             // ÇöÀç LevelÀÇ map°³¼ö ºÒ·¯¿À±â
-            levelController.SetLevelMap();
+            bool isBoss = levelController.SetLevelMap();
 
-            // Áö¿ª º¯¼ö¿¡ ÀúÀå
-            itemCount = levelController.itemCount;
-            monsterCount = levelController.monsterCount;
-            trapCount = levelController.trapCount;
-            width = levelController.width;
-            height = levelController.height;
+            if (isBoss)
+            {
+                stopDownGeneration = false;
+                Instantiate(bossMap, new Vector3(0, 0, 0), Quaternion.identity);
+                GameManager.Instance.SetPos = new Vector3(0, -5, 0);
+                SoundManager.Instance.SetBossAudio();
+            }
+            else
+            {
+                // Áö¿ª º¯¼ö¿¡ ÀúÀå
+                itemCount = levelController.itemCount;
+                monsterCount = levelController.monsterCount;
+                trapCount = levelController.trapCount;
+                width = levelController.width;
+                height = levelController.height;
 
-            mapObjects = new GameObject[height, width];
+                mapObjects = new GameObject[height, width];
 
 
-            //Etc_Map Setting
-            mapCount = width * height;
-            etcCount = mapCount - (itemCount + monsterCount + trapCount);
+                //Etc_Map Setting
+                mapCount = width * height;
+                etcCount = mapCount - (itemCount + monsterCount + trapCount);
 
-            // °æ°è¸é »ý¼º
-            SpawnBoundary();
+                SoundManager.Instance.SetDungenAudio();
 
-            // ¸Ê ½ºÆù
-            SpawnStart();
+                // °æ°è¸é »ý¼º
+                SpawnBoundary();
+
+                // ¸Ê ½ºÆù
+                SpawnStart();
+            }
         }
     }
 

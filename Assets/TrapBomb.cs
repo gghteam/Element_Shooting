@@ -62,6 +62,7 @@ public class TrapBomb : MonoBehaviour
         isBomb = isCheck;
         if (isBomb)
         {
+            SoundManager.Instance.BombSound();
             bombParticle.Play();
             if(isDamage)
             {

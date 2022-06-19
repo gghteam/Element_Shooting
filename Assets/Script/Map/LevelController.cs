@@ -19,13 +19,14 @@ public class LevelController : MonoBehaviour
     public int current;
     private MapDataSO currentMapData;
 
-    public void SetLevelMap()
+    public bool SetLevelMap()
     {
-        PlayerPrefs.SetInt("CurrentLevel", 1);
+        //PlayerPrefs.SetInt("CurrentLevel", 1);
         current = PlayerPrefs.GetInt("CurrentLevel", 1);
-        if(current % 10 == 0)
+        if(current % 3 == 0)
         {
             // Boss ¸Ê Ãâ·Â
+            return true;
         }
         else
             currentMapData = LevelMapDatas[current - 1];
@@ -36,5 +37,6 @@ public class LevelController : MonoBehaviour
         width = Random.Range(currentMapData.minWidth, currentMapData.maxWidth);
         height = Random.Range(currentMapData.minHeight, currentMapData.maxHeight);
         enemysList = currentMapData.enemys;
+        return false;
     }
 }
