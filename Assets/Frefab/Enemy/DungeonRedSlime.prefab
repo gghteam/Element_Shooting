@@ -1358,7 +1358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5498f44f89b88584591b7a47e4747736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyData: {fileID: 11400000, guid: 4e41d53ab132b5e47a8a1d6110695799, type: 2}
+  _enemyData: {fileID: 11400000, guid: 5b4572fa365c1324ebe2f625a34f782e, type: 2}
   <Health>k__BackingField: 0
   <enemyAttack>k__BackingField: {fileID: 0}
   _stateBar: {fileID: 2831086766377868328}

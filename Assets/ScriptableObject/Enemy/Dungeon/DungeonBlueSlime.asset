@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8735232d7bc2b2f49a342ae303a54b4e, type: 3}
-  m_Name: SlimeGreenData
+  m_Name: DungeonBlueSlime
   m_EditorClassIdentifier: 
-  enemyName: GreenSlime
-  prefab: {fileID: 7266360689857745350, guid: 7f1738f3bc2ca45469d93673e1c9bd1f, type: 3}
-  poolPrefab: {fileID: 4166810619660521604, guid: b0e7effbfc99a3846ae04756db71878d, type: 3}
-  <maxHealth>k__BackingField: 5
+  enemyName: DungeonBlueslime
+  prefab: {fileID: 4556220879955114501, guid: ba6e8433459b3d649939192a38bffca6, type: 3}
+  poolPrefab: {fileID: 1776533338141833615, guid: ba6e8433459b3d649939192a38bffca6, type: 3}
+  <maxHealth>k__BackingField: 15
   <damage>k__BackingField: 1
   isKnockBack: 1
   isFly: 0
