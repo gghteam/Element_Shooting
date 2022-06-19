@@ -59,11 +59,11 @@ TagManager:
   - name: TileMap
     uniqueID: 1255727887
     locked: 0
-  - name: Bullet
-    uniqueID: 4015082507
-    locked: 0
   - name: BackParticle
     uniqueID: 376153397
+    locked: 0
+  - name: Bullet
+    uniqueID: 4015082507
     locked: 0
   - name: Character
     uniqueID: 3445722507

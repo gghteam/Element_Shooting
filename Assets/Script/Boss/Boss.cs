@@ -71,6 +71,7 @@ public class Boss : MonoBehaviour, IHittable,IAgent
             //PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel", 1) + 1);
             //GameManager.Instance.loadingController.LoadScene("InGame");
             _EndPanel.SetActive(true);
+            gameObject.SetActive(false);
             Debug.Log("Boss Die");
         }
     }
@@ -180,7 +181,7 @@ public class Boss : MonoBehaviour, IHittable,IAgent
         Vector2 vec = _targetTrm.position - transform.position;
         Debug.Log(vec);
         Debug.Log(vec.sqrMagnitude);
-        if (vec.sqrMagnitude < 60 && vec.y<5&&vec.y>-3.5f)
+        if (vec.sqrMagnitude < 65 && vec.y<6&&vec.y>-4f)
         {
             IHittable hittable = GameManager.Instance.playerController.GetComponent<IHittable>();
             hittable.GetHit(4, gameObject);
@@ -230,7 +231,7 @@ public class Boss : MonoBehaviour, IHittable,IAgent
     {
         _beforeState = _currentState;
         _currentState = BossState.Idle;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2.5f);
         _isAttack = false;
     }
 
@@ -240,7 +241,7 @@ public class Boss : MonoBehaviour, IHittable,IAgent
         int a = 0;
         for(int i = 0;i<15;i++)
         {
-            CircleFire(20, a, transform, 10);
+            CircleFire(25, a, transform, 10);
             a+=15;
             yield return new WaitForSeconds(0.5f);
         }
@@ -299,7 +300,7 @@ public class Boss : MonoBehaviour, IHittable,IAgent
                 bullet.SetBullet(vec.normalized, Vector2.zero, 0);
                 go.SetActive(true);
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
         }
         _animator.SetBool(_rangeAttackHashStr, false);
         StartCoroutine(WaitForAttackTime());

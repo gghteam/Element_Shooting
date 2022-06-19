@@ -23073,7 +23073,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3625499510885416312}
   m_Layer: 0
-  m_Name: BoosStage
+  m_Name: BossStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47698,6 +47698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bossDataSO: {fileID: 11400000, guid: 94d60ab800623ae49b4cdf2a95e3f2bb, type: 2}
   _bossBulletPrefab: {fileID: 0}
+  _EndPanel: {fileID: 7471649034579574243}
 --- !u!114 &3625499510944260038
 MonoBehaviour:
   m_ObjectHideFlags: 0
