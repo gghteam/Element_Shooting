@@ -55,7 +55,7 @@ public class PlayerMove : MonoBehaviour
         transform.position = GameManager.Instance.SetPos;
     }
     private void Update() {
-        SetCharacterDirection();
+        
         if (PlayerPrefs.GetInt("TURORIAL", 1) == 1)
         {
             if (GameManager.Instance.IsStopEvent || GameManager.Instance.dialogueManager.IsDialogue)
@@ -64,12 +64,14 @@ public class PlayerMove : MonoBehaviour
             }
             else Move();
         }
-        else {
+        else 
+        {
             Move();
-                }
+         }
         Dash();
         Run();
         StaminaRecovery();
+        SetCharacterDirection();
     }
     public void SetStamina(float value)
     {
@@ -103,15 +105,16 @@ public class PlayerMove : MonoBehaviour
     private void Move()
     {
         if(_isDead)return;
-        if (PlayerPrefs.GetInt("TURORIAL", 1) == 1)
+        if (GameManager.Instance.IsStopEvent)
         {
-            if (GameManager.Instance.IsStopEvent) return;
+            playerRigid.velocity = Vector2.zero;
+            return;
         }
         velocityX = Input.GetAxisRaw("Horizontal");
         velocityY = Input.GetAxisRaw("Vertical");
         if(state.HasFlag(PlayerMotionState.RUN))
         {
-            moveSpeed = _playerState.CharacterState.speed * 2;
+            moveSpeed = _playerState.CharacterState.speed + (_playerState.CharacterState.speed / 2);
         }
         else
         {
