@@ -115,6 +115,7 @@ public class LobbyPlayerMove : MonoBehaviour
 
     public void OKButton()
     {
+        panel.SetActive(false);
         LoadingSceneController loadingSceneController = FindObjectOfType<LoadingSceneController>();
 
         if (loadingSceneController == null)
