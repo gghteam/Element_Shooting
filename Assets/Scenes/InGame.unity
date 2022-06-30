@@ -6645,6 +6645,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 179450655584699953, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
+      propertyPath: m_Size.x
+      value: 0.46644905
+      objectReference: {fileID: 0}
+    - target: {fileID: 179450655584699953, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.110730514
+      objectReference: {fileID: 0}
     - target: {fileID: 1050173394722304809, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: <OnDie>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
