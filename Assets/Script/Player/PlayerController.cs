@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour, IHittable, IAgent         
 {
@@ -43,6 +44,9 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
     public bool IsEnemy { get; }
 
     [SerializeField]
+    private PlayerFly playerFly;
+
+    [SerializeField]
     private float bulletDelay;
     [SerializeField]
     private float sphereSize;
@@ -52,6 +56,9 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
     private bool isFly = false;
     private bool isKey = false;
 
+    [Header("Fly Á¦¾î")]
+    [SerializeField]
+    private Slider flySlider;
 
     private void Awake()
     {
@@ -63,6 +70,7 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
         spriteRenderer = GetComponent<SpriteRenderer>();
         Health = _playerState.CharacterState.maxHp;
         Camera = GameObject.Find("Camera").GetComponent<Camera>();
+        flySlider.maxValue = maxFlyTime;
         StartCoroutine(Fire());
     }
 
@@ -70,10 +78,11 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
     {
         if (!_isDead)
         {
-            if (isFly)
+            if (playerFly.isFly)
             {
                 time += Time.deltaTime;
-                if (time > maxFlyTime)
+                flySlider.value = maxFlyTime - time;
+                if (time >= maxFlyTime)
                 {
                     //Debug.Log("DEATH");
                     GameManager.Instance.ActiveItemInit();
@@ -214,6 +223,7 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
         }
     }
 
+    /*
     private void OnTriggerStay2D(Collider2D collision)
     {       
         if(collision.gameObject.CompareTag("Empty"))
@@ -233,4 +243,5 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
             isFly = false;
         }
     }
+    */
 }

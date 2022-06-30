@@ -2703,7 +2703,7 @@ GameObject:
   - component: {fileID: 5008256611134709113}
   - component: {fileID: 5008256611134709112}
   - component: {fileID: 6453671752974071040}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Item_Map 1
   m_TagString: Necessary
   m_Icon: {fileID: 0}

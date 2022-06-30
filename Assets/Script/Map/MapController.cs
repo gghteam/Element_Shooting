@@ -97,7 +97,7 @@ public class MapController : MonoBehaviour
     private void Awake()
     {
         //¸¸¾à Æ©Åä¸®¾óÀÌ¶ó¸é
-        // PlayerPrefs.SetInt("TURORIAL",1);
+        //PlayerPrefs.SetInt("TURORIAL",1);
         if (PlayerPrefs.GetInt("TURORIAL", 1) == 1)
         {
             GameObject map = Instantiate(tutorialMap, new Vector3(0, 0, 0), Quaternion.identity);
@@ -214,7 +214,7 @@ public class MapController : MonoBehaviour
 
     private void SpawnStart()
     {
-        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        //»ý¼º Æ÷Áö¼ÇÀ» ½ÃÀÛÀ§Ä¡·Î
         transform.position = startingPos.position;
 
         int random = Random.Range(0, 4);
@@ -420,6 +420,7 @@ public class MapController : MonoBehaviour
     private void SpawnEmpty()
     {
         mapTransform = mapObjects[(int)downPos.y, (int)downPos.x].transform.position;
+
         StartCoroutine(GameManager.Instance.camera.Shake(0.1f, shakeDuration));
         StartCoroutine(Shake(0.3f, shakeDuration, mapObjects[(int)downPos.y, (int)downPos.x]));
         mapObjects[(int)downPos.y, (int)downPos.x].GetComponent<MapObject>().IsDown = true;
@@ -466,5 +467,11 @@ public class MapController : MonoBehaviour
         }
         transform.localPosition = originVec;
 
+        FireContain fireContain = shakeObj?.GetComponent<FireContain>();
+
+        if (fireContain != null)
+        {
+            fireContain.offFireCol();
+        }
     }
 }

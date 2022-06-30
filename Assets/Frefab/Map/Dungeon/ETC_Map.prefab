@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 8013930748618827154}
   - component: {fileID: 8013930748618827155}
   - component: {fileID: 8260818374713589107}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ETC_Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}

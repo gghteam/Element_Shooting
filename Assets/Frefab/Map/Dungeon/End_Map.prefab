@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 1568057769541202673}
   - component: {fileID: 1568057769541202672}
   - component: {fileID: -270571102285405656}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: End_Map
   m_TagString: Necessary
   m_Icon: {fileID: 0}

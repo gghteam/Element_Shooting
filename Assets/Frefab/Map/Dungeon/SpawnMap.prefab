@@ -2809,7 +2809,7 @@ GameObject:
   - component: {fileID: 3316262224952190111}
   - component: {fileID: 3316262224952190110}
   - component: {fileID: -9184044065176892263}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SpawnMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
