@@ -6609,13 +6609,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7113634536501618352, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7113634536501618352, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
+      propertyPath: m_Size.y
+      value: 2.125
+      objectReference: {fileID: 0}
+    - target: {fileID: -7113634536501618352, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 365998582, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: _characterState.hp
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 365998582, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: _characterState.atk
-      value: 2
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 365998582, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
+      propertyPath: _characterState.rpm
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 365998582, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: _characterState.maxHp
@@ -6647,11 +6663,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5574230531486282359, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 13.99
       objectReference: {fileID: 0}
     - target: {fileID: 5574230531486282359, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.51
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5574230531486282359, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: m_LocalPosition.z

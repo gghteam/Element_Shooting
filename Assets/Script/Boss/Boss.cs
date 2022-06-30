@@ -38,13 +38,17 @@ public class Boss : MonoBehaviour, IHittable,IAgent
     private AudioSource _audio;
     private BossHp _bossHp;
 
+    private BossLaser _leftLaser;
+    private BossLaser _rightLaser;
+
     private readonly int _attackHashStr = Animator.StringToHash("Attack");
     private readonly int _rangeAttackHashStr = Animator.StringToHash("RangeAttack");
     private readonly int _moveDownHashStr = Animator.StringToHash("MoveDown");
     private readonly int _moveUpHashStr = Animator.StringToHash("MoveUp");
 
-    private bool _isAttack;
-    private bool _isRange;
+    private bool _isAttack = false;
+    private bool _isTwoPhase = false;
+    private bool _isTwoPhaseStar = false;
     private bool _isFaceRight = false;
 
     #region Inferface
@@ -68,11 +72,15 @@ public class Boss : MonoBehaviour, IHittable,IAgent
 
         if (Health <= 0)
         {
-            //PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel", 1) + 1);
-            //GameManager.Instance.loadingController.LoadScene("InGame");
+            
             _EndPanel.SetActive(true);
             gameObject.SetActive(false);
             Debug.Log("Boss Die");
+        }
+
+        if(Health<_bossDataSO.health/4)
+        {
+            _isTwoPhase = true;
         }
     }
     #endregion
@@ -86,16 +94,19 @@ public class Boss : MonoBehaviour, IHittable,IAgent
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _audio = GetComponent<AudioSource>();
         _bossHp = FindObjectOfType<BossHp>();
+
+        _leftLaser = transform.Find("LeftLaser").GetComponent<BossLaser>();
+        _rightLaser = transform.Find("RightLaser").GetComponent<BossLaser>();
     }
     private void Start()
     {
+        _leftLaser.gameObject.SetActive(false);
+        _rightLaser.gameObject.SetActive(false);
         _targetTrm = GameManager.Instance.playerController.transform;
     }
     private void Update()
     {
-        //State();
         ChoiseAttackState();
-
     }
 
     private void ChangeFace()
@@ -104,44 +115,29 @@ public class Boss : MonoBehaviour, IHittable,IAgent
         if(vec.x>0)
         {
             _isFaceRight = true;
-            _animator.transform.localScale = new Vector3(-1.5f, 1.5f, 1);
+            _spriteRenderer.flipX = true;
         }
         else
         {
             _isFaceRight = false;
-            _animator.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+            _spriteRenderer.flipX = false;
         }
     }
 
-    private void State()
-    {
-        switch(_currentState)
-        {
-            case BossState.Idle:
-                break;
-            case BossState.Attack:
-                break;
-            case BossState.RangeOn:
-                break;
-            case BossState.Range:
-                break;
-            case BossState.RangeOff:
-                break;
-            case BossState.MoveDown:
-                break;
-            case BossState.MoveUp:
-                break;
-            case BossState.Death:
-                break;
-
-        }
-    }
 
     private void ChoiseAttackState()
     {
         if (_isAttack) return;
         _isAttack = true;
+
         Vector2 dir = _targetTrm.position - transform.position;
+
+        if(_isTwoPhase&& _isTwoPhaseStar==false)
+        {
+            _isTwoPhaseStar = true;
+            MoveTwoPhaseStart();
+            return;
+        }
         if (dir.sqrMagnitude < 75 && _beforeState != BossState.Attack)
         {
             MeleeAttack();
@@ -162,6 +158,39 @@ public class Boss : MonoBehaviour, IHittable,IAgent
         _animator.SetTrigger(_moveDownHashStr);
         StartCoroutine(MoveDownCoroutine());
     }
+    private IEnumerator MoveDownCoroutine()
+    {
+        yield return new WaitForSeconds(4f);
+        transform.position = new Vector2(Mathf.Clamp(_targetTrm.position.x, -7, 7), Mathf.Clamp(_targetTrm.position.y, -6, 6));
+        _currentState = BossState.MoveUp;
+        _animator.SetTrigger(_moveUpHashStr);
+        StartCoroutine(WaitForAttackTime());
+    }
+    private void MoveTwoPhaseStart()
+    {
+        _currentState = BossState.MoveDown;
+        _animator.SetTrigger(_moveDownHashStr);
+        StartCoroutine(MoveTwoPhaseCoroutine());
+    }
+    private IEnumerator MoveTwoPhaseCoroutine()
+    {
+        WaitForSeconds wait = new WaitForSeconds(3f);
+        yield return wait;
+        transform.position = Vector2.zero;
+        _animator.SetTrigger(_moveUpHashStr);
+        yield return wait;
+
+        _leftLaser.gameObject.SetActive(true);
+        _rightLaser.gameObject.SetActive(true);
+
+        StartCoroutine(RangeAPattern());
+
+        yield return new WaitForSeconds(10f);
+
+        _leftLaser.gameObject.SetActive(false);
+        _rightLaser.gameObject.SetActive(false);
+    }
+
     public void CheckMeleeAttack()
     {
         Vector2 vec = _targetTrm.position - transform.position;
@@ -187,16 +216,7 @@ public class Boss : MonoBehaviour, IHittable,IAgent
             hittable.GetHit(4, gameObject);
         }
     }
-
-    private IEnumerator MoveDownCoroutine()
-    {
-        yield return new WaitForSeconds(4f);
-        transform.position = new Vector2(Mathf.Clamp(_targetTrm.position.x, -7, 7), Mathf.Clamp(_targetTrm.position.y, -6, 6));
-        _currentState = BossState.MoveUp;
-        _animator.SetTrigger(_moveUpHashStr);
-        StartCoroutine(WaitForAttackTime());
-    }
-
+   
     private void MeleeAttack()
     {
         _currentState = BossState.Attack;
@@ -227,13 +247,7 @@ public class Boss : MonoBehaviour, IHittable,IAgent
         }
 
     }
-    private IEnumerator WaitForAttackTime()
-    {
-        _beforeState = _currentState;
-        _currentState = BossState.Idle;
-        yield return new WaitForSeconds(2.5f);
-        _isAttack = false;
-    }
+    
 
     private IEnumerator RangeAPattern()
     {
@@ -306,6 +320,13 @@ public class Boss : MonoBehaviour, IHittable,IAgent
         StartCoroutine(WaitForAttackTime());
     }
 
+    private IEnumerator WaitForAttackTime()
+    {
+        _beforeState = _currentState;
+        _currentState = BossState.Idle;
+        yield return new WaitForSeconds(2.5f);
+        _isAttack = false;
+    }
     private void CircleFire(float ShootingCnt, int one, Transform bulletPos, float addspeed)
     {
         GameObject go;
