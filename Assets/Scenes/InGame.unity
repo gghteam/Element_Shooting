@@ -4764,7 +4764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &937703348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6611,15 +6611,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7113634536501618352, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: m_Size.x
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -7113634536501618352, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: m_Size.y
-      value: 2.125
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -7113634536501618352, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 365998582, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: _characterState.hp
@@ -6647,11 +6647,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 179450655584699953, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: m_Size.x
-      value: 0.46644905
+      value: 0.33078194
       objectReference: {fileID: 0}
     - target: {fileID: 179450655584699953, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: m_Offset.x
-      value: 0.110730514
+      value: 0.06326103
+      objectReference: {fileID: 0}
+    - target: {fileID: 884164078282012645, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
+      propertyPath: radius
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1050173394722304809, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: <OnDie>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target

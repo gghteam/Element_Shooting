@@ -2,20 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class BulletMove : Bullet
 {
+    [Flags]
+    enum BulletState
+    {
+        None,
+        Around
+    }
+
     [SerializeField]
     private float bulletSpeed = 0.5f;
-    private Element enemyElement;
-    private Vector2 targetPosition;
-    public Vector3 targetPostion = Vector2.zero;
-    private int _enemyLayer;
-    private int _wallLayer;
-    private bool _isDead;
     [SerializeField]
     private float speed = 0.1f;
+    [SerializeField]
+    private float _jumpSpeed = 0.9f;
 
+    private BulletState _mystate = BulletState.None;
+
+    private Element enemyElement;
+
+    private Vector2 targetPosition;
+    public Vector3 targetPostion = Vector2.zero;
+
+    private int _enemyLayer;
+    private int _wallLayer;
+
+    private bool _isDead;
     private bool isEnd = false;
 
     #region 베지어커브 관련 코드
@@ -25,8 +40,7 @@ public class BulletMove : Bullet
     #endregion
 
     private float _frameSpeed = 0;
-    [SerializeField]
-    private float _jumpSpeed = 0.9f;
+    
     private void Awake() {
         _enemyLayer = LayerMask.NameToLayer("Enemy");
         _wallLayer = LayerMask.NameToLayer("Wall");
@@ -40,7 +54,16 @@ public class BulletMove : Bullet
     }
     private void Move()
     {
-        transform.position = transform.position + (targetPostion.normalized * bulletSpeed * Time.deltaTime); 
+        if(_mystate.HasFlag(BulletState.None))
+        {
+            transform.position = transform.position + (targetPostion.normalized * bulletSpeed * Time.deltaTime);
+        }
+        else
+        if(_mystate.HasFlag(BulletState.Around))
+        {
+
+        }
+        
     }
 
    public void Bezier(Vector3 targetPos, Vector3 startControl)

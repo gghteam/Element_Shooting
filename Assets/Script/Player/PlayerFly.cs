@@ -20,9 +20,12 @@ public class PlayerFly : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
+    
+#endif
 }
