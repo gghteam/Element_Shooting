@@ -11,6 +11,9 @@
         },
         {
             "m_Id": "3786e16246a0479a8d97d18fbf947091"
+        },
+        {
+            "m_Id": "efd237874eba4521b1b6812f20133eff"
         }
     ],
     "m_Keywords": [],
@@ -670,10 +673,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1050.4000244140625,
-            "y": 856.800048828125,
-            "width": 107.20000457763672,
-            "height": 34.399959564208987
+            "x": -1066.400146484375,
+            "y": 857.60009765625,
+            "width": 107.20001983642578,
+            "height": 34.399967193603519
         }
     },
     "m_Slots": [
@@ -1333,6 +1336,30 @@
     "m_Property": {
         "m_Id": "f2c4ce63702b4b41829643ef67463ea5"
     }
+}
+
+{
+    "m_SGVersion": 3,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
+    "m_ObjectId": "efd237874eba4521b1b6812f20133eff",
+    "m_Guid": {
+        "m_GuidSerialized": "c79cd77f-a02b-48cb-904a-a77043849e5f"
+    },
+    "m_Name": "Intensity",
+    "m_DefaultReferenceName": "Color_efd237874eba4521b1b6812f20133eff",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 0.0
+    },
+    "m_ColorMode": 0
 }
 
 {

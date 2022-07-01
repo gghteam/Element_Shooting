@@ -63,7 +63,6 @@ public class BulletMove : Bullet
         {
 
         }
-        
     }
 
    public void Bezier(Vector3 targetPos, Vector3 startControl)

@@ -6,14 +6,14 @@ public class ElementAnimation : MonoBehaviour
 {
     private PlayerController playerController;
     private Animator ani;
-    private Material material;
+    private SpriteRenderer _spriteRenderer;
 
     Conditions conditions;
     Conditions currutCondition = Conditions.Fire;
     private void Awake() {
         playerController = GetComponentInParent<PlayerController>();
         ani = GetComponent<Animator>();
-        material = GetComponent<Material>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void Start() {
         conditions = GameManager.Instance.playerController.GetCondition;
@@ -31,17 +31,21 @@ public class ElementAnimation : MonoBehaviour
         switch(currentCondition)
         {
             case Conditions.Fire:
-            ani.Play("Fire_Element_Off_Animation");
-            break;
+                ani.Play("Fire_Element_Off_Animation");
+                
+                break;
             case Conditions.Water:
-            ani.Play("Water_Element_Off_Animation");
-            break;
+                ani.Play("Water_Element_Off_Animation");
+                
+                break;
             case Conditions.Wind:
-            ani.Play("Wind_Element_Off_Animation");
-            break;
+                ani.Play("Wind_Element_Off_Animation");
+                
+                break;
             case Conditions.Stone:
-            ani.Play("Stone_Element_Off_Animation");
-            break;
+                ani.Play("Stone_Element_Off_Animation");
+                
+                break;
         }
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(ElementOnToIdle(Nextconditions));
@@ -54,21 +58,25 @@ public class ElementAnimation : MonoBehaviour
         {
             case Conditions.Fire:
                 ani.Play("Fire_Element_On_Animation");
+                _spriteRenderer.material.SetVector("_Color", Color.red);
                 yield return waitTime;
                 ani.Play("Fire_Element_Idle_Animation");
             break;
             case Conditions.Water:
                 ani.Play("Water_Element_On_Animation");
+                _spriteRenderer.material.SetVector("_Color", Color.blue);               
                 yield return waitTime;
                 ani.Play("Water_Element_Idle_Animation");
-            break;
+                break;
             case Conditions.Wind:
                 ani.Play("Wind_Element_On_Animation");
+                _spriteRenderer.material.SetVector("_Color", Color.green);
                 yield return waitTime;
                 ani.Play("Wind_Element_Idle_Animation");
             break;
             case Conditions.Stone:
                 ani.Play("Stone_Element_On_Animation");
+                _spriteRenderer.material.SetVector("_Color", Color.gray);
                 yield return waitTime;
                 ani.Play("Stone_Element_Idle_Animation");
             break;
