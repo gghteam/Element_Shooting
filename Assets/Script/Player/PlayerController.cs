@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
         Health = _playerState.CharacterState.maxHp;
         Camera = GameObject.Find("Camera").GetComponent<Camera>();
         flySlider.maxValue = maxFlyTime;
+        flySlider.value = maxFlyTime;
         StartCoroutine(Fire());
     }
 
@@ -96,7 +97,10 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
             else
             {
                 if (time > 0)
+                {
                     time -= Time.deltaTime;
+                    flySlider.value = maxFlyTime - time;
+                }
             }
         }
     }

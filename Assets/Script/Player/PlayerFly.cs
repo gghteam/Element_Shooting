@@ -5,21 +5,23 @@ using UnityEngine;
 public class PlayerFly : MonoBehaviour
 {
     public bool isFly { get; private set; } = false;
-    [SerializeField]
-    private float radius;
+    public Vector2 size;
     [SerializeField]
     private LayerMask mapLayer;
 
     private void FixedUpdate()
     {
-        Collider2D[] coliders = Physics2D.OverlapCircleAll(transform.position, radius);
+        Collider2D colider = Physics2D.OverlapBox(transform.position, size, 0, mapLayer);
 
-        foreach(Collider2D colider in coliders)
+        if (colider != null)
         {
-            Debug.Log(colider.name);
+            if (colider.CompareTag("Empty")) isFly = true;
+            else isFly = false;
         }
     }
 
+
+    /*
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
@@ -28,4 +30,11 @@ public class PlayerFly : MonoBehaviour
     }
     
 #endif
+    */
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, size);
+    }
 }

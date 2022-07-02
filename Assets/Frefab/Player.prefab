@@ -285,7 +285,7 @@ MonoBehaviour:
         m_CallState: 2
   projectileSpread: 0
   condition: 1
-  playerFly: {fileID: 884164078282012645}
+  playerFly: {fileID: 0}
   bulletDelay: 0.1
   sphereSize: 2
   maxFlyTime: 1
@@ -578,7 +578,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6690424048930006646}
-  - component: {fileID: 884164078282012645}
   m_Layer: 6
   m_Name: FlyPos
   m_TagString: Untagged
@@ -600,23 +599,6 @@ Transform:
   m_Father: {fileID: 5574230531486282359}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &884164078282012645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063898247413364704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36d9830f31487aa40a2c1626719ff5c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 3.88
-  pointPos: {fileID: 0}
-  mapLayer:
-    serializedVersion: 2
-    m_Bits: 32768
 --- !u!1 &2229445770873658313
 GameObject:
   m_ObjectHideFlags: 0
