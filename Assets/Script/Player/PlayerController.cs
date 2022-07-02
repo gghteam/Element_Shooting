@@ -77,32 +77,7 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
 
     private void Update()
     {
-        if (!_isDead)
-        {
-            if (playerFly.isFly)
-            {
-                time += Time.deltaTime;
-                flySlider.value = maxFlyTime - time;
-                if (time >= maxFlyTime)
-                {
-                    //Debug.Log("DEATH");
-                    GameManager.Instance.ActiveItemInit();
-                    PlayerPrefs.SetInt("CurrentLevel", 1);
-                    playerMove.Death();
-                    OnDie?.Invoke();
-                    _isDead = true;
-                    isFly = false;
-                }
-            }
-            else
-            {
-                if (time > 0)
-                {
-                    time -= Time.deltaTime;
-                    flySlider.value = maxFlyTime - time;
-                }
-            }
-        }
+        CheckPlayerFly();
     }
 
     public void GetHit(int damage, GameObject damageDealer)
@@ -128,6 +103,37 @@ public class PlayerController : MonoBehaviour, IHittable, IAgent
         }
         playerMove.Damaged();
         StartCoroutine(DamagedCool());
+    }
+
+    private void CheckPlayerFly()
+    {
+        if (!_isDead)
+        {
+            if (playerFly.isFly)
+            {
+                time += Time.deltaTime;
+                flySlider.value = maxFlyTime - time;
+                if (time >= maxFlyTime)
+                {
+                    //Debug.Log("DEATH");
+                    GameManager.Instance.IsStopEvent = true;
+                    GameManager.Instance.ActiveItemInit();
+                    PlayerPrefs.SetInt("CurrentLevel", 1);
+                    playerMove.Fall();
+                    OnDie?.Invoke();
+                    _isDead = true;
+                    isFly = false;
+                }
+            }
+            else
+            {
+                if (time > 0)
+                {
+                    time -= Time.deltaTime;
+                    flySlider.value = maxFlyTime - time;
+                }
+            }
+        }
     }
     private IEnumerator DamagedCool()
     {

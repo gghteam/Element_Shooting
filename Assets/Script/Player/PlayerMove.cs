@@ -29,6 +29,7 @@ public class PlayerMove : MonoBehaviour
     private readonly int _deathHashStr = Animator.StringToHash("Death");
     private readonly int _attackHashStr = Animator.StringToHash("Attack");
     private readonly int _damagedHashStr = Animator.StringToHash("Damaged");
+    private readonly int _fallHashStr = Animator.StringToHash("Fall");
 
     private Collider2D col = null;
     private Rigidbody2D playerRigid = null;
@@ -55,23 +56,19 @@ public class PlayerMove : MonoBehaviour
         transform.position = GameManager.Instance.SetPos;
     }
     private void Update() {
-        
-        if (PlayerPrefs.GetInt("TURORIAL", 1) == 1)
+
+        if (GameManager.Instance.IsStopEvent || GameManager.Instance.dialogueManager.IsDialogue)
         {
-            if (GameManager.Instance.IsStopEvent || GameManager.Instance.dialogueManager.IsDialogue)
-            {
-                playerRigid.velocity = Vector2.zero;
-            }
-            else Move();
+            playerRigid.velocity = Vector2.zero;
         }
-        else 
+        else
         {
             Move();
-         }
-        Dash();
-        Run();
-        StaminaRecovery();
-        SetCharacterDirection();
+            Dash();
+            Run();
+            StaminaRecovery();
+            SetCharacterDirection();
+        } 
     }
     public void SetStamina(float value)
     {
@@ -95,6 +92,11 @@ public class PlayerMove : MonoBehaviour
     public void UnAttack()
     {
         AttackAnimation(false);
+    }
+    public void Fall()
+    {
+        _isDead = true;
+        animator.SetTrigger(_fallHashStr);
     }
     private void Idle()
     {
@@ -190,5 +192,6 @@ public class PlayerMove : MonoBehaviour
             animator.transform.localScale = new Vector3(-1f, 1f, 1f);
         }
     }
+
 
 }
