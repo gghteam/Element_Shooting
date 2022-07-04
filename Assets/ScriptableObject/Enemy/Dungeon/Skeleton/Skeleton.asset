@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: skeleton
   prefab: {fileID: 4358138286098005263, guid: ad88dd0c814f1e44b9ec4413ac707045, type: 3}
   poolPrefab: {fileID: 2010372103181876869, guid: ad88dd0c814f1e44b9ec4413ac707045, type: 3}
-  <maxHealth>k__BackingField: 30
+  <maxHealth>k__BackingField: 40
   <damage>k__BackingField: 2
   isKnockBack: 1
   isFly: 0
