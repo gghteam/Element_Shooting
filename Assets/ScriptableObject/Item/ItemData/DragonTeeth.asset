@@ -16,8 +16,8 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: ac0f3d61092c5764f9bb21cfc3936370, type: 3}
   addHealth: 0
   speed: 0
-  stamina: 10
+  stamina: 20
   mana: 0
-  atk: 1
+  atk: 4
   rpm: 0
   mul: 0

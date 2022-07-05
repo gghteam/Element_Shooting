@@ -13,9 +13,9 @@ public class LoadManager : MonoBehaviour
     private int introPlayerPrefab;
     private void Awake()
     {
-        Debug.Log("AAAA");
-        PlayerPrefs.SetInt("Intro", 0);
-        PlayerPrefs.SetInt("TURORIAL", 1);
+        //Debug.Log("AAAA");
+        //PlayerPrefs.SetInt("Intro", 0);
+        //PlayerPrefs.SetInt("TURORIAL", 1);
         introPlayerPrefab = PlayerPrefs.GetInt("Intro");
     }
     public void StartGame()
