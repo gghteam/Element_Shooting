@@ -84,7 +84,7 @@ public class Enemy : PoolableMono,IAgent,IHittable,IKnockBack,IStun
         }
     }
 
-    private void DieEnemy()
+    public void DieEnemy()
     {
         _isDead = true;
         OnDie?.Invoke();
@@ -132,13 +132,16 @@ public class Enemy : PoolableMono,IAgent,IHittable,IKnockBack,IStun
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*
+    private void OnTriggerStay2D(Collider2D collision)
     {
+        Debug.Log(collision.transform.parent.name);
         if(collision.CompareTag("Empty") && !_enemyData.isFly)
         {
             DieEnemy();
         }
     }
+    */
 
     public override void Reset()
     {
