@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Playables;
 
 public class TimelineController : MonoBehaviour
@@ -35,10 +36,14 @@ public class TimelineController : MonoBehaviour
         _playableDirector.Pause();
         
     }
-
     public void StartTimeline()
     {
         _playableDirector.Play();
         _dialog.gameObject.SetActive(false);
+    }
+
+    public void EndCutScene()
+    {
+        SceneManager.LoadScene("InGame");
     }
 }
