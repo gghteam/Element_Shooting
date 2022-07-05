@@ -6627,11 +6627,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 365998582, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: _characterState.atk
-      value: 100
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 365998582, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: _characterState.rpm
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 365998582, guid: 5792066bd6d836449b0da035620bfebc, type: 3}
       propertyPath: _characterState.maxHp
@@ -7249,6 +7249,7 @@ MonoBehaviour:
   mapLayer:
     serializedVersion: 2
     m_Bits: 32768
+  _isColType: 0
 --- !u!1 &1595949961
 GameObject:
   m_ObjectHideFlags: 0

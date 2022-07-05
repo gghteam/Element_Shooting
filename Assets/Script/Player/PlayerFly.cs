@@ -9,15 +9,33 @@ public class PlayerFly : MonoBehaviour
     [SerializeField]
     private LayerMask mapLayer;
 
+    [SerializeField]
+    private bool _isColType = true;
+
     private void FixedUpdate()
     {
-        Collider2D colider = Physics2D.OverlapBox(transform.position, size, 0, mapLayer);
-
-        if (colider != null)
+        if(_isColType)
         {
-            if (colider.CompareTag("Empty")) isFly = true;
-            else isFly = false;
+            Collider2D colider = Physics2D.OverlapBox(transform.position, size, 0, mapLayer);
+
+            if (colider != null)
+            {
+                if (colider.CompareTag("Empty")) isFly = true;
+                else isFly = false;
+            }
         }
+        else
+        {
+            Collider2D circleCol = Physics2D.OverlapCircle(transform.position, size.x, mapLayer);
+
+            if (circleCol != null)
+            {
+                if (circleCol.CompareTag("Empty")) isFly = true;
+                else isFly = false;
+            }
+        }
+
+        
     }
 
 
@@ -34,7 +52,16 @@ public class PlayerFly : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, size);
+        if(_isColType)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(transform.position, size);
+        }
+        else
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, size.x);
+        }
+        
     }
 }
