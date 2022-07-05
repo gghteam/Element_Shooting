@@ -9,15 +9,29 @@ public class LoadManager : MonoBehaviour
 {
     [SerializeField]
     private Canvas _canvas;
+
+    private int introPlayerPrefab;
     private void Awake()
     {
-        
+        Debug.Log("AAAA");
+        PlayerPrefs.SetInt("Intro", 0);
+        PlayerPrefs.SetInt("TURORIAL", 1);
+        introPlayerPrefab = PlayerPrefs.GetInt("Intro");
     }
     public void StartGame()
     {
-        Debug.Log("¤»¤»¤»");
-        _canvas.sortingOrder = -1;
-        FindObjectOfType<LoadingSceneController>().LoadScene("Lobby");
+        if(introPlayerPrefab!=0)
+        {
+            _canvas.sortingOrder = -1;
+            FindObjectOfType<LoadingSceneController>().LoadScene("Lobby");
+        }
+        else
+        {
+            _canvas.sortingOrder = -1;
+            FindObjectOfType<LoadingSceneController>().LoadScene("Intro");
+            PlayerPrefs.SetInt("Intro",1);
+        }
+        
     }
     public void QuitGame()
     {

@@ -22,7 +22,15 @@ public class StagePanel : MonoBehaviour
 
     private void Start()
     {
-        _stageMeshText.SetText("{0} - Stage", PlayerPrefs.GetInt("CurrentLevel"));
+        if(PlayerPrefs.GetInt("TURORIAL") ==1)
+        {
+            _stageMeshText.SetText("던전 입구");
+        }
+        else
+        {
+            _stageMeshText.SetText("{0} - Stage", PlayerPrefs.GetInt("CurrentLevel"));
+        }
+        
         ShowPanel();
     }
 
