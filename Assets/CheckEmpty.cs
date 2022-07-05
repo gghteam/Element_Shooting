@@ -15,7 +15,7 @@ public class CheckEmpty : MonoBehaviour
         if (colider != null)
         {
             if (colider.CompareTag("Bat")) return;
-            colider.GetComponent<Enemy>().DieEnemy();
+            colider.GetComponent<Enemy>()?.DieEnemy();
         }
     }
 
