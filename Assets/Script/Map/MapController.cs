@@ -467,11 +467,12 @@ public class MapController : MonoBehaviour
         }
         transform.localPosition = originVec;
 
-        FireContain fireContain = shakeObj?.GetComponent<FireContain>();
+        ColiderContainer fireContain = shakeObj?.GetComponent<ColiderContainer>();
 
+        //ºÒ ¸Ê
         if (fireContain != null)
         {
-            fireContain.offFireCol();
+            fireContain.offBoxCol();
         }
     }
 }
