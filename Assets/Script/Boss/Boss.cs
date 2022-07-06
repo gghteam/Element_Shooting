@@ -75,8 +75,6 @@ public class Boss : MonoBehaviour, IHittable,IAgent
         {
 
             SceneManager.LoadScene("End");
-            _EndPanel.SetActive(true);
-            gameObject.SetActive(false);
             Debug.Log("Boss Die");
         }
 
