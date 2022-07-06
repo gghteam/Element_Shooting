@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using static DefineCS;
 using Random = UnityEngine.Random;
@@ -72,7 +73,8 @@ public class Boss : MonoBehaviour, IHittable,IAgent
 
         if (Health <= 0)
         {
-            
+
+            SceneManager.LoadScene("End");
             _EndPanel.SetActive(true);
             gameObject.SetActive(false);
             Debug.Log("Boss Die");

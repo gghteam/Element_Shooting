@@ -11,8 +11,7 @@ public class TimelineController : MonoBehaviour
     private PlayableDirector _playableDirector;
     private IntroDialog _dialog;
 
-    [SerializeField]
-    private GameObject _player;
+
 
     private int _sentencePage = 0;
     private int _lastPageNum;
